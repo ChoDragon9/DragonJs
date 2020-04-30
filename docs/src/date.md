@@ -176,6 +176,8 @@ const isToday = +clearTime(savedDate) === +clearTime(currentDate);
 ```
 
 ## D-Day 구하기
+D-Day는 날짜를 비교하고, 남은 날짜를 구해주면 된다.
+
 ```js
 const clearTime = (date) => {
   const clonedDate = new Date(date);
