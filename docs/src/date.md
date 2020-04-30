@@ -238,3 +238,59 @@ const yesterday = subtractDate(today, 1);
 ```
 
 같은 원리로 년, 월, 일, 시, 분, 초 관련 헬퍼도 만들 수 있다.
+
+## 윤년 확인하기
+윤년은 4년마다 한번씩 찾아온다. 결국 4의 배수이기 때문에
+해당 년도가 윤년과 비교했을 때 4의 배수인지 확인하면 된다.
+
+```js
+const isLeapYear = (year) => {
+  const LEAP_YEAR = 2000; // 윤년
+  const LEAP_YEAR_PERIOD = 4; // 윤년 주기
+
+  const diffYear = Math.abs(year - LEAP_YEAR);
+  return diffYear % LEAP_YEAR_PERIOD === 0
+};
+
+console.log(isLeapYear(2016));
+// true
+console.log(isLeapYear(2017));
+// false
+console.log(isLeapYear(2018));
+// false
+console.log(isLeapYear(2019));
+// false
+console.log(isLeapYear(2020));
+// true
+```
+
+## 월의 마지막 날짜 가져오기
+월의 마지막 날짜는 매년 동일하기 때문에 상수다. 단, 윤년일 때 2월만 29일로 바뀐다.
+이 원리로 마지막 날짜를 구할 수 있다.
+
+```js
+const isLeapYear = (year) => {
+  const LEAP_YEAR = 2000;
+  const LEAP_YEAR_PERIOD = 4;
+
+  const diffYear = Math.abs(year - LEAP_YEAR);
+  return diffYear % LEAP_YEAR_PERIOD === 0
+};
+const toLastDay = (year, month) => {
+  const LAST_DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  const LEAP_YEAR_LAST_DATE = 29;
+  const MONTH_FEBRUARY = 2;
+
+  if (isLeapYear(year) && month === MONTH_FEBRUARY) {
+    return LEAP_YEAR_LAST_DATE
+  }
+  return LAST_DAYS[month - 1]
+};
+
+console.log(toLastDay(2019, 2));
+// 28
+console.log(toLastDay(2020, 2));
+// 29
+console.log(toLastDay(2020, 12));
+// 31
+```
