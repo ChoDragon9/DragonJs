@@ -1,4 +1,0 @@
----
-title: TodoList
-sidebar: auto
----

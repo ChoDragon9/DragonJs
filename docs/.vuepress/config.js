@@ -12,10 +12,10 @@ module.exports = {
       //     {text: 'InfiniteScrolling', link: '/src/UIComponent/InfiniteScrolling/'},
       //   ]
       // },
-      // {
-      //   text: 'MyPage',
-      //   link: '/src/my-page/' // /docs/src/my-page.md
-      // },
+      {
+        text: 'Date 다루기',
+        link: '/src/date/'
+      },
     ]
   },
   head: [
