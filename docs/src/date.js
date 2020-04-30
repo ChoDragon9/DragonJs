@@ -1,8 +1,12 @@
+console.log('2020-04-20' > '2020-04-21')
+console.log('2020-04-20' < '2020-04-21')
+console.log('2020-04-20' === '2020-04-20')
+console.log('-')
+console.log('20200420' > '20200421')
+console.log('20200420' < '20200421')
+console.log('20200420' === '20200420')
+console.log('-')
+
 console.log(new Date('2020-04-20') > new Date('2020-04-21'))
-// false
 console.log(new Date('2020-04-20') < new Date('2020-04-21'))
-// true
-console.log(new Date('2020-04-25') < new Date('2020-04-27'))
-// true
-console.log(new Date('2020-04-20') >= new Date('2020-04-20'))
-// true
+console.log(+new Date('2020-04-20') === +new Date('2020-04-20'))

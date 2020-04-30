@@ -122,14 +122,14 @@ console.log('2020-04-20' > '2020-04-21')
 // false
 console.log('2020-04-20' < '2020-04-21')
 // true
-console.log('2020-04-20' >= '2020-04-20')
+console.log('2020-04-20' === '2020-04-20')
 // true
 
 console.log('20200420' > '20200421')
 // false
 console.log('20200420' < '20200421')
 // true
-console.log('20200420' >= '20200420')
+console.log('20200420' === '20200420')
 // true
 ``` 
 
@@ -139,7 +139,39 @@ console.log(new Date('2020-04-20') > new Date('2020-04-21'))
 // false
 console.log(new Date('2020-04-20') < new Date('2020-04-21'))
 // true
-console.log(new Date('2020-04-20') >= new Date('2020-04-20'))
+console.log(+new Date('2020-04-20') === +new Date('2020-04-20'))
+// true
+```
+Date 객체에 일치연산자(`===`)를 사용할 때는 앞에 `+`를 붙여준다.
+`+new Date()`는 `new Date().getTime()`과 동일하다. 
+
+#### Date 객체의 시간
+Date 객체로 날짜를 비교할 때 실수하기 쉬운 부분이 시간이다.
+날짜는 같은 데, 시간이 다를 경우 의도한 데로 동작하지 않는 다.
+
+```js
+const savedDate = new Date('2020-04-20T23:59:59')
+const currentDate = new Date('2020-04-20')
+
+const isToday = +savedDate === +currentDate;
+// false
+```
+
+Date 객체로 날짜만 비교할 때 항상 시간은 리셋해야 해줘야 한다.
+```js
+const clearTime = (date) => {
+  const clonedDate = new Date(date);
+  clonedDate.setHours(0)
+  clonedDate.setMinutes(0)
+  clonedDate.setSeconds(0)
+  clonedDate.setMilliseconds(0)
+  return clonedDate;
+};
+
+const savedDate = new Date('2020-04-20T23:59:59')
+const currentDate = new Date('2020-04-20')
+
+const isToday = +clearTime(savedDate) === +clearTime(currentDate);
 // true
 ```
 
