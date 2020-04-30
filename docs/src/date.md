@@ -23,7 +23,7 @@ const response = {
 };
 
 const {startDateAt, startTimeAt} = response;
-const date = new Date(`${startDateAt}T${startTimeAt}+09:00`);
+const date = new Date(`${startDateAt}T${startTimeAt}`);
 // Mon Apr 20 2020 10:50:00 GMT+0900 (대한민국 표준시)
 ```
 
