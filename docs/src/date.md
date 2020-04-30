@@ -203,5 +203,38 @@ const dDay = diff / ONE_DAY_MS;
 ```
 
 ## 날짜 이동하기
+날짜를 이동할 때는 기존날짜에 추가 또는 빼기를 해주면 된다.
+일단위는 이렇게 구현 가능하다.
 
-## 시간 이동하기
+```js
+const addDate = (date, count) => {
+  const clonedDate = new Date(date);
+  clonedDate.setDate(clonedDate.getDate() + count);
+  return clonedDate
+};
+
+const today = new Date('2020-04-20T10:50:00');
+const tomorrow = addDate(today, 1);
+// 2020-04-21T10:50:00
+```
+
+`clonedDate.setDate(clonedDate.getDate() + count)` 이 부분에서 `count`를 음수로 넣어주면 이전 날도 가져올 수 있다.
+
+```js
+const addDate = (date, count) => {
+  const clonedDate = new Date(date);
+  clonedDate.setDate(clonedDate.getDate() + count);
+  return clonedDate
+};
+const subtractDate = (date, count) => {
+  return addDate(date, -count)
+};
+
+const today = new Date('2020-04-20T10:50:00');
+const tomorrow = addDate(today, 1);
+// 2020-04-21T10:50:00
+const yesterday = subtractDate(today, 1);
+// 2020-04-19T10:50:00
+```
+
+같은 원리로 년, 월, 일, 시, 분, 초 관련 헬퍼도 만들 수 있다.
