@@ -53,17 +53,60 @@ const dateAt = new Date('2020-04-20T10:50:00');
 
 const year = dateAt.getFullYear();
 const month = dateAt.getMonth() + 1; // Tip! month는 0부터 시작한다.
-const day = dateAt.getDate();
+const date = dateAt.getDate();
 const hours = dateAt.getHours();
 const minutes = dateAt.getMinutes();
 
 const toLong = num => `${num < 10 ? '0': ''}${num}`
 
 const format = [
-  [year, month, day].map(toLong).join('.'),
+  [year, month, date].map(toLong).join('.'),
   [hours, minutes].map(toLong).join(':')
 ].join(' ');
 
+// 2020.04.20 10:50
+```
+
+#### 헬퍼함수 만들기
+다양한 포맷이 필요하다면 헬퍼함수로 만드는 방법도 있다.
+
+```js
+const toLong = num => `${num < 10 ? '0': ''}${num}`;
+const toFormat = (baseDate, format) => {
+  const [
+    year,
+    month,
+    date,
+    hours,
+    minutes,
+    seconds,
+  ] = [
+    baseDate.getFullYear(),
+    baseDate.getMonth() + 1,
+    baseDate.getDate(),
+    baseDate.getHours(),
+    baseDate.getMinutes(),
+    baseDate.getSeconds(),
+  ].map(toLong);
+
+  return format
+    .replace('YYYY', year)
+    .replace('MM', month)
+    .replace('DD', date)
+    .replace('hh', hours)
+    .replace('mm', minutes)
+    .replace('ss', seconds)
+};
+```
+
+```js
+const dateAt = new Date('2020-04-20T10:50:00');
+
+const dateStr = toFormat(dateAt, 'YYYY.MM.DD');
+// 2020.04.20
+const timeStr = toFormat(dateAt, 'hh:mm:ss');
+// 10:50:00
+const dateTimeStr = toFormat(dateAt, 'YYYY.MM.DD hh:mm');
 // 2020.04.20 10:50
 ```
 
