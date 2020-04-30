@@ -33,7 +33,7 @@ const date = new Date(`${startDateAt}T${startTimeAt}+09:00`);
 Date 객체에 문자열로 전달될 경우 `Date.parse()`가 해석 가능한 규약으로 전달하면 정상적으로 변환된다.
 해석 가능한 규약은 RFC2822 또는 ISO 8601 포맷이다. 자세한 스팩은 [여기](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)에서 참고할 수 있다. 
 
-## Date 객체를 기획서에 제시된 포맷으로 변경하기
+## 날짜 문자열 포맷으로 변경하기
 기획서 상에서 대체로 `2020.04.20 10:50` 형태로 표시 해달라는 요구사항이 있었다.
 
 단순히 문자열이라면 이렇게 변경 가능하다.
@@ -110,7 +110,7 @@ const dateTimeStr = toFormat(dateAt, 'YYYY.MM.DD hh:mm');
 // 2020.04.20 10:50
 ```
 
-## 날짜비교
+## 날짜 비교하기
 전달된 날짜를 기준으로 오늘인지 식별하는 경우도 있고,
 지정된 범위에 날짜인지 확인하는 경우도 있다.
 
