@@ -111,6 +111,37 @@ const dateTimeStr = toFormat(dateAt, 'YYYY.MM.DD hh:mm');
 ```
 
 ## 날짜비교
+전달된 날짜를 기준으로 오늘인지 식별하는 경우도 있고,
+지정된 범위에 날짜인지 확인하는 경우도 있다.
+
+날짜비교는 문자열, Date 객체 모두 간단하다. 단순히 같은 포맷으로 비교연산자를 사용하면 된다.
+
+#### 문자열로 비교하기
+```js
+console.log('2020-04-20' > '2020-04-21')
+// false
+console.log('2020-04-20' < '2020-04-21')
+// true
+console.log('2020-04-20' >= '2020-04-20')
+// true
+
+console.log('20200420' > '20200421')
+// false
+console.log('20200420' < '20200421')
+// true
+console.log('20200420' >= '20200420')
+// true
+``` 
+
+#### Date 객체로 비교하기
+```js
+console.log(new Date('2020-04-20') > new Date('2020-04-21'))
+// false
+console.log(new Date('2020-04-20') < new Date('2020-04-21'))
+// true
+console.log(new Date('2020-04-20') >= new Date('2020-04-20'))
+// true
+```
 
 ## D-Day 구하기
 
