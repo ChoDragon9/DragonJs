@@ -13,8 +13,8 @@ module.exports = {
       //   ]
       // },
       {
-        text: 'Date 다루기',
-        link: '/src/date/'
+        text: 'Moment.js',
+        link: '/src/momentjs/'
       },
     ]
   },
