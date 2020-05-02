@@ -167,7 +167,10 @@ SET txt Hello
 
 ## 영속 자료 구조 만들기
 ### 자료 구조 만들기
-객체의 구조를 LinkedList로 변경하는 로직이다. 
+객체와 내부 객체의 연결 구조를 LinkedList로 구성했다.
+LinkedList가 객체의 연결 구조와 유사하고, 간단하게 구현 가능했기 때문이다.
+ 
+이 로직은 객체를 LinkedList로 변경하는 로직이다. 
 
 ##### 함수 정의
 ```js
@@ -234,6 +237,7 @@ console.log(state)
 ### 자료 변경하기
 아이템 변경 시, parent에 값이 있으면 부모값도 변경한다.
 
+##### 함수 정의
 ```js
 const changeLinkedList = (state, propName, value) => {
   if (state.copy) {
@@ -247,6 +251,7 @@ const changeLinkedList = (state, propName, value) => {
   }
 }
 ```
+##### 함수 사용
 ```js
 const base = {
   value: 'Hello',
@@ -256,6 +261,7 @@ const state = toLinkedList(base)
 changeLinkedList(state[1], 'message', 'World')
 console.log(state)
 ```
+##### 실행 결과
 ```
 [
   {
@@ -278,13 +284,30 @@ console.log(state)
 ]
 ```
 
-### 자료 사용하기
-첫번째에 copy가 있으면 상태가 변경됬다는 의미이다. 즉, copy가 있을 때 copy를 반환하고 없으면 base를 반환하면 된다.
+### 원본자료 사용하기
+최상위 객체의 copy가 있으면 상태가 변경됬다는 의미이다. 즉, copy가 있을 때 copy를 반환하고 없으면 base를 반환하면 된다.
 
+##### 함수 정의
 ```js
 const toBase = (list) => {
   return list[0].copy ? list[0].copy : list[0].base
 }
+```
+
+##### 함수 사용
+```js
+const base = {
+  value: 'Hello',
+  inner: {message: 'Hello World'}
+}
+const state = toLinkedList(base)
+
+console.log(base === toBase(state))
+// true
+
+changeLinkedList(state[1], 'message', 'World')
+console.log(base === toBase(state))
+// false
 ```
 
 ## 프록시와 영속 자료 구조 병합하기

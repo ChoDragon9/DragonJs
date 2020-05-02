@@ -24,3 +24,32 @@ const toLinkedList = (base, parent = null, propName = null, list = []) => {
     return list
   }
 }
+
+const changeLinkedList = (state, propName, value) => {
+  if (state.copy) {
+    state.copy[propName] = value
+  } else {
+    state.copy = Object.assign({}, state.base, {[propName]: value})
+  }
+
+  if (state.parent) {
+    changeLinkedList(state.parent, state.propName, state.copy)
+  }
+}
+
+const toBase = (list) => {
+  return list[0].copy ? list[0].copy : list[0].base
+}
+
+const base = {
+  value: 'Hello',
+  inner: {message: 'Hello World'}
+}
+const state = toLinkedList(base)
+
+console.log(base === toBase(state))
+// true
+
+changeLinkedList(state[1], 'message', 'World')
+console.log(base === toBase(state))
+// false
