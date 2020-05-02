@@ -1,25 +1,26 @@
-const createProxy = target => {
-  const handler = {
-    get (target, key) {
-      console.log('GET', key)
-      return target[key]
-    },
-    set (target, key, value) {
-      console.log('SET', key, value)
-      target[key] = value
+const toLinkedListItem = (base, parent = null, propName = null) => {
+  return {
+    base,
+    parent,
+    propName,
+    copy: null,
+  }
+}
+
+const toLinkedList = (base, parent = null, propName = null, list = []) => {
+  const state = toLinkedListItem(base, parent, propName)
+
+  list.push(state)
+
+  for (const propName in base) {
+    if (typeof base[propName] === 'object') {
+      toLinkedList(base[propName], state, propName, list)
     }
   }
-  return Proxy.revocable(target, handler)
+
+  if (parent) {
+    return state
+  } else {
+    return list
+  }
 }
-
-const target = {
-  message: ''
-}
-const {proxy, revoke} = createProxy(target)
-
-proxy.message = 'World!'
-console.log('LOG', proxy.message)
-
-revoke()
-
-console.log(proxy.message) // Error

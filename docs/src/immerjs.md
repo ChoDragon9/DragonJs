@@ -169,6 +169,7 @@ SET txt Hello
 ### 자료 구조 만들기
 객체의 구조를 LinkedList로 변경하는 로직이다. 
 
+##### 함수 정의
 ```js
 const toLinkedListItem = (base, parent = null, propName = null) => {
   return {
@@ -197,6 +198,7 @@ const toLinkedList = (base, parent = null, propName = null, list = []) => {
   }
 }
 ```
+##### 함수 사용
 ```js
 const base = {
   value: 'Hello',
@@ -206,6 +208,7 @@ const state = toLinkedList(base)
 
 console.log(state)
 ```
+##### 실행 결과
 ```
 [
   {
