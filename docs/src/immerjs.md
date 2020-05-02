@@ -575,3 +575,48 @@ true
 true
 true
 ```
+
+## 불변성만 필요할 때
+영속적 자료 구조가 필요하지 않고 불변성만 필요할 때는 간단하게 구현 가능하다.
+
+##### 함수 정의
+```js
+const clone = json => JSON.parse(JSON.stringify(json))
+
+const produce = (state, recipe) => {
+  const clonedState = clone(state)
+  recipe(clonedState)
+  return clonedState
+}
+```
+
+##### 함수 사용
+
+```js
+const baseState = [
+  {
+    todo: "Learn typescript",
+    done: true
+  },
+  {
+    todo: "Try immer",
+    done: false
+  }
+]
+
+const nextState = produce(baseState, (draftState) => {
+  draftState.push({todo: "Tweet about it"})
+  draftState[1].done = true
+})
+
+console.log(baseState.length === 2) // true
+console.log(nextState.length === 3) // true
+
+console.log(baseState[1].done === false) // true
+console.log(nextState[1].done === true) // true
+
+console.log(nextState[0] === baseState[0]) // false
+console.log(nextState[1] !== baseState[1]) // true
+```
+
+immer를 사용했을 때와 다른 점은 `nextState[0] === baseState[0]`이 부분이다. 변경하지 않는 부분도 새로 만든 점이 다르다.
