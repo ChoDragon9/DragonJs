@@ -16,6 +16,10 @@ module.exports = {
         text: 'Moment.js',
         link: '/src/momentjs/'
       },
+      {
+        text: 'Immer.js',
+        link: '/src/immerjs/'
+      },
     ]
   },
   head: [
