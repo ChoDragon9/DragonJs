@@ -165,10 +165,7 @@ Date 객체로 날짜만 비교할 때 항상 시간을 주의해야 한다.
 ```js
 const clearTime = (date) => {
   const clonedDate = new Date(date);
-  clonedDate.setHours(0)
-  clonedDate.setMinutes(0)
-  clonedDate.setSeconds(0)
-  clonedDate.setMilliseconds(0)
+  clonedDate.setHours(0, 0, 0, 0)
   return clonedDate;
 };
 
@@ -185,10 +182,7 @@ D-Day는 날짜를 비교하고, 남은 날짜를 구해주면 된다.
 ```js
 const clearTime = (date) => {
   const clonedDate = new Date(date);
-  clonedDate.setHours(0);
-  clonedDate.setMinutes(0);
-  clonedDate.setSeconds(0);
-  clonedDate.setMilliseconds(0);
+  clonedDate.setHours(0, 0, 0, 0)
   return clonedDate;
 };
 const ONE_DAY_MS = 1000 * 60 * 60 * 24;
@@ -268,6 +262,25 @@ console.log(isLeapYear(2020));
 // true
 ```
 
+Date 객체로 확인하는 방법도 있다.
+
+```js
+const isLeapYear = (year) => {
+  return new Date(year, 2, 0).getDate() === 29;
+};
+
+console.log(isLeapYear(2016));
+// true
+console.log(isLeapYear(2017));
+// false
+console.log(isLeapYear(2018));
+// false
+console.log(isLeapYear(2019));
+// false
+console.log(isLeapYear(2020));
+// true
+```
+
 ## 월의 마지막 날짜 가져오기
 월의 마지막 날짜는 매년 동일하기 때문에 상수다. 단, 윤년일 때 2월만 29일로 바뀐다.
 이 원리로 마지막 날짜를 구할 수 있다.
@@ -290,6 +303,20 @@ const toLastDay = (year, month) => {
   }
   return LAST_DAYS[month - 1]
 };
+
+console.log(toLastDay(2019, 2));
+// 28
+console.log(toLastDay(2020, 2));
+// 29
+console.log(toLastDay(2020, 12));
+// 31
+```
+
+Date 객체로 확인하는 방법도 있다.
+```js
+const toLastDay = (year, month) => {
+  return new Date(year, month, 0).getDate()
+}
 
 console.log(toLastDay(2019, 2));
 // 28
