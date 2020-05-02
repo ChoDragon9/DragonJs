@@ -312,7 +312,7 @@ console.log(base === toBase(state))
 
 ## 프록시와 영속 자료 구조 병합하기
 ### 상태를 자료 구조로 사용
-프록시를 상태를 감지한다. 그리고 상태를 조회나 변경할 때는 LinkedList의 아이템을 사용한다.
+프록시로 상태를 감지한다. 그리고 상태를 조회나 변경할 때는 LinkedList의 아이템을 사용한다.
 
 ```js
 const toLinkedListItem = (base, parent = null, propName = null) => {
