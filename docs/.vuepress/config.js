@@ -20,6 +20,10 @@ module.exports = {
         text: 'Immer.js',
         link: '/src/immerjs/'
       },
+      {
+        text: 'Axios',
+        link: '/src/axios/'
+      },
     ]
   },
   head: [
