@@ -310,10 +310,9 @@ console.log(base === toBase(state))
 // false
 ```
 
-## 프록시와 영속 자료 구조 병합하기
+## Proxy API와 영속 자료 구조 병합하기
 ### 상태를 자료 구조로 사용
-프록시로 상태를 감시한다. 그리고 상태를 조회나 변경할 때는 LinkedList의 아이템을 사용한다.
-
+##### 함수 정의
 ```js
 const toLinkedListItem = (base, parent = null, propName = null) => {
   return {
@@ -368,6 +367,14 @@ const produce = (base, fn) => {
   return state.copy ? state.copy : state.base
 }
 ```
+
+이 코드는 [Immer.js의 원리](#immer-js의-원리)에서 설명했던 원리와 동일하다.
+
+- [Proxy API](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Proxy)의 setter로 변경을 감지한다.
+- Proxy API의 getter가 호출될 때, 값이 객체면 Proxy API로 감싸서 반환한다.
+- 상태 변경 시, 해당 객체와 상위 객체를 모두 새로운 객체로 변경한다.
+
+##### 함수 사용
 ```js
 const baseState = {
   done: false,
@@ -378,15 +385,23 @@ const nextState = produce(baseState, (draft) => {
   draft.done = true
 })
 
-// false
 console.log(baseState.done === nextState.done)
-// true
+// false
 console.log(baseState.inner === nextState.inner)
+// true
+```
+##### 실행 결과
+```
+SET { done: false, inner: { done: false } } done true
+false
+true
 ```
 
-### 객체외 타입 사용 가능하도록 수정
-[프리미티브 타입](https://developer.mozilla.org/ko/docs/Glossary/Primitive)은 `produce` 실행 시 바로 반환한다. 배열과 객체는 영속 자료 구조를 구현되도록 한다.
+### 프리미티브 타입과 배열 타입 사용 가능하도록 수정
+[프리미티브 타입](https://developer.mozilla.org/ko/docs/Glossary/Primitive)은 영속 자료 구조의 대상이 아님으로 `produce` 실행 시 바로 반환한다. 
+배열과 객체는 영속 자료 구조로 구현된다.
 
+##### 함수 정의
 ```js
 const isArray = value => Array.isArray(value)
 const canProduce = value => {
@@ -465,6 +480,7 @@ const produce = (fn) => (base) => {
   return canProduce(base) ? produceBase(base, fn) : base
 }
 ```
+##### 함수 사용
 ```js
 const baseState = [
   { message: 'Hello' },
@@ -475,8 +491,87 @@ const nextState = produce((draft) => {
   draft[0].message = `${draft[0].message} World`
 })(baseState)
 
-// false
 console.log(baseState[0].message === nextState[0].message)
-// true
+// false
 console.log(baseState[1] === nextState[1])
+// true
+```
+
+### Array 메소드 사용 가능하도록 수정
+Array 메소드를 사용하면 Proxy handler의 set에서 에러가 발생한다. set에 반환을 해주지 않아 발생한 현상이다.
+
+`createProxy` 함수를 아래와 같이 변경하면 정상동작한다.
+
+```js {15}
+const createProxy = (base, revokes, parentState, propName) => {
+  const state = toLinkedListItem(base, parentState, propName)
+  const handler = {
+    get (target, key) {
+      const value = toBase(state)[key]
+      if (canProduce(value)) {
+        const {proxy} = createProxy(value, revokes, state, key)
+        return proxy
+      } else {
+        return value
+      }
+    },
+    set (target, key, value) {
+      changeLinkedList(state, key, value)
+      return true
+    }
+  }
+
+  const {proxy, revoke} = Proxy.revocable(base, handler)
+  revokes.push(revoke)
+  return {proxy, revoke, revokes, state}
+}
+```
+
+### ImmerJs 예제로 확인해보기
+[ImmerJs Example](https://immerjs.github.io/immer/docs/produce#example)에 작성된 코드와 동일하게 동작하는지 확인하는 코드이다.
+
+```js
+const baseState = [
+  {
+    todo: "Learn typescript",
+    done: true
+  },
+  {
+    todo: "Try immer",
+    done: false
+  }
+]
+
+// const nextState = produce(baseState, draftState => {
+//   draftState.push({todo: "Tweet about it"})
+//   draftState[1].done = true
+// })
+const nextState = produce(draftState => {
+  draftState.push({todo: "Tweet about it"})
+  draftState[1].done = true
+})(baseState)
+
+// the new item is only added to the next state,
+// base state is unmodified
+console.log(baseState.length === 2) // expect(baseState.length).toBe(2)
+console.log(nextState.length === 3) // expect(nextState.length).toBe(3)
+
+// same for the changed 'done' prop
+console.log(baseState[1].done === false) // expect(baseState[1].done).toBe(false)
+console.log(nextState[1].done === true) // expect(nextState[1].done).toBe(true)
+
+// unchanged data is structurally shared
+console.log(nextState[0] === baseState[0]) // expect(nextState[0]).toBe(baseState[0])
+// changed data not (dûh)
+console.log(nextState[1] !== baseState[1]) // expect(nextState[1]).not.toBe(baseState[1])
+```
+
+##### 실행 결과
+```
+true
+true
+true
+true
+true
+true
 ```

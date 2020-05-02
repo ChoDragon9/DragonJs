@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Immer.js 기능 만들기 | ChoDragon9 | DragonJs</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.3.1">
+    <meta name="google-site-verification" content="">
+    
+    <link rel="preload" href="/dragonjs/assets/css/0.styles.dd6d6f17.css" as="style"><link rel="preload" href="/dragonjs/assets/js/app.cd3fd7cf.js" as="script"><link rel="preload" href="/dragonjs/assets/js/2.afd4704a.js" as="script"><link rel="preload" href="/dragonjs/assets/js/6.ecb7a8c3.js" as="script"><link rel="prefetch" href="/dragonjs/assets/js/3.b8b441e8.js"><link rel="prefetch" href="/dragonjs/assets/js/4.f65d49b7.js"><link rel="prefetch" href="/dragonjs/assets/js/5.5353b8b9.js"><link rel="prefetch" href="/dragonjs/assets/js/7.153c535a.js"><link rel="prefetch" href="/dragonjs/assets/js/8.77fae04a.js">
+    <link rel="stylesheet" href="/dragonjs/assets/css/0.styles.dd6d6f17.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/dragonjs/" class="home-link router-link-active"><!----> <span class="site-name">ChoDragon9 | DragonJs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/dragonjs/src/momentjs/" class="nav-link">
+  Moment.js
+</a></div><div class="nav-item"><a href="/dragonjs/src/immerjs/" class="nav-link router-link-exact-active router-link-active">
+  Immer.js
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/dragonjs/src/momentjs/" class="nav-link">
+  Moment.js
+</a></div><div class="nav-item"><a href="/dragonjs/src/immerjs/" class="nav-link router-link-exact-active router-link-active">
+  Immer.js
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Immer.js 기능 만들기</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dragonjs/src/immerjs/#immer-js-특징" class="sidebar-link">Immer.js 특징</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/dragonjs/src/immerjs/#immer-js의-원리" class="sidebar-link">Immer.js의 원리</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/dragonjs/src/immerjs/#proxy-api-기반-다지기" class="sidebar-link">Proxy API 기반 다지기</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dragonjs/src/immerjs/#객체-감시하기" class="sidebar-link">객체 감시하기</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/immerjs/#감시-취소하기" class="sidebar-link">감시 취소하기</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/immerjs/#깊은-객체-감시하기" class="sidebar-link">깊은 객체 감시하기</a></li></ul></li><li><a href="/dragonjs/src/immerjs/#영속-자료-구조-만들기" class="sidebar-link">영속 자료 구조 만들기</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dragonjs/src/immerjs/#자료-구조-만들기" class="sidebar-link">자료 구조 만들기</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/immerjs/#자료-변경하기" class="sidebar-link">자료 변경하기</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/immerjs/#원본자료-사용하기" class="sidebar-link">원본자료 사용하기</a></li></ul></li><li><a href="/dragonjs/src/immerjs/#proxy-api와-영속-자료-구조-병합하기" class="sidebar-link">Proxy API와 영속 자료 구조 병합하기</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dragonjs/src/immerjs/#상태를-자료-구조로-사용" class="sidebar-link">상태를 자료 구조로 사용</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/immerjs/#프리미티브-타입과-배열-타입-사용-가능하도록-수정" class="sidebar-link">프리미티브 타입과 배열 타입 사용 가능하도록 수정</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/immerjs/#array-메소드-사용-가능하도록-수정" class="sidebar-link">Array 메소드 사용 가능하도록 수정</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/immerjs/#immerjs-예제로-확인해보기" class="sidebar-link">ImmerJs 예제로 확인해보기</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><div class="custom-block tip"><p class="custom-block-title">Immer.js</p> <p><a href="https://immerjs.github.io/immer/docs/introduction" target="_blank" rel="noopener noreferrer">Immer.js<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>: Immer (German for: always) is a tiny package that allows you to work with immutable state in a more convenient way. It is based on the copy-on-write mechanism.</p></div> <div class="custom-block tip"><p class="custom-block-title">객체</p> <p>이 글에서 사용된 객체는 JavaScript의 Object를 의미합니다.</p></div> <h2 id="immer-js-특징"><a href="#immer-js-특징" class="header-anchor">#</a> Immer.js 특징</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  message<span class="token operator">:</span> <span class="token string">'Hello World'</span><span class="token punctuation">,</span>
+  inner<span class="token operator">:</span> <span class="token punctuation">{</span> count<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> clonedObj <span class="token operator">=</span> immer<span class="token punctuation">.</span><span class="token function">produce</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">draft</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  draft<span class="token punctuation">.</span>message <span class="token operator">=</span> <span class="token string">'Hello'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj <span class="token operator">===</span> clonedObj<span class="token punctuation">)</span> <span class="token comment">// false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>inner <span class="token operator">===</span> clonedObj<span class="token punctuation">.</span>inner<span class="token punctuation">)</span> <span class="token comment">// true</span>
+</code></pre></div><p><code>obj</code>의 상태가 변경되어 객체를 새로 만든다. 하지만 <code>obj.inner</code>는 변경이 되지 않았기 때문에 기존 상태를 유지한다.</p> <p>상태에 변화가 필요할 때 새로운 상태를 반환하고, 변화가 필요없는 부분은 이전 상태를 계속 유지하는 자료구조. 즉, <strong>영속 자료 구조</strong>의 특징이다.</p> <h2 id="immer-js의-원리"><a href="#immer-js의-원리" class="header-anchor">#</a> Immer.js의 원리</h2> <p>Immer.js의 코드를 분석할 결과 Immer.js의 원리는 이렇다.</p> <ul><li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener noreferrer">Proxy API<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>의 setter로 변경을 감지한다.</li> <li>Proxy API의 getter가 호출될 때, 값이 객체면 Proxy API로 감싸서 반환한다.</li> <li>상태 변경 시, 해당 객체와 상위 객체를 모두 새로운 객체로 변경한다.</li></ul> <h2 id="proxy-api-기반-다지기"><a href="#proxy-api-기반-다지기" class="header-anchor">#</a> Proxy API 기반 다지기</h2> <h3 id="객체-감시하기"><a href="#객체-감시하기" class="header-anchor">#</a> 객체 감시하기</h3> <p>Proxy API의 기본 사용방법은 이렇다.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">createProxy</span> <span class="token operator">=</span> <span class="token parameter">target</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> handler <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token keyword">get</span> <span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'GET'</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span>
+      <span class="token keyword">return</span> target<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">set</span> <span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'SET'</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+      target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> handler<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> target <span class="token operator">=</span> <span class="token punctuation">{</span>
+  message<span class="token operator">:</span> <span class="token string">''</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> proxy <span class="token operator">=</span> <span class="token function">createProxy</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span>
+
+proxy<span class="token punctuation">.</span>message <span class="token operator">=</span> <span class="token string">'World!'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'LOG'</span><span class="token punctuation">,</span> proxy<span class="token punctuation">.</span>message<span class="token punctuation">)</span>
+</code></pre></div><h5 id="실행-결과"><a href="#실행-결과" class="header-anchor">#</a> 실행 결과</h5> <div class="language- extra-class"><pre class="language-text"><code>SET message World!
+GET message
+LOG World!
+</code></pre></div><h3 id="감시-취소하기"><a href="#감시-취소하기" class="header-anchor">#</a> 감시 취소하기</h3> <p><code>Proxy.revocable</code>를 사용하면 감시를 취소할 수 있다.
+<code>Proxy.revocable</code>의 반환은 <code>proxy</code>와 감시해제를 위한 <code>revoke</code>함수를 반환한다. <code>revoke</code> 함수 호출 뒤에는
+Proxy를 사용할 수 없다.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">createProxy</span> <span class="token operator">=</span> <span class="token parameter">target</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> handler <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token keyword">get</span> <span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'GET'</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span>
+      <span class="token keyword">return</span> target<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">set</span> <span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'SET'</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+      target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> Proxy<span class="token punctuation">.</span><span class="token function">revocable</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> handler<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> target <span class="token operator">=</span> <span class="token punctuation">{</span>
+  message<span class="token operator">:</span> <span class="token string">''</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">,</span> revoke<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">createProxy</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span>
+
+proxy<span class="token punctuation">.</span>message <span class="token operator">=</span> <span class="token string">'World!'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'LOG'</span><span class="token punctuation">,</span> proxy<span class="token punctuation">.</span>message<span class="token punctuation">)</span>
+
+<span class="token function">revoke</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>proxy<span class="token punctuation">.</span>message<span class="token punctuation">)</span> <span class="token comment">// Error</span>
+</code></pre></div><h5 id="실행-결과-2"><a href="#실행-결과-2" class="header-anchor">#</a> 실행 결과</h5> <div class="language- extra-class"><pre class="language-text"><code>SET message World!
+GET message
+LOG World!
+console.log(proxy.message) // Error
+                  ^
+</code></pre></div><h3 id="깊은-객체-감시하기"><a href="#깊은-객체-감시하기" class="header-anchor">#</a> 깊은 객체 감시하기</h3> <p>Proxy API는 객체의 프로퍼티에 할당된 깊은 객체를 감시하지 않는 다.
+<code>get</code>에서 객체의 프로퍼티값이 객체인지 판단하고, Proxy로 만들어주면, 깊은 객체도 감시할 수 있다.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">createProxy</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> revokes</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> handler <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token keyword">get</span> <span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> value <span class="token operator">=</span> target<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">createProxy</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> revokes<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> proxy
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> value
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">set</span> <span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'SET'</span><span class="token punctuation">,</span> target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+      target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">,</span> revoke<span class="token punctuation">}</span> <span class="token operator">=</span> Proxy<span class="token punctuation">.</span><span class="token function">revocable</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> handler<span class="token punctuation">)</span>
+  revokes<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>revoke<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">,</span> revoke<span class="token punctuation">,</span> revokes<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">proxyAll</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">base<span class="token punctuation">,</span> fn</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">,</span> revokes<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">createProxy</span><span class="token punctuation">(</span>base<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+  <span class="token function">fn</span><span class="token punctuation">(</span>proxy<span class="token punctuation">)</span>
+  revokes<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">fn</span> <span class="token operator">=&gt;</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> base
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> baseState <span class="token operator">=</span> <span class="token punctuation">{</span>
+  done<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  inner<span class="token operator">:</span> <span class="token punctuation">{</span>
+    txt<span class="token operator">:</span> <span class="token string">'World'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">proxyAll</span><span class="token punctuation">(</span>baseState<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">draft</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  draft<span class="token punctuation">.</span>done <span class="token operator">=</span> <span class="token boolean">true</span>
+  <span class="token comment">// draft.inner 접근 시, Proxy를 반환한다.</span>
+  draft<span class="token punctuation">.</span>inner<span class="token punctuation">.</span>txt <span class="token operator">=</span> <span class="token string">'Hello'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h5 id="실행-결과-3"><a href="#실행-결과-3" class="header-anchor">#</a> 실행 결과</h5> <div class="language- extra-class"><pre class="language-text"><code>SET done true
+SET txt Hello
+</code></pre></div><h2 id="영속-자료-구조-만들기"><a href="#영속-자료-구조-만들기" class="header-anchor">#</a> 영속 자료 구조 만들기</h2> <h3 id="자료-구조-만들기"><a href="#자료-구조-만들기" class="header-anchor">#</a> 자료 구조 만들기</h3> <p>객체와 내부 객체의 연결 구조를 LinkedList로 구성했다.
+LinkedList가 객체의 연결 구조와 유사하고, 간단하게 구현 가능했기 때문이다.</p> <p>이 로직은 객체를 LinkedList로 변경하는 로직이다.</p> <h5 id="함수-정의"><a href="#함수-정의" class="header-anchor">#</a> 함수 정의</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">toLinkedListItem</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">base<span class="token punctuation">,</span> parent <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span> propName <span class="token operator">=</span> <span class="token keyword">null</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    base<span class="token punctuation">,</span>
+    parent<span class="token punctuation">,</span>
+    propName<span class="token punctuation">,</span>
+    copy<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">toLinkedList</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">base<span class="token punctuation">,</span> parent <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span> propName <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span> list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">toLinkedListItem</span><span class="token punctuation">(</span>base<span class="token punctuation">,</span> parent<span class="token punctuation">,</span> propName<span class="token punctuation">)</span>
+
+  list<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> propName <span class="token keyword">in</span> base<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> base<span class="token punctuation">[</span>propName<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">toLinkedList</span><span class="token punctuation">(</span>base<span class="token punctuation">[</span>propName<span class="token punctuation">]</span><span class="token punctuation">,</span> state<span class="token punctuation">,</span> propName<span class="token punctuation">,</span> list<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>parent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> state
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> list
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h5 id="함수-사용"><a href="#함수-사용" class="header-anchor">#</a> 함수 사용</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> base <span class="token operator">=</span> <span class="token punctuation">{</span>
+  value<span class="token operator">:</span> <span class="token string">'Hello'</span><span class="token punctuation">,</span>
+  inner<span class="token operator">:</span> <span class="token punctuation">{</span>message<span class="token operator">:</span> <span class="token string">'Hello World'</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">toLinkedList</span><span class="token punctuation">(</span>base<span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span>
+</code></pre></div><h5 id="실행-결과-4"><a href="#실행-결과-4" class="header-anchor">#</a> 실행 결과</h5> <div class="language- extra-class"><pre class="language-text"><code>[
+  {
+    base: {value: 'Hello', ...},
+    parent: null,
+    propName: null,
+    copy: null,
+  },
+  {
+    base: {message: 'Hello World'},
+    parent: { // linked
+      base: {value: 'Hello', ...},
+      parent: null,
+      propName: null,
+      copy: null,
+    },
+    propName: 'inner',
+    copy: null,
+  }
+]
+</code></pre></div><h3 id="자료-변경하기"><a href="#자료-변경하기" class="header-anchor">#</a> 자료 변경하기</h3> <p>아이템 변경 시, parent에 값이 있으면 부모값도 변경한다.</p> <h5 id="함수-정의-2"><a href="#함수-정의-2" class="header-anchor">#</a> 함수 정의</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">changeLinkedList</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> propName<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>state<span class="token punctuation">.</span>copy<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    state<span class="token punctuation">.</span>copy<span class="token punctuation">[</span>propName<span class="token punctuation">]</span> <span class="token operator">=</span> value
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    state<span class="token punctuation">.</span>copy <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> state<span class="token punctuation">.</span>base<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">[</span>propName<span class="token punctuation">]</span><span class="token operator">:</span> value<span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>state<span class="token punctuation">.</span>parent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">changeLinkedList</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>parent<span class="token punctuation">,</span> state<span class="token punctuation">.</span>propName<span class="token punctuation">,</span> state<span class="token punctuation">.</span>copy<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h5 id="함수-사용-2"><a href="#함수-사용-2" class="header-anchor">#</a> 함수 사용</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> base <span class="token operator">=</span> <span class="token punctuation">{</span>
+  value<span class="token operator">:</span> <span class="token string">'Hello'</span><span class="token punctuation">,</span>
+  inner<span class="token operator">:</span> <span class="token punctuation">{</span>message<span class="token operator">:</span> <span class="token string">'Hello World'</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">toLinkedList</span><span class="token punctuation">(</span>base<span class="token punctuation">)</span>
+<span class="token function">changeLinkedList</span><span class="token punctuation">(</span>state<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'message'</span><span class="token punctuation">,</span> <span class="token string">'World'</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span>
+</code></pre></div><h5 id="실행-결과-5"><a href="#실행-결과-5" class="header-anchor">#</a> 실행 결과</h5> <div class="language- extra-class"><pre class="language-text"><code>[
+  {
+    base: {value: 'Hello', ...},
+    copy: {value: 'Hello', ...},
+    parent: null,
+    propName: null,
+  },
+  {
+    base: {message: 'Hello World'},
+    copy: {message: 'World'},
+    parent: { // linked
+      base: {value: 'Hello'},
+      copy: {value: 'Hello', ...},
+      parent: null,
+      propName: null,
+    },
+    propName: 'inner',
+  }
+]
+</code></pre></div><h3 id="원본자료-사용하기"><a href="#원본자료-사용하기" class="header-anchor">#</a> 원본자료 사용하기</h3> <p>최상위 객체의 copy가 있으면 상태가 변경됬다는 의미이다. 즉, copy가 있을 때 copy를 반환하고 없으면 base를 반환하면 된다.</p> <h5 id="함수-정의-3"><a href="#함수-정의-3" class="header-anchor">#</a> 함수 정의</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">toBase</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">list</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>copy <span class="token operator">?</span> list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>copy <span class="token operator">:</span> list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>base
+<span class="token punctuation">}</span>
+</code></pre></div><h5 id="함수-사용-3"><a href="#함수-사용-3" class="header-anchor">#</a> 함수 사용</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> base <span class="token operator">=</span> <span class="token punctuation">{</span>
+  value<span class="token operator">:</span> <span class="token string">'Hello'</span><span class="token punctuation">,</span>
+  inner<span class="token operator">:</span> <span class="token punctuation">{</span>message<span class="token operator">:</span> <span class="token string">'Hello World'</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">toLinkedList</span><span class="token punctuation">(</span>base<span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>base <span class="token operator">===</span> <span class="token function">toBase</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// true</span>
+
+<span class="token function">changeLinkedList</span><span class="token punctuation">(</span>state<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'message'</span><span class="token punctuation">,</span> <span class="token string">'World'</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>base <span class="token operator">===</span> <span class="token function">toBase</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// false</span>
+</code></pre></div><h2 id="proxy-api와-영속-자료-구조-병합하기"><a href="#proxy-api와-영속-자료-구조-병합하기" class="header-anchor">#</a> Proxy API와 영속 자료 구조 병합하기</h2> <h3 id="상태를-자료-구조로-사용"><a href="#상태를-자료-구조로-사용" class="header-anchor">#</a> 상태를 자료 구조로 사용</h3> <h5 id="함수-정의-4"><a href="#함수-정의-4" class="header-anchor">#</a> 함수 정의</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">toLinkedListItem</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">base<span class="token punctuation">,</span> parent <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span> propName <span class="token operator">=</span> <span class="token keyword">null</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    base<span class="token punctuation">,</span>
+    parent<span class="token punctuation">,</span>
+    propName<span class="token punctuation">,</span>
+    copy<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">changeLinkedList</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> propName<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>state<span class="token punctuation">.</span>copy<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    state<span class="token punctuation">.</span>copy<span class="token punctuation">[</span>propName<span class="token punctuation">]</span> <span class="token operator">=</span> value
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    state<span class="token punctuation">.</span>copy <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> state<span class="token punctuation">.</span>base<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">[</span>propName<span class="token punctuation">]</span><span class="token operator">:</span> value<span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>state<span class="token punctuation">.</span>parent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">changeLinkedList</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>parent<span class="token punctuation">,</span> state<span class="token punctuation">.</span>propName<span class="token punctuation">,</span> state<span class="token punctuation">.</span>copy<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">createProxy</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">base<span class="token punctuation">,</span> revokes<span class="token punctuation">,</span> parentState<span class="token punctuation">,</span> propName</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">toLinkedListItem</span><span class="token punctuation">(</span>base<span class="token punctuation">,</span> parentState<span class="token punctuation">,</span> propName<span class="token punctuation">)</span>
+  <span class="token keyword">const</span> handler <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token keyword">get</span> <span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> value <span class="token operator">=</span> state<span class="token punctuation">.</span>copy <span class="token operator">?</span> state<span class="token punctuation">.</span>copy<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">:</span> state<span class="token punctuation">.</span>base<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">createProxy</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> revokes<span class="token punctuation">,</span> state<span class="token punctuation">,</span> key<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> proxy
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> value
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">set</span> <span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'SET'</span><span class="token punctuation">,</span> target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+      <span class="token function">changeLinkedList</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">,</span> revoke<span class="token punctuation">}</span> <span class="token operator">=</span> Proxy<span class="token punctuation">.</span><span class="token function">revocable</span><span class="token punctuation">(</span>base<span class="token punctuation">,</span> handler<span class="token punctuation">)</span>
+  revokes<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>revoke<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">,</span> revoke<span class="token punctuation">,</span> revokes<span class="token punctuation">,</span> state<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">produce</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">base<span class="token punctuation">,</span> fn</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">,</span> revokes<span class="token punctuation">,</span> state<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">createProxy</span><span class="token punctuation">(</span>base<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+  <span class="token function">fn</span><span class="token punctuation">(</span>proxy<span class="token punctuation">)</span>
+  revokes<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">fn</span> <span class="token operator">=&gt;</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> state<span class="token punctuation">.</span>copy <span class="token operator">?</span> state<span class="token punctuation">.</span>copy <span class="token operator">:</span> state<span class="token punctuation">.</span>base
+<span class="token punctuation">}</span>
+</code></pre></div><p>이 코드는 <a href="#immer-js%EC%9D%98-%EC%9B%90%EB%A6%AC">Immer.js의 원리</a>에서 설명했던 원리와 동일하다.</p> <ul><li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener noreferrer">Proxy API<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>의 setter로 변경을 감지한다.</li> <li>Proxy API의 getter가 호출될 때, 값이 객체면 Proxy API로 감싸서 반환한다.</li> <li>상태 변경 시, 해당 객체와 상위 객체를 모두 새로운 객체로 변경한다.</li></ul> <h5 id="함수-사용-4"><a href="#함수-사용-4" class="header-anchor">#</a> 함수 사용</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> baseState <span class="token operator">=</span> <span class="token punctuation">{</span>
+  done<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  inner<span class="token operator">:</span> <span class="token punctuation">{</span> done<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> nextState <span class="token operator">=</span> <span class="token function">produce</span><span class="token punctuation">(</span>baseState<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">draft</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  draft<span class="token punctuation">.</span>done <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>baseState<span class="token punctuation">.</span>done <span class="token operator">===</span> nextState<span class="token punctuation">.</span>done<span class="token punctuation">)</span>
+<span class="token comment">// false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>baseState<span class="token punctuation">.</span>inner <span class="token operator">===</span> nextState<span class="token punctuation">.</span>inner<span class="token punctuation">)</span>
+<span class="token comment">// true</span>
+</code></pre></div><h5 id="실행-결과-6"><a href="#실행-결과-6" class="header-anchor">#</a> 실행 결과</h5> <div class="language- extra-class"><pre class="language-text"><code>SET { done: false, inner: { done: false } } done true
+false
+true
+</code></pre></div><h3 id="프리미티브-타입과-배열-타입-사용-가능하도록-수정"><a href="#프리미티브-타입과-배열-타입-사용-가능하도록-수정" class="header-anchor">#</a> 프리미티브 타입과 배열 타입 사용 가능하도록 수정</h3> <p><a href="https://developer.mozilla.org/ko/docs/Glossary/Primitive" target="_blank" rel="noopener noreferrer">프리미티브 타입<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>은 영속 자료 구조의 대상이 아님으로 <code>produce</code> 실행 시 바로 반환한다.
+배열과 객체는 영속 자료 구조로 구현된다.</p> <h5 id="함수-정의-5"><a href="#함수-정의-5" class="header-anchor">#</a> 함수 정의</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">isArray</span> <span class="token operator">=</span> <span class="token parameter">value</span> <span class="token operator">=&gt;</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+<span class="token keyword">const</span> <span class="token function-variable function">canProduce</span> <span class="token operator">=</span> <span class="token parameter">value</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> value <span class="token operator">===</span> <span class="token keyword">undefined</span> <span class="token operator">||</span> value <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">?</span>
+    <span class="token boolean">false</span> <span class="token operator">:</span>
+    <span class="token function">isArray</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">'object'</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">assign</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>obj</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token operator">...</span>obj<span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">shallowCopy</span> <span class="token operator">=</span> <span class="token parameter">obj</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">canProduce</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> obj
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isArray</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> obj<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> obj<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">toLinkedListItem</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">base<span class="token punctuation">,</span> parent <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span> propName <span class="token operator">=</span> <span class="token keyword">null</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    base<span class="token punctuation">,</span>
+    parent<span class="token punctuation">,</span>
+    propName<span class="token punctuation">,</span>
+    copy<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">toBase</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> state<span class="token punctuation">.</span>copy <span class="token operator">?</span> state<span class="token punctuation">.</span>copy <span class="token operator">:</span> state<span class="token punctuation">.</span>base
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">changeLinkedList</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> propName<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> nextValue <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">[</span>propName<span class="token punctuation">]</span><span class="token operator">:</span> value<span class="token punctuation">}</span>
+
+  state<span class="token punctuation">.</span>copy <span class="token operator">?</span>
+    <span class="token function">assign</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>copy<span class="token punctuation">,</span> nextValue<span class="token punctuation">)</span> <span class="token operator">:</span>
+    <span class="token function">assign</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      copy<span class="token operator">:</span> <span class="token function">assign</span><span class="token punctuation">(</span><span class="token function">shallowCopy</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>base<span class="token punctuation">)</span><span class="token punctuation">,</span> nextValue<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>state<span class="token punctuation">.</span>parent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">changeLinkedList</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>parent<span class="token punctuation">,</span> state<span class="token punctuation">.</span>propName<span class="token punctuation">,</span> state<span class="token punctuation">.</span>copy<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">createProxy</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">base<span class="token punctuation">,</span> revokes<span class="token punctuation">,</span> parentState<span class="token punctuation">,</span> propName</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">toLinkedListItem</span><span class="token punctuation">(</span>base<span class="token punctuation">,</span> parentState<span class="token punctuation">,</span> propName<span class="token punctuation">)</span>
+  <span class="token keyword">const</span> handler <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token keyword">get</span> <span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> value <span class="token operator">=</span> <span class="token function">toBase</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">canProduce</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">createProxy</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> revokes<span class="token punctuation">,</span> state<span class="token punctuation">,</span> key<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> proxy
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> value
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">set</span> <span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">changeLinkedList</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">,</span> revoke<span class="token punctuation">}</span> <span class="token operator">=</span> Proxy<span class="token punctuation">.</span><span class="token function">revocable</span><span class="token punctuation">(</span>base<span class="token punctuation">,</span> handler<span class="token punctuation">)</span>
+  revokes<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>revoke<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">,</span> revoke<span class="token punctuation">,</span> revokes<span class="token punctuation">,</span> state<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">produceBase</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">base<span class="token punctuation">,</span> fn</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">,</span> revokes<span class="token punctuation">,</span> state<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">createProxy</span><span class="token punctuation">(</span>base<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+  <span class="token function">fn</span><span class="token punctuation">(</span>proxy<span class="token punctuation">)</span>
+  revokes<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">fn</span> <span class="token operator">=&gt;</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> <span class="token function">toBase</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">produce</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token parameter">base</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token function">canProduce</span><span class="token punctuation">(</span>base<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token function">produceBase</span><span class="token punctuation">(</span>base<span class="token punctuation">,</span> fn<span class="token punctuation">)</span> <span class="token operator">:</span> base
+<span class="token punctuation">}</span>
+</code></pre></div><h5 id="함수-사용-5"><a href="#함수-사용-5" class="header-anchor">#</a> 함수 사용</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> baseState <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span> message<span class="token operator">:</span> <span class="token string">'Hello'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> message<span class="token operator">:</span> <span class="token string">'World'</span> <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+
+<span class="token keyword">const</span> nextState <span class="token operator">=</span> <span class="token function">produce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">draft</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  draft<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>message <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>draft<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>message<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> World</span><span class="token template-punctuation string">`</span></span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>baseState<span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>baseState<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>message <span class="token operator">===</span> nextState<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>message<span class="token punctuation">)</span>
+<span class="token comment">// false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>baseState<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">===</span> nextState<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment">// true</span>
+</code></pre></div><h3 id="array-메소드-사용-가능하도록-수정"><a href="#array-메소드-사용-가능하도록-수정" class="header-anchor">#</a> Array 메소드 사용 가능하도록 수정</h3> <p>Array 메소드를 사용하면 Proxy handler의 set에서 에러가 발생한다. set에 반환을 해주지 않아 발생한 현상이다.</p> <p><code>createProxy</code> 함수를 아래와 같이 변경하면 정상동작한다.</p> <div class="language-js extra-class"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br><br><br><br></div><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">createProxy</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">base<span class="token punctuation">,</span> revokes<span class="token punctuation">,</span> parentState<span class="token punctuation">,</span> propName</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">toLinkedListItem</span><span class="token punctuation">(</span>base<span class="token punctuation">,</span> parentState<span class="token punctuation">,</span> propName<span class="token punctuation">)</span>
+  <span class="token keyword">const</span> handler <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token keyword">get</span> <span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> value <span class="token operator">=</span> <span class="token function">toBase</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">canProduce</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">createProxy</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> revokes<span class="token punctuation">,</span> state<span class="token punctuation">,</span> key<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> proxy
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> value
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">set</span> <span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">changeLinkedList</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">,</span> revoke<span class="token punctuation">}</span> <span class="token operator">=</span> Proxy<span class="token punctuation">.</span><span class="token function">revocable</span><span class="token punctuation">(</span>base<span class="token punctuation">,</span> handler<span class="token punctuation">)</span>
+  revokes<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>revoke<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>proxy<span class="token punctuation">,</span> revoke<span class="token punctuation">,</span> revokes<span class="token punctuation">,</span> state<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="immerjs-예제로-확인해보기"><a href="#immerjs-예제로-확인해보기" class="header-anchor">#</a> ImmerJs 예제로 확인해보기</h3> <p><a href="https://immerjs.github.io/immer/docs/produce#example" target="_blank" rel="noopener noreferrer">ImmerJs Example<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>에 작성된 코드와 동일하게 동작하는지 확인하는 코드이다.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> baseState <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    todo<span class="token operator">:</span> <span class="token string">&quot;Learn typescript&quot;</span><span class="token punctuation">,</span>
+    done<span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    todo<span class="token operator">:</span> <span class="token string">&quot;Try immer&quot;</span><span class="token punctuation">,</span>
+    done<span class="token operator">:</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+
+<span class="token comment">// const nextState = produce(baseState, draftState =&gt; {</span>
+<span class="token comment">//   draftState.push({todo: &quot;Tweet about it&quot;})</span>
+<span class="token comment">//   draftState[1].done = true</span>
+<span class="token comment">// })</span>
+<span class="token keyword">const</span> nextState <span class="token operator">=</span> <span class="token function">produce</span><span class="token punctuation">(</span><span class="token parameter">draftState</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  draftState<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>todo<span class="token operator">:</span> <span class="token string">&quot;Tweet about it&quot;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  draftState<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>done <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>baseState<span class="token punctuation">)</span>
+
+<span class="token comment">// the new item is only added to the next state,</span>
+<span class="token comment">// base state is unmodified</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>baseState<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment">// expect(baseState.length).toBe(2)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>nextState<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment">// expect(nextState.length).toBe(3)</span>
+
+<span class="token comment">// same for the changed 'done' prop</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>baseState<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>done <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token comment">// expect(baseState[1].done).toBe(false)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>nextState<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>done <span class="token operator">===</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token comment">// expect(nextState[1].done).toBe(true)</span>
+
+<span class="token comment">// unchanged data is structurally shared</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>nextState<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">===</span> baseState<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// expect(nextState[0]).toBe(baseState[0])</span>
+<span class="token comment">// changed data not (dûh)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>nextState<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">!==</span> baseState<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// expect(nextState[1]).not.toBe(baseState[1])</span>
+</code></pre></div><h5 id="실행-결과-7"><a href="#실행-결과-7" class="header-anchor">#</a> 실행 결과</h5> <div class="language- extra-class"><pre class="language-text"><code>true
+true
+true
+true
+true
+true
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/dragonjs/assets/js/app.cd3fd7cf.js" defer></script><script src="/dragonjs/assets/js/2.afd4704a.js" defer></script><script src="/dragonjs/assets/js/6.ecb7a8c3.js" defer></script>
+  </body>
+</html>
