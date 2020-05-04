@@ -6,7 +6,8 @@ module.exports = {
       {
         text: 'Vue 2',
         items: [
-          {text: '파트별 구현해보기', link: '/src/vue2-part/'},
+          {text: '2017.09 파트별 구현', link: '/src/vue2-part/'},
+          {text: '2019.08 컴포넌트 구현', link: '/src/vue2-component/'},
         ]
       },
       {

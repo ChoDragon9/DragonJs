@@ -1,5 +1,5 @@
 ---
-title: Vue2 파트별 구현해보기
+title: 2017.09 Vue2 파트별 구현
 sidebar: auto
 ---
 

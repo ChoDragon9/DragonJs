@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>2019.08 Vue2 컴포넌트 구현 | ChoDragon9 | DragonJs</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.3.1">
+    <meta name="google-site-verification" content="">
+    
+    <link rel="preload" href="/dragonjs/assets/css/0.styles.dd6d6f17.css" as="style"><link rel="preload" href="/dragonjs/assets/js/app.f3526aec.js" as="script"><link rel="preload" href="/dragonjs/assets/js/2.afd4704a.js" as="script"><link rel="preload" href="/dragonjs/assets/js/9.3a5d6c37.js" as="script"><link rel="prefetch" href="/dragonjs/assets/js/10.606e901e.js"><link rel="prefetch" href="/dragonjs/assets/js/11.183af50e.js"><link rel="prefetch" href="/dragonjs/assets/js/3.36336af0.js"><link rel="prefetch" href="/dragonjs/assets/js/4.f65d49b7.js"><link rel="prefetch" href="/dragonjs/assets/js/5.b32b7806.js"><link rel="prefetch" href="/dragonjs/assets/js/6.396586b7.js"><link rel="prefetch" href="/dragonjs/assets/js/7.007d4cae.js"><link rel="prefetch" href="/dragonjs/assets/js/8.2c51b4bb.js">
+    <link rel="stylesheet" href="/dragonjs/assets/css/0.styles.dd6d6f17.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/dragonjs/" class="home-link router-link-active"><!----> <span class="site-name">ChoDragon9 | DragonJs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue 2" class="dropdown-title"><span class="title">Vue 2</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dragonjs/src/vue2-part/" class="nav-link">
+  2017.09 파트별 구현
+</a></li><li class="dropdown-item"><!----> <a href="/dragonjs/src/vue2-component/" class="nav-link router-link-exact-active router-link-active">
+  2019.08 컴포넌트 구현
+</a></li></ul></div></div><div class="nav-item"><a href="/dragonjs/src/momentjs/" class="nav-link">
+  Moment.js
+</a></div><div class="nav-item"><a href="/dragonjs/src/immerjs/" class="nav-link">
+  Immer.js
+</a></div><div class="nav-item"><a href="/dragonjs/src/axios/" class="nav-link">
+  Axios
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue 2" class="dropdown-title"><span class="title">Vue 2</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dragonjs/src/vue2-part/" class="nav-link">
+  2017.09 파트별 구현
+</a></li><li class="dropdown-item"><!----> <a href="/dragonjs/src/vue2-component/" class="nav-link router-link-exact-active router-link-active">
+  2019.08 컴포넌트 구현
+</a></li></ul></div></div><div class="nav-item"><a href="/dragonjs/src/momentjs/" class="nav-link">
+  Moment.js
+</a></div><div class="nav-item"><a href="/dragonjs/src/immerjs/" class="nav-link">
+  Immer.js
+</a></div><div class="nav-item"><a href="/dragonjs/src/axios/" class="nav-link">
+  Axios
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>2019.08 Vue2 컴포넌트 구현</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dragonjs/src/vue2-component/#컴포넌트-사용-예제" class="sidebar-link">컴포넌트 사용 예제</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dragonjs/src/vue2-component/#컴포넌트-마운트" class="sidebar-link">컴포넌트 마운트</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/vue2-component/#buttoncomponent" class="sidebar-link">ButtonComponent</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/vue2-component/#countercomponent" class="sidebar-link">CounterComponent</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/vue2-component/#reactivecomponent" class="sidebar-link">ReactiveComponent</a></li></ul></li><li><a href="/dragonjs/src/vue2-component/#컴포넌트-코어" class="sidebar-link">컴포넌트 코어</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="컴포넌트-사용-예제"><a href="#컴포넌트-사용-예제" class="header-anchor">#</a> 컴포넌트 사용 예제</h2> <h3 id="컴포넌트-마운트"><a href="#컴포넌트-마운트" class="header-anchor">#</a> 컴포넌트 마운트</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>ButtonComponent<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./ButtonComponent'</span><span class="token punctuation">;</span>
+
+document
+  <span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span><span class="token function">ButtonComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="buttoncomponent"><a href="#buttoncomponent" class="header-anchor">#</a> ButtonComponent</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>component<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./core/component'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> ButtonComponent <span class="token operator">=</span> <span class="token function">component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;div&gt;
+      &lt;button&gt;Child Button&lt;/button&gt;
+    &lt;/div&gt;</span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="countercomponent"><a href="#countercomponent" class="header-anchor">#</a> CounterComponent</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>component<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./core/component'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>createStore<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./core/store'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">createStore</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  count<span class="token operator">:</span> <span class="token number">0</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> CounterComponent <span class="token operator">=</span> <span class="token function">component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> count <span class="token operator">=</span> store<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'count'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;div&gt;
+			&lt;button class=&quot;up&quot;&gt;Up&lt;/button&gt;
+			</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>count<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
+			&lt;button class=&quot;down&quot;&gt;Down&lt;/button&gt;
+		&lt;/div&gt;</span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">events</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">[</span><span class="token string">'.up'</span><span class="token punctuation">,</span> <span class="token string">'onclick'</span><span class="token punctuation">,</span> <span class="token string">'upCount'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token string">'.down'</span><span class="token punctuation">,</span> <span class="token string">'onclick'</span><span class="token punctuation">,</span> <span class="token string">'downCount'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">methods</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token function">upCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">calcCount</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function">downCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">calcCount</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function">calcCount</span><span class="token punctuation">(</span><span class="token parameter">num</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setCount</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> num<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function">getCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> store<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'count'</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function">setCount</span><span class="token punctuation">(</span><span class="token parameter">count</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        store<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'count'</span><span class="token punctuation">,</span> count<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">created</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>render<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    store<span class="token punctuation">.</span><span class="token function">watch</span><span class="token punctuation">(</span><span class="token string">'count'</span><span class="token punctuation">,</span> render<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="reactivecomponent"><a href="#reactivecomponent" class="header-anchor">#</a> ReactiveComponent</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>component<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./core/component'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>NowComponent<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./ReactiveComponent/NowComponent'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>NowControllerComponent<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./ReactiveComponent/NowControllerComponent'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>ParentComponent<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./ReactiveComponent/ParentComponent'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> ReactiveComponent <span class="token operator">=</span> <span class="token function">component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      now<span class="token operator">:</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;div&gt;
+      &lt;now bind-props=&quot;now&quot;&gt;&lt;/now&gt;
+      &lt;now-controller on=&quot;changeNow&quot;&gt;&lt;/now-controller&gt;
+      &lt;parent-component&gt;&lt;/parent-component&gt;
+    &lt;/div&gt;</span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">components</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">[</span><span class="token string">'now'</span><span class="token punctuation">,</span> NowComponent<span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token string">'now-controller'</span><span class="token punctuation">,</span> NowControllerComponent<span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token string">'parent-component'</span><span class="token punctuation">,</span> ParentComponent<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">methods</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>store<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token function">changeNow</span><span class="token punctuation">(</span><span class="token parameter">data<span class="token punctuation">,</span> message</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+        store<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'now'</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="nowcomponent"><a href="#nowcomponent" class="header-anchor">#</a> NowComponent</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>component<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../core/component'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> NowComponent <span class="token operator">=</span> <span class="token function">component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function">template</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>props<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;h1&gt;Now: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>props<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/h1&gt;</span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="nowcontrollercomponent"><a href="#nowcontrollercomponent" class="header-anchor">#</a> NowControllerComponent</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>component<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../core/component'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> NowControllerComponent <span class="token operator">=</span> <span class="token function">component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;div&gt;
+			&lt;button class=&quot;now-btn&quot;&gt;Change Now&lt;/button&gt;
+		&lt;/div&gt;</span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">events</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">[</span><span class="token string">'button.now-btn'</span><span class="token punctuation">,</span> <span class="token string">'onclick'</span><span class="token punctuation">,</span> <span class="token string">'changeNow'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">methods</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>emit<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token function">changeNow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">emit</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'from Child'</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="parentcomponent"><a href="#parentcomponent" class="header-anchor">#</a> ParentComponent</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>component<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../core/component'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>ChildComponent<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./ChildComponent'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> ParentComponent <span class="token operator">=</span> <span class="token function">component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      message<span class="token operator">:</span> <span class="token string">'From Parent'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;div&gt;
+      &lt;h1&gt;Parent&lt;/h1&gt;
+      &lt;child-component 
+        bind-props=&quot;message&quot;
+        on=&quot;onEmit&quot;&gt;&lt;/child-component&gt;
+    &lt;/div&gt;</span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">components</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">[</span><span class="token string">'child-component'</span><span class="token punctuation">,</span> ChildComponent<span class="token punctuation">]</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">methods</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>store<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token function">onEmit</span><span class="token punctuation">(</span><span class="token parameter">message</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        store<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'message'</span><span class="token punctuation">,</span> message<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="childcomponent"><a href="#childcomponent" class="header-anchor">#</a> ChildComponent</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>component<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../core/component'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> ChildComponent <span class="token operator">=</span> <span class="token function">component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function">template</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>props<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;div&gt;
+      &lt;h2&gt;Child&lt;/h2&gt;
+      &lt;p&gt;message: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>props<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/p&gt;
+      &lt;button&gt;Send Message&lt;/button&gt;
+    &lt;/div&gt;</span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">events</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">[</span><span class="token string">'button'</span><span class="token punctuation">,</span> <span class="token string">'onclick'</span><span class="token punctuation">,</span> <span class="token string">'sendMessage'</span><span class="token punctuation">]</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">methods</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>emit<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'Message From Child'</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="컴포넌트-코어"><a href="#컴포넌트-코어" class="header-anchor">#</a> 컴포넌트 코어</h2> <h4 id="fp-js"><a href="#fp-js" class="header-anchor">#</a> fp.js</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">noop</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">always</span> <span class="token operator">=</span> <span class="token parameter">v</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> v<span class="token punctuation">;</span>
+</code></pre></div><h4 id="store-js"><a href="#store-js" class="header-anchor">#</a> store.js</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token constant">ALL</span> <span class="token operator">=</span> <span class="token string">'*'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">createStore</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">state <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> subscriber <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> <span class="token keyword">set</span> <span class="token operator">=</span> <span class="token function">mutation</span><span class="token punctuation">(</span><span class="token punctuation">{</span>store<span class="token punctuation">,</span> subscriber<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">setDefaultState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>state<span class="token punctuation">,</span> <span class="token keyword">set</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token keyword">set</span><span class="token punctuation">,</span>
+    <span class="token keyword">delete</span><span class="token operator">:</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">{</span>store<span class="token punctuation">,</span> subscriber<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">get</span><span class="token operator">:</span> <span class="token function">getter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>store<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    watch<span class="token operator">:</span> <span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">{</span>subscriber<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    watchAll<span class="token operator">:</span> <span class="token function">watchAll</span><span class="token punctuation">(</span><span class="token punctuation">{</span>subscriber<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">setDefaultState</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>state<span class="token punctuation">,</span> <span class="token keyword">set</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  Object<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>key<span class="token punctuation">,</span> value<span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">mutation</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>store<span class="token punctuation">,</span> subscriber<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> value<span class="token punctuation">,</span> noNotify <span class="token operator">=</span> <span class="token boolean">true</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  store<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  noNotify <span class="token operator">&amp;&amp;</span> <span class="token function">notify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>subscriber<span class="token punctuation">,</span> store<span class="token punctuation">,</span> key<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">remove</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>store<span class="token punctuation">,</span> subscriber<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token parameter">key</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  store<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">notify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>subscriber<span class="token punctuation">,</span> store<span class="token punctuation">,</span> key<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">notify</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>subscriber<span class="token punctuation">,</span> key<span class="token punctuation">,</span> store<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> data <span class="token operator">=</span> store<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>subscriber<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> listener <span class="token keyword">of</span> subscriber<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">listener</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">broadCast</span><span class="token punctuation">(</span><span class="token punctuation">{</span>subscriber<span class="token punctuation">,</span> key<span class="token punctuation">,</span> data<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">broadCast</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>subscriber<span class="token punctuation">,</span> key<span class="token punctuation">,</span> data<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>subscriber<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token constant">ALL</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> listener <span class="token keyword">of</span> subscriber<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token constant">ALL</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">listener</span><span class="token punctuation">(</span><span class="token punctuation">{</span>key<span class="token punctuation">,</span> data<span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">getter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>store<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token parameter">key</span> <span class="token operator">=&gt;</span> store<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">watch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>subscriber<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> listener</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> listeners<span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>subscriber<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    listeners <span class="token operator">=</span> subscriber<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    listeners <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  listeners<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>listener<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  subscriber<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> listeners<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">watchAll</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>subscriber<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> watcher <span class="token operator">=</span> <span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">{</span>subscriber<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token parameter">listener</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">watcher</span><span class="token punctuation">(</span><span class="token constant">ALL</span><span class="token punctuation">,</span> listener<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="helper-js"><a href="#helper-js" class="header-anchor">#</a> helper.js</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">addEvent</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">methods<span class="token punctuation">,</span> methodName</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token parameter">event</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  methods<span class="token punctuation">[</span>methodName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>methods<span class="token punctuation">,</span> event<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">getElem</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">selector<span class="token punctuation">,</span> parent <span class="token operator">=</span> document</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> parent<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span>selector<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">getAttr</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">elem<span class="token punctuation">,</span> attr</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> elem<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span>attr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="component-js"><a href="#component-js" class="header-anchor">#</a> component.js</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> _ <span class="token keyword">from</span> <span class="token string">'./fp'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>createStore<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./store'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>addEvent<span class="token punctuation">,</span> getAttr<span class="token punctuation">,</span> getElem<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./helper'</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @param options
+  {
+    data = _.always({}),
+    template = _.noop,
+    template({data: state, props})
+    components = _.always([]),
+    methods = _.always([]),
+    events = _.always([]),
+    beforeCreate = _.noop,
+    created = _.noop
+  }
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">component</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>props<span class="token punctuation">,</span> emit<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span>
+    data <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">always</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    template <span class="token operator">=</span> _<span class="token punctuation">.</span>noop<span class="token punctuation">,</span>
+    components <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">always</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    methods <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">always</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    events <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">always</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    beforeCreate <span class="token operator">=</span> _<span class="token punctuation">.</span>noop<span class="token punctuation">,</span>
+    created <span class="token operator">=</span> _<span class="token punctuation">.</span>noop
+  <span class="token punctuation">}</span> <span class="token operator">=</span> options
+  <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">{</span>props<span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">createStore</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span>
+
+  <span class="token function">beforeCreate</span><span class="token punctuation">(</span><span class="token punctuation">{</span>props<span class="token punctuation">,</span> data<span class="token operator">:</span> state<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">const</span> render <span class="token operator">=</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    state<span class="token punctuation">,</span>
+    template<span class="token punctuation">,</span>
+    components<span class="token punctuation">,</span>
+    methods<span class="token punctuation">,</span>
+    events<span class="token punctuation">,</span>
+    store<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> dom <span class="token operator">=</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>props<span class="token punctuation">,</span> emit<span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> renderFn <span class="token operator">=</span> <span class="token function">replaceWith</span><span class="token punctuation">(</span><span class="token punctuation">{</span>dom<span class="token punctuation">,</span> render<span class="token punctuation">,</span> props<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    dom<span class="token punctuation">,</span>
+    props<span class="token punctuation">,</span>
+    data<span class="token operator">:</span> state<span class="token punctuation">,</span>
+    render<span class="token operator">:</span> renderFn<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>store<span class="token punctuation">,</span> state<span class="token punctuation">,</span> renderFn<span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> dom
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">create</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>
+                  state<span class="token punctuation">,</span>
+                  template<span class="token punctuation">,</span>
+                  components<span class="token punctuation">,</span>
+                  methods<span class="token punctuation">,</span>
+                  events<span class="token punctuation">,</span>
+                  store<span class="token punctuation">,</span>
+                <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>props<span class="token punctuation">,</span> emit<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> dom <span class="token operator">=</span> <span class="token function">parseDOM</span><span class="token punctuation">(</span><span class="token function">template</span><span class="token punctuation">(</span><span class="token punctuation">{</span>data<span class="token operator">:</span> state<span class="token punctuation">,</span> props<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> methodResult <span class="token operator">=</span> <span class="token function">methods</span><span class="token punctuation">(</span><span class="token punctuation">{</span>dom<span class="token punctuation">,</span> data<span class="token operator">:</span> state<span class="token punctuation">,</span> props<span class="token punctuation">,</span> store<span class="token punctuation">,</span> emit<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token function">bindEvent</span><span class="token punctuation">(</span><span class="token function">events</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> methodResult<span class="token punctuation">,</span> dom<span class="token punctuation">)</span>
+  <span class="token function">bindComponent</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    dom<span class="token punctuation">,</span>
+    state<span class="token punctuation">,</span>
+    components<span class="token operator">:</span> <span class="token function">components</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    methodResult
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> dom
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">replaceWith</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">params</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+<span class="token comment">// render는 create와 component 함수의 반환 함수, 즉 2가지다.</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span>dom<span class="token punctuation">,</span> render<span class="token punctuation">,</span> props<span class="token punctuation">,</span> on<span class="token punctuation">}</span> <span class="token operator">=</span> params
+  <span class="token keyword">const</span> newDom <span class="token operator">=</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>props<span class="token punctuation">,</span> emit<span class="token operator">:</span> on<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  dom<span class="token punctuation">.</span><span class="token function">replaceWith</span><span class="token punctuation">(</span>newDom<span class="token punctuation">)</span>
+  Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>params<span class="token punctuation">,</span> <span class="token punctuation">{</span>dom<span class="token operator">:</span> newDom<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">reactive</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>store<span class="token punctuation">,</span> state<span class="token punctuation">,</span> renderFn<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  store<span class="token punctuation">.</span><span class="token function">watchAll</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>key<span class="token punctuation">,</span> data<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    state<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> data
+    <span class="token function">renderFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">parseDOM</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">template</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> tmp <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElementNS</span><span class="token punctuation">(</span><span class="token string">'http://www.w3.org/2000/svg'</span><span class="token punctuation">,</span> <span class="token string">'svg'</span><span class="token punctuation">)</span>
+  tmp<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> template
+  <span class="token keyword">return</span> tmp<span class="token punctuation">.</span>children<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">bindEvent</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">events<span class="token punctuation">,</span> methods<span class="token punctuation">,</span> dom</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token punctuation">[</span>selector<span class="token punctuation">,</span> event<span class="token punctuation">,</span> methodName<span class="token punctuation">]</span> <span class="token keyword">of</span> events<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>selector <span class="token operator">===</span> <span class="token string">'document'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      document<span class="token punctuation">[</span>event<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">addEvent</span><span class="token punctuation">(</span>methods<span class="token punctuation">,</span> methodName<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">getElem</span><span class="token punctuation">(</span>selector<span class="token punctuation">,</span> dom<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">elem</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        elem<span class="token punctuation">[</span>event<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">addEvent</span><span class="token punctuation">(</span>methods<span class="token punctuation">,</span> methodName<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">bindComponent</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>components<span class="token punctuation">,</span> dom<span class="token punctuation">,</span> state<span class="token punctuation">,</span> methodResult<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token punctuation">[</span>selector<span class="token punctuation">,</span> component<span class="token punctuation">]</span> <span class="token keyword">of</span> components<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">getElem</span><span class="token punctuation">(</span>selector<span class="token punctuation">,</span> dom<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">elem</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token function">replaceWith</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        dom<span class="token operator">:</span> elem<span class="token punctuation">,</span>
+        render<span class="token operator">:</span> component<span class="token punctuation">,</span>
+        props<span class="token operator">:</span> <span class="token function">getProps</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> state<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        on<span class="token operator">:</span> <span class="token function">getOn</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> methodResult<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// props는 자식에게 전달할 데이터</span>
+<span class="token keyword">const</span> <span class="token function-variable function">getProps</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">elem<span class="token punctuation">,</span> state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> bindProps <span class="token operator">=</span> <span class="token function">getAttr</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> <span class="token string">'bind-props'</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> props <span class="token operator">=</span> <span class="token function">getAttr</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> <span class="token string">'props'</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>bindProps<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> state<span class="token punctuation">[</span>bindProps<span class="token punctuation">]</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> props
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// on은 자식으로부터 전달받은 콜백</span>
+<span class="token keyword">const</span> <span class="token function-variable function">getOn</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">elem<span class="token punctuation">,</span> methodResult</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> attr <span class="token operator">=</span> <span class="token function">getAttr</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> <span class="token string">'on'</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>attr <span class="token operator">&amp;&amp;</span> methodResult<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> methodResult<span class="token punctuation">[</span>attr<span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/dragonjs/assets/js/app.f3526aec.js" defer></script><script src="/dragonjs/assets/js/2.afd4704a.js" defer></script><script src="/dragonjs/assets/js/9.3a5d6c37.js" defer></script>
+  </body>
+</html>
