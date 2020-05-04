@@ -1,6 +1,6 @@
-import * as _ from './fp'
-import {createStore} from './store';
-import {addEvent, getAttr, getElem} from './helper';
+import * as _ from './fp.js'
+import {createStore} from './store.js';
+import {addEvent, getAttr, getElem} from './helper.js';
 
 /**
  * @param options

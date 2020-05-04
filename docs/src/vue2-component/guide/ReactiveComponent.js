@@ -1,7 +1,7 @@
-import {component} from './core/component'
-import {NowComponent} from './ReactiveComponent/NowComponent';
-import {NowControllerComponent} from './ReactiveComponent/NowControllerComponent';
-import {ParentComponent} from './ReactiveComponent/ParentComponent';
+import {component} from '../core/component.js';
+import {NowComponent} from './ReactiveComponent/NowComponent.js';
+import {NowControllerComponent} from './ReactiveComponent/NowControllerComponent.js';
+import {ParentComponent} from './ReactiveComponent/ParentComponent.js';
 
 export const ReactiveComponent = component({
   data() {

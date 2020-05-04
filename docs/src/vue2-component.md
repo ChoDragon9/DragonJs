@@ -4,6 +4,7 @@ sidebar: auto
 ---
 ## 컴포넌트 사용 예제
 ### 컴포넌트 마운트
+<<< @/docs/src/vue2-component/vue2-component.html
 <<< @/docs/src/vue2-component/guide/mount.js
 
 ### ButtonComponent

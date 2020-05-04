@@ -1,5 +1,9 @@
-import {ButtonComponent} from './ButtonComponent';
+import {ButtonComponent} from './ButtonComponent.js';
+import {CounterComponent} from './CounterComponent.js';
+import {ReactiveComponent} from './ReactiveComponent.js';
 
 document
   .querySelector('#app')
-  .appendChild(ButtonComponent());
+  .appendChild(ButtonComponent())
+  .appendChild(CounterComponent())
+  .appendChild(ReactiveComponent());

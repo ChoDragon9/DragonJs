@@ -1,5 +1,5 @@
-import {component} from '../core/component'
-import {ChildComponent} from './ChildComponent';
+import {component} from '../../core/component.js';
+import {ChildComponent} from './ChildComponent.js';
 
 export const ParentComponent = component({
   data() {

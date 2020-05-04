@@ -1,5 +1,5 @@
-import {component} from './core/component'
-import {createStore} from './core/store';
+import {component} from '../core/component.js'
+import {createStore} from '../core/store.js';
 
 const store = createStore({
   count: 0
