@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+
+<helloworld></helloworld>
+<ul>
+  <list></list>
+  <list></list>
+  <list></list>
+  <list></list>
+  <list></list>
+</ul>
+
+<script src="./component.js"></script>
+<script>
+  Component.define({
+    name: 'helloworld',
+    template: '<div>Hello World</div>'
+  });
+
+  Component.define({
+    name: 'list',
+    template: '<li>Item</li>'
+  });
+
+  Component.render('body');
+</script>
+</body>
+</html>

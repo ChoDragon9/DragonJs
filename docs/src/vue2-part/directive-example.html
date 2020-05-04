@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+
+<ul>
+  <li helloworld></li>
+  <li helloworld></li>
+  <li helloworld></li>
+</ul>
+<button
+  type="button"
+  on-click="changeButtonName(event)">
+  Button
+</button>
+
+<script src="./directive.js"></script>
+<script>
+  Directive.define({
+    name: 'on-click',
+    bind: (elem, [callbackName, hasEvent]) => {
+      elem.onclick = (event) => {
+        window[callbackName].call(elem, hasEvent ? event : undefined);
+      };
+    }
+  });
+
+  Directive.define({
+    name: 'helloworld',
+    bind: (elem) => {
+      elem.innerHTML = 'Hello World';
+    }
+  });
+
+
+  Directive.render('body');
+
+  function changeButtonName(event) {
+    this.innerHTML = 'Changed Button';
+  }
+</script>
+</body>
+</html>
