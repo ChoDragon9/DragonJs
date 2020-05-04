@@ -3,15 +3,12 @@ module.exports = {
   base: '/dragonjs/',
   themeConfig: {
     nav: [
-      // {
-      //   text: 'UIComponent',
-      //   items: [
-      //     {text: 'Pagination', link: '/src/UIComponent/Pagination/'},
-      //     {text: 'Calendar', link: '/src/UIComponent/Calendar/'},
-      //     {text: 'TimePicker', link: '/src/UIComponent/TimePicker/'},
-      //     {text: 'InfiniteScrolling', link: '/src/UIComponent/InfiniteScrolling/'},
-      //   ]
-      // },
+      {
+        text: 'Vue 2',
+        items: [
+          {text: '파트별 구현해보기', link: '/src/vue2-part/'},
+        ]
+      },
       {
         text: 'Moment.js',
         link: '/src/momentjs/'
