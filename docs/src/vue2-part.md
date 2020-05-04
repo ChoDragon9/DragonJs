@@ -4,10 +4,11 @@ sidebar: auto
 ---
 
 ## 옵져버
-<<< @/docs/src/vue2-part/observer.js
 <<< @/docs/src/vue2-part/observer-example.js
+<<< @/docs/src/vue2-part/observer.js
 
 ## 탬플릿 바인딩
+<<< @/docs/src/vue2-part/template-example.html
 <<< @/docs/src/vue2-part/template.js
 
 ## 디렉티브

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+
+<div id="one-way-bind">
+  {{language}}
+</div>
+
+<script src="./template.js"></script>
+<script>
+  const template = useTemplate('#one-way-bind');
+  template.bindData({
+    language: '한국어'
+  });
+</script>
+</body>
+</html>
