@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>2020.05 Vue.compile 1 | ChoDragon9 | DragonJs</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.3.1">
+    <meta name="google-site-verification" content="">
+    
+    <link rel="preload" href="/dragonjs/assets/css/0.styles.dd6d6f17.css" as="style"><link rel="preload" href="/dragonjs/assets/js/app.c34268e0.js" as="script"><link rel="preload" href="/dragonjs/assets/js/2.afd4704a.js" as="script"><link rel="preload" href="/dragonjs/assets/js/9.01cb9689.js" as="script"><link rel="prefetch" href="/dragonjs/assets/js/10.aa49d8f3.js"><link rel="prefetch" href="/dragonjs/assets/js/11.cb5415f1.js"><link rel="prefetch" href="/dragonjs/assets/js/12.c919a366.js"><link rel="prefetch" href="/dragonjs/assets/js/3.d74170a0.js"><link rel="prefetch" href="/dragonjs/assets/js/4.f65d49b7.js"><link rel="prefetch" href="/dragonjs/assets/js/5.b32b7806.js"><link rel="prefetch" href="/dragonjs/assets/js/6.396586b7.js"><link rel="prefetch" href="/dragonjs/assets/js/7.007d4cae.js"><link rel="prefetch" href="/dragonjs/assets/js/8.2c51b4bb.js">
+    <link rel="stylesheet" href="/dragonjs/assets/css/0.styles.dd6d6f17.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/dragonjs/" class="home-link router-link-active"><!----> <span class="site-name">ChoDragon9 | DragonJs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue 2" class="dropdown-title"><span class="title">Vue 2</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dragonjs/src/vue2-part/" class="nav-link">
+  2017.09 파트별 구현
+</a></li><li class="dropdown-item"><!----> <a href="/dragonjs/src/vue2-component/" class="nav-link">
+  2019.08 컴포넌트 구현
+</a></li><li class="dropdown-item"><!----> <a href="/dragonjs/src/vue2-compile-1/" class="nav-link router-link-exact-active router-link-active">
+  2020.05 Vue.compile 1
+</a></li></ul></div></div><div class="nav-item"><a href="/dragonjs/src/momentjs/" class="nav-link">
+  Moment.js
+</a></div><div class="nav-item"><a href="/dragonjs/src/immerjs/" class="nav-link">
+  Immer.js
+</a></div><div class="nav-item"><a href="/dragonjs/src/axios/" class="nav-link">
+  Axios
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue 2" class="dropdown-title"><span class="title">Vue 2</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dragonjs/src/vue2-part/" class="nav-link">
+  2017.09 파트별 구현
+</a></li><li class="dropdown-item"><!----> <a href="/dragonjs/src/vue2-component/" class="nav-link">
+  2019.08 컴포넌트 구현
+</a></li><li class="dropdown-item"><!----> <a href="/dragonjs/src/vue2-compile-1/" class="nav-link router-link-exact-active router-link-active">
+  2020.05 Vue.compile 1
+</a></li></ul></div></div><div class="nav-item"><a href="/dragonjs/src/momentjs/" class="nav-link">
+  Moment.js
+</a></div><div class="nav-item"><a href="/dragonjs/src/immerjs/" class="nav-link">
+  Immer.js
+</a></div><div class="nav-item"><a href="/dragonjs/src/axios/" class="nav-link">
+  Axios
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>2020.05 Vue.compile 1</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dragonjs/src/vue2-compile-1/#기반-기술" class="sidebar-link">기반 기술</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dragonjs/src/vue2-compile-1/#컴파일러-동작-과정" class="sidebar-link">컴파일러 동작 과정</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/vue2-compile-1/#탬플릿-바인딩" class="sidebar-link">탬플릿 바인딩</a></li></ul></li><li><a href="/dragonjs/src/vue2-compile-1/#컴파일러-만들기" class="sidebar-link">컴파일러 만들기</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dragonjs/src/vue2-compile-1/#_1-토큰화-2" class="sidebar-link">1. 토큰화</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/vue2-compile-1/#_2-파싱-2" class="sidebar-link">2. 파싱</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/vue2-compile-1/#_3-변형-2" class="sidebar-link">3. 변형</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/vue2-compile-1/#_4-코드-생성-2" class="sidebar-link">4. 코드 생성</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/vue2-compile-1/#_5-함수-병합-2" class="sidebar-link">5. 함수 병합</a></li><li class="sidebar-sub-header"><a href="/dragonjs/src/vue2-compile-1/#탬플릿-바인딩-확인" class="sidebar-link">탬플릿 바인딩 확인</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p>Vue의 탬플릿 바인딩, 디렉티브는 컴파일러를 통해 구현된다. 여기서는 컴파일러와 유사하게 탬플릿 바인딩을 만들어봤다.</p> <h2 id="기반-기술"><a href="#기반-기술" class="header-anchor">#</a> 기반 기술</h2> <h3 id="컴파일러-동작-과정"><a href="#컴파일러-동작-과정" class="header-anchor">#</a> 컴파일러 동작 과정</h3> <p>코드로 설명하기 전 컴파일러 동작 과정에 대한 설명이다.</p> <h4 id="_1-토큰화"><a href="#_1-토큰화" class="header-anchor">#</a> 1. 토큰화</h4> <p>입력을 토큰으로 분리하는 작업이다. 렉서 함수를 통해 코드 문자열을 작고 의미있는 토큰으로 분리한다.</p> <h5 id="input"><a href="#input" class="header-anchor">#</a> Input</h5> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>{{text}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h5 id="output"><a href="#output" class="header-anchor">#</a> Output</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'start'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">'&lt;h1&gt;'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'template'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">'{{text}}'</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'end'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">'&lt;/h1&gt;'</span> <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></div><h4 id="_2-파싱"><a href="#_2-파싱" class="header-anchor">#</a> 2. 파싱</h4> <p>토큰들 사이의 관계를 찾는다. 연관된 토큰 끼리 그룹화 한다. 파서 함수를 통해 각 토큰들의 문법적 정보를 찾고, AST(추상 구문 트리)라 부르는 객체를 만든다.</p> <p>AST는 일반화된 형식이 있는 게 아니다. 필요에 따라 구조를 만들어 사용한다. 예를 들어 Vue는 파서 함수 <a href="https://github.com/vuejs/vue-next/blob/f0d52d5428fca7c9b4b46be9c093b96f436c8b44/packages/compiler-core/src/parse.ts#L77" target="_blank" rel="noopener noreferrer">baseParse<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>의 반환값 AST는 <a href="https://github.com/vuejs/vue-next/blob/f0d52d5428fca7c9b4b46be9c093b96f436c8b44/packages/compiler-core/src/ast.ts#L100" target="_blank" rel="noopener noreferrer">RootNode<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>다.</p> <h5 id="input-2"><a href="#input-2" class="header-anchor">#</a> Input</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'start'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">'&lt;h1&gt;'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'template'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">'{{text}}'</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'end'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">'&lt;/h1&gt;'</span> <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></div><h5 id="output-2"><a href="#output-2" class="header-anchor">#</a> Output</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  type<span class="token operator">:</span> <span class="token string">'MarkupLanguage'</span><span class="token punctuation">,</span>
+  value<span class="token operator">:</span> <span class="token string">'h1'</span><span class="token punctuation">,</span>
+  children<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>type<span class="token operator">:</span> <span class="token string">'Template'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">'{{text}}'</span><span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="_3-변형"><a href="#_3-변형" class="header-anchor">#</a> 3. 변형</h4> <p>변형 함수를 통해 컴파일러 결과물의 도메인에 유사한 AST로 변환한다.</p> <h5 id="input-3"><a href="#input-3" class="header-anchor">#</a> Input</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  type<span class="token operator">:</span> <span class="token string">'MarkupLanguage'</span><span class="token punctuation">,</span>
+  value<span class="token operator">:</span> <span class="token string">'h1'</span><span class="token punctuation">,</span>
+  children<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>type<span class="token operator">:</span> <span class="token string">'Template'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">'{{text}}'</span><span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h5 id="output-3"><a href="#output-3" class="header-anchor">#</a> Output</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  tag<span class="token operator">:</span> <span class="token string">'h1'</span><span class="token punctuation">,</span>
+  children<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>type<span class="token operator">:</span> <span class="token string">'TemplateBinding'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">'text'</span><span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="_4-코드-생성"><a href="#_4-코드-생성" class="header-anchor">#</a> 4. 코드 생성</h4> <p>컴파일러의 마지막 단계이다. 생성 함수를 통해 이전 단계에서 만든 AST 기반으로 결과물을 만들어낸다.</p> <h5 id="input-4"><a href="#input-4" class="header-anchor">#</a> Input</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  tag<span class="token operator">:</span> <span class="token string">'h1'</span><span class="token punctuation">,</span>
+  children<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>type<span class="token operator">:</span> <span class="token string">'TemplateBinding'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">'text'</span><span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h5 id="output-4"><a href="#output-4" class="header-anchor">#</a> Output</h5> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'h1'</span><span class="token punctuation">,</span> state<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+</code></pre></div><h4 id="_5-함수-병합"><a href="#_5-함수-병합" class="header-anchor">#</a> 5. 함수 병합</h4> <p>렉서 함수, 파서 함수, 변경 함수, 생성 함수들을 병합하면 컴파일러가 된다.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">compiler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">code</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> tokens <span class="token operator">=</span> <span class="token function">lexer</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> ast <span class="token operator">=</span> <span class="token function">parser</span><span class="token punctuation">(</span>tokens<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> htmlAst <span class="token operator">=</span> <span class="token function">transformer</span><span class="token punctuation">(</span>ast<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> renderFn <span class="token operator">=</span> <span class="token function">generator</span><span class="token punctuation">(</span>htmlAst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> renderFn<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="탬플릿-바인딩"><a href="#탬플릿-바인딩" class="header-anchor">#</a> 탬플릿 바인딩</h3> <p>Vue의 컴파일러 결과는 탬플릿 리터럴로 만들어진다. 그리고 결과 실행 시 <code>new Function</code>을 사용한다.
+Vue 코드는 <a href="https://github.com/vuejs/vue-next/blob/e954ba21f04f0ef848c687233fcb849d75e4153f/packages/vue/src/index.ts#L67" target="_blank" rel="noopener noreferrer">여기<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>에서 볼 수 있다.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">createElement</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">tag<span class="token punctuation">,</span> text</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>tag<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&gt;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>text<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>tag<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&gt;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">render</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> renderFn <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span>
+    <span class="token string">'createElement'</span><span class="token punctuation">,</span>
+    <span class="token string">'state'</span><span class="token punctuation">,</span>
+    <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">return createElement('h1', state.text)</span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token function">renderFn</span><span class="token punctuation">(</span>createElement<span class="token punctuation">,</span> state<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span> text<span class="token operator">:</span> <span class="token string">'Message'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// &lt;h1&gt;Message&lt;/h1&gt;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span> text<span class="token operator">:</span> <span class="token string">'Message2'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// &lt;h1&gt;Message2&lt;/h1&gt;</span>
+</code></pre></div><h2 id="컴파일러-만들기"><a href="#컴파일러-만들기" class="header-anchor">#</a> 컴파일러 만들기</h2> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>{{text}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>형태의 탬플릿을 컴파일하는 컴파일러이다. 이 형태만 동작한다.</p> <h3 id="_1-토큰화-2"><a href="#_1-토큰화-2" class="header-anchor">#</a> 1. 토큰화</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">lexer</span> <span class="token operator">=</span> <span class="token parameter">code</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> matched <span class="token operator">=</span> code<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/(&lt;h[1-6]&gt;)|(\{\{[a-zA-Z]{0,}\}\})|(&lt;\/h[1-6]&gt;)/g</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>matched<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> matched<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> type <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+      <span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> value<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">'&lt;/'</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> value<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">'&gt;'</span><span class="token punctuation">)</span><span class="token operator">:</span>
+          type <span class="token operator">=</span> <span class="token string">'end'</span><span class="token punctuation">;</span>
+          <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> value<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">'&lt;'</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> value<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">'&gt;'</span><span class="token punctuation">)</span><span class="token operator">:</span>
+          type <span class="token operator">=</span> <span class="token string">'start'</span><span class="token punctuation">;</span>
+          <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> value<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">'{{'</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> value<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">'}}'</span><span class="token punctuation">)</span><span class="token operator">:</span>
+          type <span class="token operator">=</span> <span class="token string">'template'</span><span class="token punctuation">;</span>
+          <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>type<span class="token punctuation">,</span> value<span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> input <span class="token operator">=</span> <span class="token string">'&lt;h1&gt;{{text}}&lt;/h1&gt;'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> output <span class="token operator">=</span> <span class="token function">lexer</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// console.log(output)</span>
+<span class="token comment">// [</span>
+<span class="token comment">//   { type: 'start', value: '&lt;h1&gt;' },</span>
+<span class="token comment">//   { type: 'template', value: '{{text}}' },</span>
+<span class="token comment">//   { type: 'end', value: '&lt;/h1&gt;' }</span>
+<span class="token comment">// ]</span>
+</code></pre></div><h3 id="_2-파싱-2"><a href="#_2-파싱-2" class="header-anchor">#</a> 2. 파싱</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">parser</span> <span class="token operator">=</span> <span class="token parameter">tokens</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token constant">AST</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+    type<span class="token operator">:</span> <span class="token string">'MarkupLanguage'</span><span class="token punctuation">,</span>
+    value<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    children<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  tokens<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>type<span class="token punctuation">,</span> value<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>type <span class="token operator">===</span> <span class="token string">'start'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token constant">AST</span><span class="token punctuation">.</span>value <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/[&lt;&gt;]/g</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>type <span class="token operator">===</span> <span class="token string">'template'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token constant">AST</span><span class="token punctuation">.</span>children<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        type<span class="token operator">:</span> <span class="token string">'Template'</span><span class="token punctuation">,</span>
+        value<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token constant">AST</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> input <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'start'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">'&lt;h1&gt;'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'template'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">'{{text}}'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'end'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">'&lt;/h1&gt;'</span> <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> output <span class="token operator">=</span> <span class="token function">parser</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// console.log(output);</span>
+<span class="token comment">// {</span>
+<span class="token comment">//   type: 'MarkupLanguage',</span>
+<span class="token comment">//   value: 'h1',</span>
+<span class="token comment">//   children: [</span>
+<span class="token comment">//     {type: 'Template', value: '{{text}}'}</span>
+<span class="token comment">//   ]</span>
+<span class="token comment">// }</span>
+</code></pre></div><h3 id="_3-변형-2"><a href="#_3-변형-2" class="header-anchor">#</a> 3. 변형</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">transformer</span> <span class="token operator">=</span> <span class="token parameter">ast</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> htmlAst <span class="token operator">=</span> <span class="token punctuation">{</span>
+    tag<span class="token operator">:</span> ast<span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+    children<span class="token operator">:</span> ast<span class="token punctuation">.</span>children<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>type<span class="token punctuation">,</span> value<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>type <span class="token operator">===</span> <span class="token string">'Template'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+          type<span class="token operator">:</span> <span class="token string">'TemplateBinding'</span><span class="token punctuation">,</span>
+          value<span class="token operator">:</span> value<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/{{|}}/g</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>type<span class="token punctuation">,</span> value<span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> htmlAst
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> input <span class="token operator">=</span> <span class="token punctuation">{</span>
+  type<span class="token operator">:</span> <span class="token string">'MarkupLanguage'</span><span class="token punctuation">,</span>
+  value<span class="token operator">:</span> <span class="token string">'h1'</span><span class="token punctuation">,</span>
+  children<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>type<span class="token operator">:</span> <span class="token string">'Template'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">'{{text}}'</span><span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> output <span class="token operator">=</span> <span class="token function">transformer</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// console.log(output)</span>
+<span class="token comment">// {</span>
+<span class="token comment">//   tag: 'h1',</span>
+<span class="token comment">//   children: [</span>
+<span class="token comment">//     {type: 'TemplateBinding', value: 'text'}</span>
+<span class="token comment">//   ]</span>
+<span class="token comment">// }</span>
+</code></pre></div><h3 id="_4-코드-생성-2"><a href="#_4-코드-생성-2" class="header-anchor">#</a> 4. 코드 생성</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">createElement</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">tag<span class="token punctuation">,</span> text</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>tag<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&gt;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>text<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>tag<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&gt;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">generator</span> <span class="token operator">=</span> <span class="token parameter">htmlAst</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>child<span class="token punctuation">]</span> <span class="token operator">=</span> htmlAst<span class="token punctuation">.</span>children<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> text <span class="token operator">=</span> child<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'TemplateBinding'</span>
+    <span class="token operator">?</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">state.</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>child<span class="token punctuation">.</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+    <span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">'</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>child<span class="token punctuation">.</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">'</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span>
+    <span class="token string">'createElement'</span><span class="token punctuation">,</span>
+    <span class="token string">'state'</span><span class="token punctuation">,</span>
+    <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">return createElement('</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>htmlAst<span class="token punctuation">.</span>tag<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">', </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>text<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">)</span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">(</span>createElement<span class="token punctuation">,</span> state<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> input <span class="token operator">=</span> <span class="token punctuation">{</span>
+  tag<span class="token operator">:</span> <span class="token string">'h1'</span><span class="token punctuation">,</span>
+  children<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>type<span class="token operator">:</span> <span class="token string">'TemplateBinding'</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">'text'</span><span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> output <span class="token operator">=</span> <span class="token function">generator</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// console.log(output)</span>
+<span class="token comment">// (state) =&gt; createElement('h1', state.text)</span>
+</code></pre></div><h3 id="_5-함수-병합-2"><a href="#_5-함수-병합-2" class="header-anchor">#</a> 5. 함수 병합</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>lexer<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./lexer.js'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>parser<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./parser.js'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>transformer<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./transformer.js'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>generator<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./generator.js'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">compiler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">code</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> tokens <span class="token operator">=</span> <span class="token function">lexer</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> ast <span class="token operator">=</span> <span class="token function">parser</span><span class="token punctuation">(</span>tokens<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> htmlAst <span class="token operator">=</span> <span class="token function">transformer</span><span class="token punctuation">(</span>ast<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> renderFn <span class="token operator">=</span> <span class="token function">generator</span><span class="token punctuation">(</span>htmlAst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> renderFn<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> input <span class="token operator">=</span> <span class="token string">'&lt;h1&gt;{{text}}&lt;/h1&gt;'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> output <span class="token operator">=</span> <span class="token function">compiler</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// console.log(output);</span>
+<span class="token comment">// (state) =&gt; createElement('h1', state.text)</span>
+</code></pre></div><h3 id="탬플릿-바인딩-확인"><a href="#탬플릿-바인딩-확인" class="header-anchor">#</a> 탬플릿 바인딩 확인</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>compiler<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./compiler.js'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> template <span class="token operator">=</span> <span class="token string">'&lt;h1&gt;{{text}}&lt;/h1&gt;'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> render <span class="token operator">=</span> <span class="token function">compiler</span><span class="token punctuation">(</span>template<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span> text<span class="token operator">:</span> <span class="token string">'Message'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// &lt;h1&gt;Message&lt;/h1&gt;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span> text<span class="token operator">:</span> <span class="token string">'Message2'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// &lt;h1&gt;Message2&lt;/h1&gt;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/dragonjs/assets/js/app.c34268e0.js" defer></script><script src="/dragonjs/assets/js/2.afd4704a.js" defer></script><script src="/dragonjs/assets/js/9.01cb9689.js" defer></script>
+  </body>
+</html>

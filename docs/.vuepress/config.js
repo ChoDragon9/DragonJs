@@ -8,6 +8,7 @@ module.exports = {
         items: [
           {text: '2017.09 파트별 구현', link: '/src/vue2-part/'},
           {text: '2019.08 컴포넌트 구현', link: '/src/vue2-component/'},
+          {text: '2020.05 Vue.compile 1', link: '/src/vue2-compile-1/'},
         ]
       },
       {
