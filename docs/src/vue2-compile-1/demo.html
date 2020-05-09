@@ -4,12 +4,17 @@
   <meta charset="UTF-8">
   <style type="text/css">
     pre {border: 1px solid #ddd; }
+    textarea {width: 100%; height: 150px;}
   </style>
 </head>
 <body>
 <div>
   <h3>Template</h3>
-  <pre id="template"></pre>
+  <textarea id="template">
+<div>
+  {{hello}} {{world}}
+  <div>{{text}}</div>
+</div></textarea>
 </div>
 <div>
   <h3>state</h3>
@@ -51,32 +56,33 @@ const addResult = (id, result) => {
         : JSON.stringify(result, null, 2)
 };
 
-const template = `<div>
-{{hello}} {{world}}
-<div>{{text}}</div>
-</div>`;
+export const onInput = () => {
+  const template = document.querySelector('textarea').value
+  const tokens = tokenizer(template);
+  addResult('tokenizer', tokens);
 
-const tokens = tokenizer(template);
-addResult('tokenizer', tokens);
+  const ast = parser(tokens);
+  addResult('parser', ast);
 
-const ast = parser(tokens);
-addResult('parser', ast);
+  const virtualCode = virtualCodeGenerator(ast);
+  addResult('virtualCodeGenerator', virtualCode);
 
-const virtualCode = virtualCodeGenerator(ast);
-addResult('virtualCodeGenerator', virtualCode);
+  const render = targetCodeGenerator(virtualCode);
+  addResult('targetCodeGenerator', render);
 
-const render = targetCodeGenerator(virtualCode);
-addResult('targetCodeGenerator', render);
+  const state = {
+    hello: 'Hello',
+    world: 'World!',
+    text: 'My Text'
+  };
 
-const state = {
-  hello: 'Hello',
-  world: 'World!',
-  text: 'My Text'
+  addResult('state', state);
+  addResult('result', render(state));
 };
 
-addResult('state', state);
-addResult('template', template);
-addResult('result', render(state));
+document.querySelector('textarea').oninput = onInput;
+
+onInput()
 
 </script>
 
