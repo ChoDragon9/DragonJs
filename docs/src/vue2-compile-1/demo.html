@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <style type="text/css">
-    pre {border: 1px solid #ddd; }
-    textarea {width: 100%; height: 150px;}
+    pre {
+      border: 1px solid #ddd;
+      max-height: 200px;
+      min-height: 200px;
+      overflow: auto
+    }
+    textarea {width: 90%; height: 200px;}
+    .w50 {width: 50%; float: left;}
+    .w50+div:not(.w50) {clear: left;}
   </style>
 </head>
 <body>
-<div>
+<div class="w50">
   <h3>Template</h3>
   <textarea id="template">
 <div>
@@ -16,7 +23,7 @@
   <div>{{text}}</div>
 </div></textarea>
 </div>
-<div>
+<div class="w50">
   <h3>state</h3>
   <pre id="state"></pre>
 </div>
@@ -24,19 +31,19 @@
   <h3>Result</h3>
   <pre id="result"></pre>
 </div>
-<div>
+<div class="w50">
   <h3>Tokenizer</h3>
   <pre id="tokenizer"></pre>
 </div>
-<div>
+<div class="w50">
   <h3>Parser</h3>
   <pre id="parser"></pre>
 </div>
-<div>
+<div class="w50">
   <h3>Virtual Code Generator</h3>
   <pre id="virtualCodeGenerator"></pre>
 </div>
-<div>
+<div class="w50">
   <h3>Target Code Generator</h3>
   <pre id="targetCodeGenerator"></pre>
 </div>
