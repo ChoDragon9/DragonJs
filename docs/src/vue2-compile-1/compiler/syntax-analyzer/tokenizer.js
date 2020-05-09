@@ -1,5 +1,5 @@
-import {SYMBOL} from '../syntax.mjs';
-import {useLoopGuard} from '../helper.mjs';
+import {SYMBOL} from '../syntax.js';
+import {useLoopGuard} from '../helper.js';
 
 export const tokenizer = originCode => {
   const context = {

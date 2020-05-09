@@ -1,4 +1,4 @@
-import {compiler} from './compiler.mjs';
+import {compiler} from './compiler.js';
 
 const template = `<div>{{hello}} {{world}}</div>`;
 const render = compiler(template);

@@ -1,4 +1,4 @@
-import {VIRTUAL_CODE_SYNTAX} from './virtual-code-syntax.mjs';
+import {VIRTUAL_CODE_SYNTAX} from './virtual-code-syntax.js';
 
 const TARGET_CODE_SYNTAX = {
   CREATE: 'create',

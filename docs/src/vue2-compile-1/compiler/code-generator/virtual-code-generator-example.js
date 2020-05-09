@@ -1,4 +1,4 @@
-import {virtualCodeGenerator} from './virtual-code-generator.mjs';
+import {virtualCodeGenerator} from './virtual-code-generator.js';
 
 const input = {
   type: 'Tag',

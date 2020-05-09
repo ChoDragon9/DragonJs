@@ -1,4 +1,4 @@
-import {tokenizer} from './tokenizer.mjs';
+import {tokenizer} from './tokenizer.js';
 
 const input = `<div>{{text}} Text</div>`;
 const output = tokenizer(input);

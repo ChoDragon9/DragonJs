@@ -1,5 +1,5 @@
-import {syntaxAnalyzer} from './syntax-analyzer/index.mjs';
-import {codeGenerator} from './code-generator/index.mjs';
+import {syntaxAnalyzer} from './syntax-analyzer/index.js';
+import {codeGenerator} from './code-generator/index.js';
 
 export const compiler = (originCode) => {
   const ast = syntaxAnalyzer(originCode);

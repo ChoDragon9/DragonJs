@@ -1,5 +1,5 @@
-import {SYMBOL, SYNTAX_TYPE} from '../syntax.mjs';
-import {useLoopGuard} from '../helper.mjs';
+import {SYMBOL, SYNTAX_TYPE} from '../syntax.js';
+import {useLoopGuard} from '../helper.js';
 
 export const parser = tokens => {
   const ast = {

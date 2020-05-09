@@ -1,5 +1,5 @@
-import {tokenizer} from './tokenizer.mjs';
-import {parser} from './parser.mjs';
+import {tokenizer} from './tokenizer.js';
+import {parser} from './parser.js';
 
 export const syntaxAnalyzer = (originCode) => {
   const tokens = tokenizer(originCode);

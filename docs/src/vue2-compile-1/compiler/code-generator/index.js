@@ -1,5 +1,5 @@
-import {virtualCodeGenerator} from './virtual-code-generator.mjs'
-import {targetCodeGenerator} from './target-code-generator.mjs'
+import {virtualCodeGenerator} from './virtual-code-generator.js'
+import {targetCodeGenerator} from './target-code-generator.js'
 
 export const codeGenerator = ast => {
   const virtualCode = virtualCodeGenerator(ast);

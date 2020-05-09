@@ -1,4 +1,4 @@
-import {targetCodeGenerator} from './target-code-generator.mjs';
+import {targetCodeGenerator} from './target-code-generator.js';
 
 const input = [
   'element([',

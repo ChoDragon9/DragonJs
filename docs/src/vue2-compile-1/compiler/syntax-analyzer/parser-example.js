@@ -1,4 +1,4 @@
-import {parser} from './parser.mjs';
+import {parser} from './parser.js';
 
 const input = [
   '<','div','>',

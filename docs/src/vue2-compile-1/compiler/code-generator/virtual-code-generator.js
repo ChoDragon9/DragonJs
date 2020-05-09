@@ -1,6 +1,6 @@
-import {SYMBOL, SYNTAX_TYPE} from '../syntax.mjs';
-import {VIRTUAL_CODE_SYNTAX} from './virtual-code-syntax.mjs';
-import {useLoopGuard} from '../helper.mjs';
+import {SYMBOL, SYNTAX_TYPE} from '../syntax.js';
+import {VIRTUAL_CODE_SYNTAX} from './virtual-code-syntax.js';
+import {useLoopGuard} from '../helper.js';
 
 export const virtualCodeGenerator = ast => {
   const context = {
