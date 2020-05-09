@@ -26,7 +26,7 @@ Vue의 탬플릿 바인딩, 디렉티브는 컴파일러를 통해 구현된다.
 ```
 
 ##### Output
-```txt
+```js
 [
   '<','div','>',
   '{{', 'text', '}}',
@@ -41,7 +41,7 @@ Vue의 탬플릿 바인딩, 디렉티브는 컴파일러를 통해 구현된다.
 AST는 일반화된 형식이 있는 게 아니다. 필요에 따라 구조를 만들어 사용한다. 예를 들어 Vue는 파서 함수 [baseParse](https://github.com/vuejs/vue-next/blob/f0d52d5428fca7c9b4b46be9c093b96f436c8b44/packages/compiler-core/src/parse.ts#L77)의 반환값 AST는 [RootNode](https://github.com/vuejs/vue-next/blob/f0d52d5428fca7c9b4b46be9c093b96f436c8b44/packages/compiler-core/src/ast.ts#L100)다.
 
 ##### Input
-```txt
+```js
 [
   '<','div','>',
   '{{', 'text', '}}',
@@ -50,7 +50,7 @@ AST는 일반화된 형식이 있는 게 아니다. 필요에 따라 구조를 �
 ]
 ```
 ##### Output
-```txt
+```js
 {
   type: 'Tag',
   body: [
@@ -60,7 +60,7 @@ AST는 일반화된 형식이 있는 게 아니다. 필요에 따라 구조를 �
     {
       type: 'Template',
       body: [
-        { type: 'Symbol', value: '{{' },
+        { type: 'Symbol', value: '\{{' },
         { type: 'Keyword', value: 'text' },
         { type: 'Symbol', value: '}}' }
       ],
@@ -77,7 +77,7 @@ AST는 일반화된 형식이 있는 게 아니다. 필요에 따라 구조를 �
 파싱의 출력인 AST를 분석해서 대상 코드와 유사한 가상 코드를 생성한다.
 
 ##### Input
-```txt
+```js
 {
   type: 'Tag',
   body: [
@@ -87,7 +87,7 @@ AST는 일반화된 형식이 있는 게 아니다. 필요에 따라 구조를 �
     {
       type: 'Template',
       body: [
-        { type: 'Symbol', value: '{{' },
+        { type: 'Symbol', value: '\{{' },
         { type: 'Keyword', value: 'text' },
         { type: 'Symbol', value: '}}' }
       ],
