@@ -4,49 +4,72 @@ sidebar: auto
 ---
 
 Vue의 탬플릿 바인딩, 디렉티브는 컴파일러를 통해 구현된다. 여기서는 컴파일러와 유사하게 탬플릿 바인딩을 만들어봤다.
+여기에 사용된 컴파일러 이론은 [여기](https://chodragon9.github.io/blog/compiler-theory/)에서 참고 할 수 있다.
 
-## 기반 기술
+## 컴파일로 동작
+### 문법 정의
+컴파일러를 만들기 전에 문법 정의가 필요하다 
+현재 버전에서는 어트리뷰트 없는 HTML의 탬플릿 바인딩 문법을 정의했다. 
+
+<<< @/docs/src/vue2-compile-1/syntax.txt
+
 ### 컴파일러 동작 과정
 코드로 설명하기 전 컴파일러 동작 과정에 대한 설명이다.
 
 #### 1. 토큰화
-입력을 토큰으로 분리하는 작업이다. 렉서 함수를 통해 코드 문자열을 작고 의미있는 토큰으로 분리한다.
+입력된 원본 코드를 토큰으로 분리하는 작업이다.
+문법에 정의된 문법 요소별로 작게 나누어 스트림으로 출력한다.
 
 ##### Input
 ```html
-<h1>{{text}}</h1>
+<div>{{text}} Text</div>
 ```
 
 ##### Output
 ```js
 [
-  { type: 'start', value: '<h1>' },
-  { type: 'template', value: '{{text}}' }
-  { type: 'end', value: '</h1>' }
+  '<','div','>',
+  '{{','text','}}',
+  ' Text',
+  '</','div','>'
 ]
 ```
 
 #### 2. 파싱
-토큰들 사이의 관계를 찾는다. 연관된 토큰 끼리 그룹화 한다. 파서 함수를 통해 각 토큰들의 문법적 정보를 찾고, AST(추상 구문 트리)라 부르는 객체를 만든다.
+토큰들 사이의 관계를 찾고, 연관된 토큰 끼리 그룹화 한다. 파서 함수를 통해 각 토큰들의 문법적 정보를 찾고, AST(추상 구문 트리)라 부르는 객체를 만든다.
 
 AST는 일반화된 형식이 있는 게 아니다. 필요에 따라 구조를 만들어 사용한다. 예를 들어 Vue는 파서 함수 [baseParse](https://github.com/vuejs/vue-next/blob/f0d52d5428fca7c9b4b46be9c093b96f436c8b44/packages/compiler-core/src/parse.ts#L77)의 반환값 AST는 [RootNode](https://github.com/vuejs/vue-next/blob/f0d52d5428fca7c9b4b46be9c093b96f436c8b44/packages/compiler-core/src/ast.ts#L100)다.
 
 ##### Input
 ```js
 [
-  { type: 'start', value: '<h1>' },
-  { type: 'template', value: '{{text}}' }
-  { type: 'end', value: '</h1>' }
+  '<','div','>',
+  '{{','text','}}',
+  ' Text',
+  '</','div','>'
 ]
 ```
 ##### Output
 ```js
 {
-  type: 'MarkupLanguage',
-  value: 'h1',
-  children: [
-    {type: 'Template', value: '{{text}}'}
-  ]
+  type: 'Tag',
+  body: [
+    { type: 'Symbol', value: '<' },
+    { type: 'Keyword', value: 'div' },
+    { type: 'Symbol', value: '>' },
+    {
+      type: 'Template',
+      body: [
+        { type: 'Symbol', value: '{{' },
+        { type: 'Keyword', value: 'text' },
+        { type: 'Symbol', value: '}}' }
+      ],
+    },
+    { type: 'StringConstant', value: ' Text' },
+    { type: 'Symbol', value: '</' },
+    { type: 'Keyword', value: 'div' },
+    { type: 'Symbol', value: '>' }
+  ],
 }
 ```
 
