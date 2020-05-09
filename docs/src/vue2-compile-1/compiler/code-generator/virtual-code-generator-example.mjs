@@ -24,9 +24,9 @@ const output = virtualCodeGenerator(input);
 console.log(output);
 // [
 //   'element([',
-//   "startElement('div')",
-//   "template('text')",
-//   "text(' Text')",
-//   "endElement('div')",
+//   `startElement('div')`,
+//   `template('text')`,
+//   `text(' Text')`,
+//   `endElement('div')`,
 //   '])'
-// ]
+// ];

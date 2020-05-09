@@ -6,7 +6,7 @@ sidebar: auto
 Vue의 탬플릿 바인딩, 디렉티브는 컴파일러를 통해 구현된다. 여기서는 컴파일러와 유사하게 탬플릿 바인딩을 만들어봤다.
 여기에 사용된 컴파일러 이론은 [여기](https://chodragon9.github.io/blog/compiler-theory/)에서 참고 할 수 있다.
 
-## 컴파일로 동작
+## 컴파일러 동작
 ### 문법 정의
 컴파일러를 만들기 전에 문법 정의가 필요하다 
 현재 버전에서는 어트리뷰트 없는 HTML의 탬플릿 바인딩 문법을 정의했다. 
@@ -73,8 +73,8 @@ AST는 일반화된 형식이 있는 게 아니다. 필요에 따라 구조를 �
 }
 ```
 
-#### 3. 변형
-변형 함수를 통해 컴파일러 결과물의 도메인에 유사한 AST로 변환한다.
+#### 3. 가상 코드 생성
+파싱의 출력인 AST를 분석해서 대상 코드와 유사한 가상 코드를 생성한다.
 
 ##### Input
 ```js
@@ -101,56 +101,61 @@ AST는 일반화된 형식이 있는 게 아니다. 필요에 따라 구조를 �
 ```
 ##### Output
 ```js
-{
-  tag: 'h1',
-  children: [
-    {type: 'TemplateBinding', value: 'text'}
-  ]
-}
+[
+  'element([',
+  `startElement('div')`,
+  `template('text')`,
+  `text(' Text')`,
+  `endElement('div')`,
+  '])'
+]
 ```
 
-#### 4. 코드 생성
-컴파일러의 마지막 단계이다. 생성 함수를 통해 이전 단계에서 만든 AST 기반으로 결과물을 만들어낸다.
+#### 4. 대상 코드 생성
+컴파일러의 마지막 단계이다. 가상 코드를 기반으로 대상 코드를 생성한다. 
 
 ##### Input
 ```js
-{
-  tag: 'h1',
-  children: [
-    {type: 'TemplateBinding', value: 'text'}
-  ]
-}
+[
+  'element([',
+  `startElement('div')`,
+  `template('text')`,
+  `text(' Text')`,
+  `endElement('div')`,
+  '])'
+]
 ```
 ##### Output
 ```js
-(state) => createElement('h1', state.text)
+(state) => create.element([
+  create.startElement('div'),
+  create.template(state.text),
+  create.text(' Text'),
+  create.endElement('div'),
+]),
 ```
 
-#### 5. 함수 병합
-렉서 함수, 파서 함수, 변경 함수, 생성 함수들을 병합하면 컴파일러가 된다.
-
-```js
-export const compiler = (code) => {
-  const tokens = lexer(code);
-  const ast = parser(tokens);
-  const htmlAst = transformer(ast);
-  const renderFn = generator(htmlAst);
-  return renderFn;
-};
-```
-
-### 탬플릿 바인딩
-Vue의 컴파일러 결과는 탬플릿 리터럴로 만들어진다. 그리고 결과 실행 시 `new Function`을 사용한다.
+### 컴파일러 실행 결과
+> Vue의 컴파일러 결과는 탬플릿 리터럴로 만들어진다. 그리고 결과 실행 시 `new Function`을 사용한다.
 Vue 코드는 [여기](https://github.com/vuejs/vue-next/blob/e954ba21f04f0ef848c687233fcb849d75e4153f/packages/vue/src/index.ts#L67)에서 볼 수 있다.
 
-<<< @/docs/src/vue2-compile-1/template-literal-function.js
+```js
+const template = `<div>{{hello}} {{world}}</div>`;
+const render = compiler(template);
+
+const state = {
+  hello: 'Hello',
+  world: 'World!'
+};
+console.log(render(state));
+// <div>Hello World!</div>
+```
 
 
 ## 컴파일러 만들기
 ```html
 <h1>{{text}}</h1>
 ```
-형태의 탬플릿을 컴파일하는 컴파일러이다. 이 형태만 동작한다.
 
 ### 1. 토큰화
 <<< @/docs/src/vue2-compile-1/lexer.js
@@ -163,4 +168,4 @@ Vue 코드는 [여기](https://github.com/vuejs/vue-next/blob/e954ba21f04f0ef848
 ### 5. 함수 병합
 <<< @/docs/src/vue2-compile-1/compiler.js
 ### 탬플릿 바인딩 확인
-<<< @/docs/src/vue2-compile-1/template-binding.js
+

@@ -6,10 +6,3 @@ export const compiler = (originCode) => {
   const renderFn = codeGenerator(ast);
   return renderFn;
 };
-
-// const input = `<div>
-//   {{text}} Text
-//   <div>{{text}}</div>
-// </div>`;
-// const output = compiler(input);
-// console.log(output({ text: 'Text' }));
