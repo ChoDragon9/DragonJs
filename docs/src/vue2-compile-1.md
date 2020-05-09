@@ -79,11 +79,24 @@ AST는 일반화된 형식이 있는 게 아니다. 필요에 따라 구조를 �
 ##### Input
 ```js
 {
-  type: 'MarkupLanguage',
-  value: 'h1',
-  children: [
-    {type: 'Template', value: '{{text}}'}
-  ]
+  type: 'Tag',
+  body: [
+    { type: 'Symbol', value: '<' },
+    { type: 'Keyword', value: 'div' },
+    { type: 'Symbol', value: '>' },
+    {
+      type: 'Template',
+      body: [
+        { type: 'Symbol', value: '{{' },
+        { type: 'Keyword', value: 'text' },
+        { type: 'Symbol', value: '}}' }
+      ],
+    },
+    { type: 'StringConstant', value: ' Text' },
+    { type: 'Symbol', value: '</' },
+    { type: 'Keyword', value: 'div' },
+    { type: 'Symbol', value: '>' }
+  ],
 }
 ```
 ##### Output

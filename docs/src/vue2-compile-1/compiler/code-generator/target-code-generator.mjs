@@ -41,30 +41,3 @@ export const targetCodeGenerator = virtualCode => {
     `return ${targetCode}`
   )(create, state);
 };
-
-// const input = [
-//   'element([',
-//   "startElement('div')",
-//   "text('Text')",
-//   "template('text')",
-//   'element([',
-//   "startElement('div')",
-//   "text('Text')",
-//   "endElement('div')",
-//   '])',
-//   "endElement('div')",
-//   '])'
-// ];
-// const output = targetCodeGenerator(input);
-// console.log(output)
-// (state) => create.element([
-//   create.startElement('div'),
-//   create.text('Text'),
-//   create.template(state.text),
-//   create.element([
-//     create.startElement('div'),
-//     create.text('Text'),
-//     create.endElement('div'),
-//   ]),
-//   create.endElement('div'),
-// ]),
