@@ -8,7 +8,7 @@ export const parser = tokens => {
     parent: null
   };
   const context = {
-    tokens,
+    tokens: [...tokens],
     currentAst: ast
   };
   const loopGuard = useLoopGuard();
@@ -47,7 +47,9 @@ const parseTag = context => {
 };
 const parseEndTag = context => {
   pushTag(context);
-  context.currentAst = context.currentAst.parent
+  const parent = context.currentAst.parent
+  context.currentAst.parent = null
+  context.currentAst = parent
 };
 const parseStartTag = context => {
   if (context.currentAst.type === '') {
@@ -71,7 +73,6 @@ const parseTemplate = context => {
       { type: SYNTAX_TYPE.KEYWORD, value: context.tokens.shift() },
       { type: SYNTAX_TYPE.SYMBOL, value: context.tokens.shift() },
     ],
-    parent: context.currentAst
   };
   context.currentAst.body.push(newAst);
 };

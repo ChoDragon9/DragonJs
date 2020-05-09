@@ -57,9 +57,16 @@ const template = `<div>
 </div>`;
 
 const tokens = tokenizer(template);
+addResult('tokenizer', tokens);
+
 const ast = parser(tokens);
+addResult('parser', ast);
+
 const virtualCode = virtualCodeGenerator(ast);
+addResult('virtualCodeGenerator', virtualCode);
+
 const render = targetCodeGenerator(virtualCode);
+addResult('targetCodeGenerator', render);
 
 const state = {
   hello: 'Hello',
@@ -67,10 +74,6 @@ const state = {
   text: 'My Text'
 };
 
-addResult('tokenizer', tokens);
-addResult('parser', ast);
-addResult('virtualCodeGenerator', virtualCode);
-addResult('targetCodeGenerator', render);
 addResult('state', state);
 addResult('template', template);
 addResult('result', render(state));
