@@ -1,17 +1,16 @@
 import {compiler} from './compiler/compiler.js';
 
 const template = `<div>
-  {{text}} Text
+  {{hello}} {{world}}
   <div>{{text}}</div>
 </div>`;
 const render = compiler(template);
 
-const renderTemplate = (event) => {
-  document
-    .querySelector('#template')
-    .innerHTML = render({text: event.target.value})
-}
-
+const state = {
+  hello: 'Hello',
+  world: 'World!',
+  text: 'My Text'
+};
 document
-  .querySelector('input')
-  .oninput = renderTemplate
+  .querySelector('#template')
+  .innerHTML = render(state)

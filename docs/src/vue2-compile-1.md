@@ -151,21 +151,56 @@ console.log(render(state));
 // <div>Hello World!</div>
 ```
 
-
 ## 컴파일러 만들기
+아래에 정의된 코드들은 [여기](https://github.com/ChoDragon9/dragonjs/tree/master/src/vue2-compile-1)에서 확인할 수 있다.
+
+### 1. 문법 및 공통 코드
+##### 📄 helper.js
+<<< @/docs/src/vue2-compile-1/compiler/helper.js
+
+##### 📄 syntax.js
+<<< @/docs/src/vue2-compile-1/compiler/syntax.js
+
+### 2. 컴파일러
+##### 📄 compiler.js
+<<< @/docs/src/vue2-compile-1/compiler/compiler.js
+
+### 3. 문법 분석기
+##### 📄 /syntax-analyzer/index.js
+<<< @/docs/src/vue2-compile-1/compiler/syntax-analyzer/index.js
+
+##### 📄 /syntax-analyzer/tokenizer.js
+<<< @/docs/src/vue2-compile-1/compiler/syntax-analyzer/tokenizer.js
+
+##### 📄 /syntax-analyzer/parser.js
+<<< @/docs/src/vue2-compile-1/compiler/syntax-analyzer/parser.js
+
+### 4. 코드 생성기
+##### 📄 /code-generator/index.js
+<<< @/docs/src/vue2-compile-1/compiler/code-generator/index.js
+
+##### 📄 /code-generator/virtual-code-generator.js
+<<< @/docs/src/vue2-compile-1/compiler/code-generator/virtual-code-generator.js
+
+##### 📄 /code-generator/target-code-generator.js
+<<< @/docs/src/vue2-compile-1/compiler/code-generator/target-code-generator.js
+
+##### 📄 /code-generator/virtual-code-syntax.js
+<<< @/docs/src/vue2-compile-1/compiler/code-generator/virtual-code-syntax.js
+
+### 5. 탬플릿 바인딩
+##### 📄 index.html
+<<< @/docs/src/vue2-compile-1/index.html
+
+##### 📄 template-binding.js
+<<< @/docs/src/vue2-compile-1/template-binding.js
+
+##### 💻 실행 결과
 ```html
-<h1>{{text}}</h1>
+<div id="template">
+  <div>
+    Hello World!
+    <div>My Text</div>
+  </div>
+</div>
 ```
-
-### 1. 토큰화
-<<< @/docs/src/vue2-compile-1/lexer.js
-### 2. 파싱
-<<< @/docs/src/vue2-compile-1/parser.js
-### 3. 변형
-<<< @/docs/src/vue2-compile-1/transformer.js
-### 4. 코드 생성
-<<< @/docs/src/vue2-compile-1/generator.js
-### 5. 함수 병합
-<<< @/docs/src/vue2-compile-1/compiler.js
-### 탬플릿 바인딩 확인
-
