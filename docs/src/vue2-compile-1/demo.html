@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style type="text/css">
+    pre {border: 1px solid #ddd; }
+  </style>
+</head>
+<body>
+<div>
+  <h3>Template</h3>
+  <pre id="template"></pre>
+</div>
+<div>
+  <h3>state</h3>
+  <pre id="state"></pre>
+</div>
+<div>
+  <h3>Result</h3>
+  <pre id="result"></pre>
+</div>
+<div>
+  <h3>Tokenizer</h3>
+  <pre id="tokenizer"></pre>
+</div>
+<div>
+  <h3>Parser</h3>
+  <pre id="parser"></pre>
+</div>
+<div>
+  <h3>Virtual Code Generator</h3>
+  <pre id="virtualCodeGenerator"></pre>
+</div>
+<div>
+  <h3>Target Code Generator</h3>
+  <pre id="targetCodeGenerator"></pre>
+</div>
+
+<script type="module">
+import {tokenizer} from './compiler/syntax-analyzer/tokenizer.js';
+import {parser} from './compiler/syntax-analyzer/parser.js';
+import {virtualCodeGenerator} from './compiler/code-generator/virtual-code-generator.js';
+import {targetCodeGenerator} from './compiler/code-generator/target-code-generator.js';
+
+const addResult = (id, result) => {
+  document
+    .querySelector(`#${id}`)
+    .textContent =
+      typeof result === 'string' || typeof result === 'function'
+        ? result
+        : JSON.stringify(result, null, 2)
+};
+
+const template = `<div>
+{{hello}} {{world}}
+<div>{{text}}</div>
+</div>`;
+
+const tokens = tokenizer(template);
+const ast = parser(tokens);
+const virtualCode = virtualCodeGenerator(ast);
+const render = targetCodeGenerator(virtualCode);
+
+const state = {
+  hello: 'Hello',
+  world: 'World!',
+  text: 'My Text'
+};
+
+addResult('tokenizer', tokens);
+addResult('parser', ast);
+addResult('virtualCodeGenerator', virtualCode);
+addResult('targetCodeGenerator', render);
+addResult('state', state);
+addResult('template', template);
+addResult('result', render(state));
+
+</script>
+
+</body>
+</html>
