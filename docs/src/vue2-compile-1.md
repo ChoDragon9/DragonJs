@@ -60,7 +60,7 @@ AST는 일반화된 형식이 있는 게 아니다. 필요에 따라 구조를 �
     {
       type: 'Template',
       body: [
-        { type: 'Symbol', value: '\{{' },
+        { type: 'Symbol', value: '\{\{' },
         { type: 'Keyword', value: 'text' },
         { type: 'Symbol', value: '}}' }
       ],
@@ -87,7 +87,7 @@ AST는 일반화된 형식이 있는 게 아니다. 필요에 따라 구조를 �
     {
       type: 'Template',
       body: [
-        { type: 'Symbol', value: '\{{' },
+        { type: 'Symbol', value: '\{\{' },
         { type: 'Keyword', value: 'text' },
         { type: 'Symbol', value: '}}' }
       ],
