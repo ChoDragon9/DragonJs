@@ -8,7 +8,7 @@
     <meta name="generator" content="VuePress 1.3.1">
     <meta name="google-site-verification" content="">
     
-    <link rel="preload" href="/dragonjs/assets/css/0.styles.dd6d6f17.css" as="style"><link rel="preload" href="/dragonjs/assets/js/app.b88627fa.js" as="script"><link rel="preload" href="/dragonjs/assets/js/2.0e0c37cd.js" as="script"><link rel="preload" href="/dragonjs/assets/js/10.abf3c0b0.js" as="script"><link rel="prefetch" href="/dragonjs/assets/js/11.bc9b1df0.js"><link rel="prefetch" href="/dragonjs/assets/js/12.807df48d.js"><link rel="prefetch" href="/dragonjs/assets/js/13.5e00fce9.js"><link rel="prefetch" href="/dragonjs/assets/js/3.c0e7618d.js"><link rel="prefetch" href="/dragonjs/assets/js/4.ed6ff8f0.js"><link rel="prefetch" href="/dragonjs/assets/js/5.8bf7c9de.js"><link rel="prefetch" href="/dragonjs/assets/js/6.747c3a4e.js"><link rel="prefetch" href="/dragonjs/assets/js/7.7eba2f5c.js"><link rel="prefetch" href="/dragonjs/assets/js/8.0bad2467.js"><link rel="prefetch" href="/dragonjs/assets/js/9.d1b7e60f.js">
+    <link rel="preload" href="/dragonjs/assets/css/0.styles.dd6d6f17.css" as="style"><link rel="preload" href="/dragonjs/assets/js/app.b19d4932.js" as="script"><link rel="preload" href="/dragonjs/assets/js/2.0e0c37cd.js" as="script"><link rel="preload" href="/dragonjs/assets/js/10.8678cb7b.js" as="script"><link rel="prefetch" href="/dragonjs/assets/js/11.bc9b1df0.js"><link rel="prefetch" href="/dragonjs/assets/js/12.807df48d.js"><link rel="prefetch" href="/dragonjs/assets/js/13.5e00fce9.js"><link rel="prefetch" href="/dragonjs/assets/js/3.c0e7618d.js"><link rel="prefetch" href="/dragonjs/assets/js/4.ed6ff8f0.js"><link rel="prefetch" href="/dragonjs/assets/js/5.8bf7c9de.js"><link rel="prefetch" href="/dragonjs/assets/js/6.0dd1346a.js"><link rel="prefetch" href="/dragonjs/assets/js/7.030a3f3b.js"><link rel="prefetch" href="/dragonjs/assets/js/8.0bad2467.js"><link rel="prefetch" href="/dragonjs/assets/js/9.d1b7e60f.js">
     <link rel="stylesheet" href="/dragonjs/assets/css/0.styles.dd6d6f17.css">
   </head>
   <body>
@@ -40,7 +40,55 @@
   설계
 </a></li><li class="dropdown-item"><!----> <a href="/dragonjs/src/presentation/todo/" class="nav-link router-link-exact-active router-link-active">
   TODO
-</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>TODO</span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><ul><li>html 함수 만들기</li> <li>defineComponent 함수 만들기</li> <li>Observer 만들기</li> <li>Markdown 파서 만들기</li> <li>HTML 파서 만들기</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
-    <script src="/dragonjs/assets/js/app.b88627fa.js" defer></script><script src="/dragonjs/assets/js/2.0e0c37cd.js" defer></script><script src="/dragonjs/assets/js/10.abf3c0b0.js" defer></script>
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>TODO</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dragonjs/src/presentation/todo/#컴포넌트" class="sidebar-link">컴포넌트</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/dragonjs/src/presentation/todo/#스토어" class="sidebar-link">스토어</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="컴포넌트"><a href="#컴포넌트" class="header-anchor">#</a> 컴포넌트</h2> <ul><li>[O] html 함수 만들기</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// interface HTMLOptions {</span>
+<span class="token comment">//   events?: object</span>
+<span class="token comment">//   attrs?: object</span>
+<span class="token comment">// }</span>
+<span class="token comment">//</span>
+<span class="token comment">// type html = (</span>
+<span class="token comment">//   tagName: string,</span>
+<span class="token comment">//   children: string | HTMLElement[],</span>
+<span class="token comment">//   options?: HTMLOptions</span>
+<span class="token comment">// ) =&gt; HTMLElement</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">html</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">tagName<span class="token punctuation">,</span> children<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> elem <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>tagName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">appendChild</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> children<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">appendOptions</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> elem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">appendChild</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">elem<span class="token punctuation">,</span> children</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>children<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    children<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">child</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      elem<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    elem<span class="token punctuation">.</span>textContent <span class="token operator">=</span> children
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">appendOptions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">elem<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>attrs <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> events <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token operator">=</span> options<span class="token punctuation">;</span>
+
+    <span class="token function">forEach</span><span class="token punctuation">(</span>attrs<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>key<span class="token punctuation">,</span> value<span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      elem<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">forEach</span><span class="token punctuation">(</span>events<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>key<span class="token punctuation">,</span> fn<span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      elem<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> fn<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">forEach</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">obj<span class="token punctuation">,</span> fn</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  Object
+    <span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li>[O] defineComponent 함수 만들기</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// type defineComponent = (ast?: AST) =&gt; HTMLElement | null</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">defineComponent</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">renderFn</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> renderFn<span class="token punctuation">;</span>
+</code></pre></div><h2 id="스토어"><a href="#스토어" class="header-anchor">#</a> 스토어</h2> <ul><li>[X] Observer 만들기</li> <li>[X] Markdown 파서 만들기</li> <li>[X] HTML 파서 만들기</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/dragonjs/assets/js/app.b19d4932.js" defer></script><script src="/dragonjs/assets/js/2.0e0c37cd.js" defer></script><script src="/dragonjs/assets/js/10.8678cb7b.js" defer></script>
   </body>
 </html>
