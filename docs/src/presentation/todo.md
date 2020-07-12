@@ -12,7 +12,13 @@ sidebar: auto
 
 <<< @/docs/src/presentation/src/core/defineComponent.js
 
+<<< @/docs/src/presentation/src/example/component/ButtonComponent.js
+
 ## 스토어
-- [X] Observer 만들기
+- [O] Observer 만들기
+
+<<< @/docs/src/presentation/src/core/observer.js
+<<< @/docs/src/presentation/src/example/observer.js
+
 - [X] Markdown 파서 만들기
 - [X] HTML 파서 만들기
