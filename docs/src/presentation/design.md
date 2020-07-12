@@ -56,24 +56,97 @@ Store.GetterInterface('ast', (newAst) => {})
 ```
 
 ### 컴포넌트
+```ts
+interface HTMLOptions {
+  events?: object
+  attrs?: object
+}
+
+type defineComponent = (ast?: AST) => HTMLElement | null
+type html = (
+  astType: ASTType,
+  children: string | HTMLElement,
+  options?: HTMLOptions
+) => HTMLElement
+```
+
+#### 텍스트
 ```js
 export default defineComponent((ast) => {
-  return ast.type === 'h1'
-    ? `<h1>${ast.value}</h1>`
-    : '';
+  return ast.type === 'text'
+    ? html('p', ast.value)
+    : null;
 })
 ```
+
+#### 자식 요소
 ```js
 const renderListItem = (ast) => {
-  return ast.type!=='li' ? '' : `<li>${ast.value}</li>`;
+  return ast.type === 'li'
+    ? html('li', ast.value)
+    : null;
 };
 const render = (ast) => {
-  const listItem = ast.children 
-    ? ast.children.map(renderListItem).join('')
-    : '';
+  const listItem = ast.children
+    ? ast.children.map(renderListItem)
+    : []; 
   return ast.type === 'ul'
-    ? `<ul>${listItem}</ul>`
-    : '';
+    ? html('ul', listItem)
+    : null;
+};
+
+export default defineComponent(render);
+```
+
+#### 이벤트 할당
+```js
+export default defineComponent(() => {
+  const events = {
+    click: () => console.log('onClick')
+  };
+  const attrs = {
+    type: 'button'
+  };
+  return html('button', '버튼', {events, attrs})
+})
+```
+
+```js
+export default defineComponent(() => {
+  const events = {
+    change: (event) => console.log('onChange')
+  };
+  return html('textarea', '', {events})
+})
+```
+
+```js
+export default defineComponent((ast) => {
+  const event = {
+    change: () => console.log('onChange')
+  };
+  return ast.type === 'text'
+    ? html('p', ast.value, event)
+    : null;
+})
+```
+
+```js
+const renderListItem = (ast) => {
+  const event = {
+    click: () => console.log('onClick')
+  };
+  return ast.type === 'li'
+    ? html('li', ast.value, event)
+    : null;
+};
+const render = (ast) => {
+  const listItem = ast.children
+    ? ast.children.map(renderListItem)
+    : []; 
+  return ast.type === 'ul'
+    ? html('ul', listItem)
+    : null;
 };
 
 export default defineComponent(render);
