@@ -26,6 +26,7 @@ module.exports = {
         text: 'Presentation',
         items: [
           {text: '설계', link: '/src/presentation/design/'},
+          {text: 'TODO', link: '/src/presentation/todo/'},
         ]
       },
     ]
