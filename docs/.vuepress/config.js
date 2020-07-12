@@ -26,7 +26,7 @@ module.exports = {
         text: 'Presentation',
         items: [
           {text: '설계', link: '/src/presentation/design/'},
-          {text: 'TODO', link: '/src/presentation/todo/'},
+          {text: '작은 기능 만들기', link: '/src/presentation/todo/'},
         ]
       },
     ]

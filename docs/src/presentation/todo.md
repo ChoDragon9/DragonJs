@@ -1,5 +1,5 @@
 ---
-title: TODO
+title: 작은 기능 만들기
 sidebar: auto
 ---
 
