@@ -34,19 +34,36 @@ sidebar: auto
 type HeadingType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 type ImageType = 'img'
 type TextType = 'text'
+
+type ContentASTType = HeadingType | ImageType | TextType  
+
+interface ContentAST {
+  type: ContentASTType
+  value: string
+}
+
 type ListItemType = 'li'
-
-type ASTType = HeadingType | ImageType | TextType | ListItemType  
-
-interface AST {
-  type: ASTType
+interface ListItemAST {
+  type: ListItemType
   value: string
 }
 
 type ListType = 'ul' | 'ol'
 interface ListAST {
   type: ListType
-  children: AST[]
+  children: ListItemAST[]
+}
+
+type SectionType = 'section'
+type SectionChild = ContentAST | ListAST
+interface SectionAST {
+  type: SectionType
+  children: SectionChild[]
+}
+
+interface AST {
+  type: 'main'
+  children: SectionAST[]
 }
 ```
 
@@ -57,14 +74,15 @@ Store.GetterInterface('ast', (newAst) => {})
 
 ### 컴포넌트
 ```ts
+type defineComponent = (ast?: AST) => HTMLElement | null
+
 interface HTMLOptions {
   events?: object
   attrs?: object
 }
 
-type defineComponent = (ast?: AST) => HTMLElement | null
 type html = (
-  astType: ASTType,
+  tagName: string,
   children: string | HTMLElement,
   options?: HTMLOptions
 ) => HTMLElement
