@@ -22,6 +22,12 @@ module.exports = {
         text: 'Axios',
         link: '/src/axios/'
       },
+      {
+        text: 'Presentation',
+        items: [
+          {text: '설계', link: '/src/presentation/design/'},
+        ]
+      },
     ]
   },
   head: [
