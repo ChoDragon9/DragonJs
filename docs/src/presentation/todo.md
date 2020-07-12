@@ -4,21 +4,32 @@ sidebar: auto
 ---
 
 ## 컴포넌트
-- [O] html 함수 만들기
+### html 함수 만들기
 
 <<< @/docs/src/presentation/src/core/html.js
 
-- [O] defineComponent 함수 만들기
+### defineComponent 함수 만들기
 
 <<< @/docs/src/presentation/src/core/defineComponent.js
+
+#### 컴포넌트 사용예
 
 <<< @/docs/src/presentation/src/example/component/ButtonComponent.js
 
 ## 스토어
-- [O] Observer 만들기
-
+### Observer 만들기
 <<< @/docs/src/presentation/src/core/observer.js
+
+#### Observer 사용예
 <<< @/docs/src/presentation/src/example/observer.js
 
-- [X] Markdown 파서 만들기
-- [X] HTML 파서 만들기
+### Store 만들기
+
+<<< @/docs/src/presentation/src/core/store.js
+
+#### Store 사용예
+<<< @/docs/src/presentation/src/example/store/store.js
+<<< @/docs/src/presentation/src/example/store.js
+
+### [X] Markdown 파서 만들기
+### [X] HTML 파서 만들기
