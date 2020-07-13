@@ -11,6 +11,10 @@ module.exports = {
         ]
       },
       {
+        text: 'Vuex',
+        link: '/src/vuex/'
+      },
+      {
         text: 'Moment.js',
         link: '/src/momentjs/'
       },
