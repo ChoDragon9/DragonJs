@@ -1,4 +1,6 @@
-import {createObserver} from './observer.js';
+import {createObserver} from './utils/observer.js';
+import {ref} from './utils/ref.js';
+import {debounce} from './utils/debounce.js';
 
 export const atom = (state) => {
   const KEY = 'atom';
@@ -26,15 +28,4 @@ export const observeAtoms = (atomsObj, subscriber) => {
     .forEach((atom) => {
       atom.observe(debouncedSubscriber)
     })
-};
-
-const ref = (value) => ({value});
-const debounce = (callback, ms = 100) => {
-  let timer;
-  return function(...args) {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      callback(...args)
-    }, ms)
-  }
 };

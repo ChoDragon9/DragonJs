@@ -9,6 +9,8 @@
 //   options?: HTMLOptions
 // ) => HTMLElement
 
+import {forEach} from './utils/forEach.js';
+
 export const html = (tagName, children, options) => {
   const elem = document.createElement(tagName);
   appendChild(elem, children);
@@ -39,10 +41,4 @@ const appendOptions = (elem, options) => {
       elem.addEventListener(key, fn)
     });
   }
-};
-
-const forEach = (obj, fn) => {
-  Object
-    .entries(obj)
-    .forEach(fn)
 };
