@@ -15,6 +15,13 @@ module.exports = {
         link: '/src/vuex/'
       },
       {
+        text: 'Component Architecture',
+        items: [
+          {text: 'Vuex 버전', link: '/src/component/vuex-feature/'},
+          {text: 'Recoil 버전', link: '/src/component/recoil-feature/'},
+        ]
+      },
+      {
         text: 'Moment.js',
         link: '/src/momentjs/'
       },
@@ -30,8 +37,6 @@ module.exports = {
         text: 'Presentation',
         items: [
           {text: '설계', link: '/src/presentation/design/'},
-          {text: 'Vuex 버전', link: '/src/presentation/vuex-feature/'},
-          {text: 'Recoil 버전', link: '/src/presentation/recoil-feature/'},
         ]
       },
     ]

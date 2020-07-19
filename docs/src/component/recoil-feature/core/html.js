@@ -19,7 +19,11 @@ export const html = (tagName, children, options) => {
 const appendChild = (elem, children) => {
   if (Array.isArray(children)) {
     children.forEach((child) => {
-      elem.appendChild(child)
+      elem.appendChild(
+        typeof child === 'function' ?
+          child() :
+          child
+      )
     })
   } else {
     elem.textContent = children
