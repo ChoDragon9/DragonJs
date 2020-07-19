@@ -1,14 +1,17 @@
+import {observeAtoms} from './atom.js';
+
 export const defineComponent = (atomsOrRenderFn, renderFn) => {
   const component = parentNode => {
     if (typeof atomsOrRenderFn === 'function') {
       parentNode.appendChild(atomsOrRenderFn());
       return;
     }
-    let dom = renderFn();
+
+    let dom = renderFn(atomsOrRenderFn);
     parentNode.appendChild(dom);
 
-    observe(atoms, () => {
-      const newDom = renderFn();
+    observeAtoms(atomsOrRenderFn, () => {
+      const newDom = renderFn(atomsOrRenderFn);
       parentNode.replaceChild(newDom, dom);
       dom = newDom
     });
