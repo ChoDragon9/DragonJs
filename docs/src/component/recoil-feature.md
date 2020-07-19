@@ -3,30 +3,48 @@ title: Recoil 버전
 sidebar: auto
 ---
 
+## Atom
+### 유틸
+#### Observer
+<<< @/docs/src/component/recoil-feature/core/utils/observer.js
+
+#### Ref
+<<< @/docs/src/component/recoil-feature/core/utils/ref.js
+
+#### Debounce
+<<< @/docs/src/component/recoil-feature/core/utils/debounce.js
+
+### atom
+<<< @/docs/src/component/recoil-feature/core/atom.js
+
 ## 컴포넌트
-### html 함수 만들기
+### forEach
+<<< @/docs/src/component/recoil-feature/core/utils/forEach.js
 
-<<< @/docs/src/component/recoil-feature/core/html.js
-
-### defineComponent 함수 만들기
-
+### defineComponent
 <<< @/docs/src/component/recoil-feature/core/defineComponent.js
 
-#### 컴포넌트 사용예
+### html
+<<< @/docs/src/component/recoil-feature/core/html.js
 
-<<< @/docs/src/component/recoil-feature/example/component/ButtonComponent.js
+### mount
+<<< @/docs/src/component/recoil-feature/core/mount.js
 
-## 스토어
-### Observer 만들기
-<<< @/docs/src/component/recoil-feature/core/observer.js
+## 컴포넌트 사용 예제
+### 마운트
+<<< @/docs/src/component/recoil-feature/example/advanced.js
 
-#### Observer 사용예
-<<< @/docs/src/component/recoil-feature/example/observer.js
+### Atom
+<<< @/docs/src/component/recoil-feature/example/advanced/inputAtom.js
 
-### Store 만들기
+### MainComponent
+<<< @/docs/src/component/recoil-feature/example/advanced/MainComponent.js
 
-<<< @/docs/src/component/recoil-feature/core/store.js
+### TextComponent
+<<< @/docs/src/component/recoil-feature/example/advanced/TextComponent.js
 
-#### Store 사용예
-<<< @/docs/src/component/recoil-feature/example/store/store.js
-<<< @/docs/src/component/recoil-feature/example/store.js
+### InputComponent
+<<< @/docs/src/component/recoil-feature/example/advanced/InputComponent.js
+
+### 데모
+- []()

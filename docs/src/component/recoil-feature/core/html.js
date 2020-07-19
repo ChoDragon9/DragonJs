@@ -1,14 +1,3 @@
-// interface HTMLOptions {
-//   events?: object
-//   attrs?: object
-// }
-//
-// type html = (
-//   tagName: string,
-//   children: string | HTMLElement[],
-//   options?: HTMLOptions
-// ) => HTMLElement
-
 import {forEach} from './utils/forEach.js';
 
 export const html = (tagName, children, options) => {
