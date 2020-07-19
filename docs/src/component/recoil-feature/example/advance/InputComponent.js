@@ -1,4 +1,4 @@
-import {defineComponent} from '../core/defineComponent';
+import {defineComponent} from '../../core/defineComponent';
 
 export const InputComponent = defineComponent({atom}, ({atom}) => {
   const [input, setInput] = useAtom(atom);
