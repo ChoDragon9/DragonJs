@@ -30,7 +30,8 @@ module.exports = {
         text: 'Presentation',
         items: [
           {text: '설계', link: '/src/presentation/design/'},
-          {text: '작은 기능 만들기', link: '/src/presentation/todo/'},
+          {text: 'Vuex 버전', link: '/src/presentation/vuex-feature/'},
+          {text: 'Recoil 버전', link: '/src/presentation/recoil-feature/'},
         ]
       },
     ]
