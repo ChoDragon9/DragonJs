@@ -3,7 +3,7 @@ import {useAtom} from '../../core/atom.js';
 import {html} from '../../core/html.js';
 import {inputAtom} from './inputAtom.js';
 
-export const InputComponent = defineComponent({inputAtom}, ({inputAtom}) => {
+export const InputComponent = defineComponent(() => {
   const [input, setInput] = useAtom(inputAtom);
 
   return html('input', [], {
