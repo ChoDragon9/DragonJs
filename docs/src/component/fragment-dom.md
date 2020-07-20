@@ -26,4 +26,9 @@ Attribute는 하나라도 변경되면 모두 변경한다.
 ### Node와 Attribute 우선순위?
 Attribute 변경은 신규 추가/삭제에 미발생한다. 기존 Node에만 Attribute를 변경한다.
 
-> 개발중 
+## 코어
+### /core/render.js
+<<< @/docs/src/component/fragment-dom/core/render.js
+
+#### 사용예
+<<< @/docs/src/component/fragment-dom/step1.js
