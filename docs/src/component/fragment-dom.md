@@ -7,7 +7,9 @@ Virtual DOM과 유사한 역할을 하며, Document**Fragment**를 사용한 Vir
 
 ## Interface
 ```ts
+// Component 생성 시, 작성하는 함수
 type render = (state) => FragmentDOM
+
 type patch = (FragmentDOM, AutualDOM) => void
 
 type isNodeChanged = (FragmentDOM, AutualDOM) => boolean
