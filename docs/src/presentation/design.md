@@ -3,6 +3,8 @@ title: 설계
 sidebar: auto
 ---
 
+> 기존 [Vuex 버전](/src/component/vuex-feature/) 형태에서 [Recoil 버전](/src/component/recoil-feature/)으로 변경을 위한 개발중
+
 ## 설계 그림
 ![설계 그림](./presentation-design.jpeg)
 
