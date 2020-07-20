@@ -1,4 +1,4 @@
-import {html} from './core/render.js';
+import {fragment, html} from './core/render.js';
 
 const render = (list) => {
   const options = {
@@ -10,7 +10,13 @@ const render = (list) => {
     }
   };
   const children = list.map(text => html('li', text, options));
-  return html('ul', children);
+  return fragment([
+    html('ul', children),
+    html('p', 'Text'),
+    html('input', [], {attrs: {type: 'text'}}),
+    html('input', [], {attrs: {type: 'checkbox'}}),
+    html('input', [], {attrs: {type: 'radio'}})
+  ]);
 };
 
 const actualDOM = document.querySelector('#app');

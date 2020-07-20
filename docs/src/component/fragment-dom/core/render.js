@@ -1,3 +1,11 @@
+export const fragment = (nodes) => {
+  const fragment = new DocumentFragment();
+  nodes.forEach(node => {
+    fragment.appendChild(node);
+  });
+  return fragment;
+};
+
 export const html = (tagName, children, options) => {
   const elem = document.createElement(tagName);
   appendChild(elem, children);
