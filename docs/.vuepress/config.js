@@ -43,6 +43,7 @@ module.exports = {
         items: [
           {text: 'Vuex 버전', link: '/src/component/vuex-feature/'},
           {text: 'Recoil 버전', link: '/src/component/recoil-feature/'},
+          {text: 'Fragment DOM', link: '/src/component/fragment-dom/'},
         ]
       },
       {
