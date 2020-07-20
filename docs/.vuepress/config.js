@@ -4,15 +4,39 @@ module.exports = {
   themeConfig: {
     nav: [
       {
-        text: 'Vue 2',
+        text: 'Vue',
         items: [
-          {text: '2017.09 파트별 구현', link: '/src/vue2-part/'},
-          {text: '2019.08 컴포넌트 구현', link: '/src/vue2-component/'},
+          {
+            text: 'Vue 2',
+            items: [
+              {text: '2017.09 파트별 구현', link: '/src/vue2-part/'},
+              {text: '2019.08 컴포넌트 구현', link: '/src/vue2-component/'},
+            ]
+          },
+          {
+            text: 'Vuex',
+            items: [
+              {text: 'Vuex Store', link: '/src/vuex/'},
+            ]
+          },
         ]
       },
       {
-        text: 'Vuex',
-        link: '/src/vuex/'
+        text: 'Helper',
+        items: [
+          {
+            text: 'Moment.js',
+            link: '/src/momentjs/'
+          },
+          {
+            text: 'Immer.js',
+            link: '/src/immerjs/'
+          },
+          {
+            text: 'Axios',
+            link: '/src/axios/'
+          },
+        ]
       },
       {
         text: 'Component Architecture',
@@ -20,18 +44,6 @@ module.exports = {
           {text: 'Vuex 버전', link: '/src/component/vuex-feature/'},
           {text: 'Recoil 버전', link: '/src/component/recoil-feature/'},
         ]
-      },
-      {
-        text: 'Moment.js',
-        link: '/src/momentjs/'
-      },
-      {
-        text: 'Immer.js',
-        link: '/src/immerjs/'
-      },
-      {
-        text: 'Axios',
-        link: '/src/axios/'
       },
       {
         text: 'Presentation',
