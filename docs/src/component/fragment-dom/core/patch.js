@@ -28,14 +28,7 @@ const patchAfterMount = (fragmentDOM, actualDOM) => {
         actualDOM.replaceChild(fragment, actual);
       } else {
         if (isAttributeChanged(fragment, actual)) {
-          from(actual.attributes)
-            .forEach((attr) => {
-              actual.removeAttributeNode(attr);
-            });
-          from(fragment.attributes)
-            .forEach((attr) => {
-              actual.setAttributeNode(attr.cloneNode());
-            })
+          patchAttributes(fragment, actual);
         }
         patchAfterMount(fragment, actual)
       }
@@ -43,7 +36,10 @@ const patchAfterMount = (fragmentDOM, actualDOM) => {
 };
 
 const isNodeChanged = (fragmentDOM, actualDOM) => {
-  return fragmentDOM.nodeName !== actualDOM.nodeName
+  const fragmentDOMChildren = toChildren(fragmentDOM);
+  const actualDOMChildren = toChildren(actualDOM);
+  return fragmentDOM.nodeName !== actualDOM.nodeName ||
+    fragmentDOMChildren.length !== actualDOMChildren.length
 };
 const isNodeRemoved = (fragmentDOM) => fragmentDOM === undefined;
 const isTextChanged = (fragmentDOM, actualDOM) => {
@@ -67,6 +63,21 @@ const isAttributeChanged = (fragmentDOM, actualDOM) => {
     return fragAttr.nodeName !== actualAttr.nodeName ||
       fragAttr.textContent !== actualAttr.textContent
   })
+};
+
+const patchAttributes = (fragmentDOM, actualDOM) => {
+  from(actualDOM.attributes)
+    .forEach((attr) => {
+      actualDOM.removeAttributeNode(attr);
+    });
+  from(fragmentDOM.attributes)
+    .forEach((attr) => {
+      if (attr.nodeName === 'value') {
+        actualDOM.value = attr.textContent;
+      } else {
+        actualDOM.setAttributeNode(attr.cloneNode());
+      }
+    })
 };
 
 const isBeforeMount = (actualDOM) => toChildren(actualDOM).length === 0;

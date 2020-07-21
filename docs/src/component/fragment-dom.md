@@ -38,3 +38,7 @@ Attribute 변경은 신규 추가/삭제에 미발생한다. 기존 Node에만 A
 
 #### 사용예
 <<< @/docs/src/component/fragment-dom/step2.js
+
+## 사용케이스
+### 상태 변경 후 패치
+<<< @/docs/src/component/fragment-dom/step3.js
