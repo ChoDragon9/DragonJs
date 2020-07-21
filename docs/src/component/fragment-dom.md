@@ -32,3 +32,9 @@ Attribute 변경은 신규 추가/삭제에 미발생한다. 기존 Node에만 A
 
 #### 사용예
 <<< @/docs/src/component/fragment-dom/step1.js
+
+### /core/patch.js
+<<< @/docs/src/component/fragment-dom/core/patch.js
+
+#### 사용예
+<<< @/docs/src/component/fragment-dom/step2.js

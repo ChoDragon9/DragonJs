@@ -12,11 +12,15 @@ const render = (list) => {
   };
   const children = list.map(text => html('li', text, options));
   return fragment([
-    html('ul', children),
-    html('p', 'Text'),
+    html('ol', children),
+    html('p', 'Text Changed'),
     html('input', [], {attrs: {type: 'text'}}),
-    html('input', [], {attrs: {type: 'checkbox'}}),
-    html('input', [], {attrs: {type: 'radio'}})
+    html('input', [], {
+      attrs: {
+        type: 'checkbox',
+        class: 'checkbox-item'
+      }
+    }),
   ]);
 };
 

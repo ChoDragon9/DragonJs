@@ -6,6 +6,10 @@ export const patch = (fragmentDOM, actualDOM) => {
   }
 
   // 2. 업데이트 일 때
+  patchAfterMount(fragmentDOM, actualDOM);
+};
+
+const patchAfterMount = (fragmentDOM, actualDOM) => {
   const fragmentDOMChildren = toChildren(fragmentDOM);
   const actualDOMChildren = toChildren(actualDOM);
 
@@ -16,26 +20,61 @@ export const patch = (fragmentDOM, actualDOM) => {
       const fragment = fragmentDOMChildren[index];
       const actual = actualDOMChildren[index];
 
-      group('range each', () => {
-        console.dir(fragment);
-        console.dir(actual);
-      });
+      if(isNodeRemoved(fragment)) {
+        actualDOM.removeChild(actual);
+      } else if (isNodeChanged(fragment, actual)) {
+        actualDOM.replaceChild(fragment, actual);
+      } else if (isTextChanged(fragment, actual)) {
+        actualDOM.replaceChild(fragment, actual);
+      } else {
+        if (isAttributeChanged(fragment, actual)) {
+          from(actual.attributes)
+            .forEach((attr) => {
+              actual.removeAttributeNode(attr);
+            });
+          from(fragment.attributes)
+            .forEach((attr) => {
+              actual.setAttributeNode(attr.cloneNode());
+            })
+        }
+        patchAfterMount(fragment, actual)
+      }
     });
 };
 
+const isNodeChanged = (fragmentDOM, actualDOM) => {
+  return fragmentDOM.nodeName !== actualDOM.nodeName
+};
+const isNodeRemoved = (fragmentDOM) => fragmentDOM === undefined;
+const isTextChanged = (fragmentDOM, actualDOM) => {
+  const TEXT_NODE_NAME = '#text';
+  if (fragmentDOM.nodeName === TEXT_NODE_NAME && actualDOM.nodeName === TEXT_NODE_NAME) {
+    return fragmentDOM.textContent !== actualDOM.textContent
+  } else {
+    return false;
+  }
+};
+
+const isAttributeChanged = (fragmentDOM, actualDOM) => {
+  const {attributes: fragAttrs} = fragmentDOM;
+  const {attributes: actualAttrs} = actualDOM;
+
+  if (fragAttrs.length !== actualAttrs.length) {
+    return true;
+  }
+  return from(fragAttrs).some((fragAttr, index) => {
+    const actualAttr = actualAttrs[index];
+    return fragAttr.nodeName !== actualAttr.nodeName ||
+      fragAttr.textContent !== actualAttr.textContent
+  })
+};
+
 const isBeforeMount = (actualDOM) => toChildren(actualDOM).length === 0;
-const toChildren = node => node.children;
+const toChildren = node => from(node.childNodes);
 const appendChild = (fragmentDOM, actualDOM) => actualDOM.appendChild(fragmentDOM);
 
-
-/**
- * isNodeChanged: (fragmentDOM, actualDOM) => boolean
- * - textContent, nodeName 비교
- * isAttributeChanged: (fragmentDOM, actualDOM) => boolean
- * - attributes 비교
- */
-
-const range = (length) => Array.from({length}, (_, index) => index);
+const from = (...args) => Array.from(...args);
+const range = (length) => from({length}, (_, index) => index);
 
 const group = (name, fn) => {
   console.group(name);
