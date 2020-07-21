@@ -19,7 +19,7 @@ export const patch = (fragmentDOM, actualDOM) => {
       group('range each', () => {
         console.dir(fragment);
         console.dir(actual);
-      }, false);
+      });
     });
 };
 
@@ -27,9 +27,17 @@ const isBeforeMount = (actualDOM) => toChildren(actualDOM).length === 0;
 const toChildren = node => node.children;
 const appendChild = (fragmentDOM, actualDOM) => actualDOM.appendChild(fragmentDOM);
 
+
+/**
+ * isNodeChanged: (fragmentDOM, actualDOM) => boolean
+ * - textContent, nodeName 비교
+ * isAttributeChanged: (fragmentDOM, actualDOM) => boolean
+ * - attributes 비교
+ */
+
 const range = (length) => Array.from({length}, (_, index) => index);
 
-const group = (name, fn, toggle = false) => {
+const group = (name, fn) => {
   console.group(name);
   fn();
   console.groupEnd(name);
