@@ -2,6 +2,7 @@
 title: Fragment DOM
 sidebar: auto
 ---
+> 2020.07.22
 
 Virtual DOM과 유사한 역할을 하며, Document**Fragment**를 사용한 Virtual **DOM**으로 **Fragment DOM**으로 명명했다.
 

@@ -2,6 +2,7 @@
 title: Vuex 버전
 sidebar: auto
 ---
+> 2020.07.19
 
 ## 컴포넌트
 ### html 함수 만들기

@@ -44,6 +44,8 @@ module.exports = {
           {text: 'Vuex 버전', link: '/src/component/vuex-feature/'},
           {text: 'Recoil 버전', link: '/src/component/recoil-feature/'},
           {text: 'Fragment DOM', link: '/src/component/fragment-dom/'},
+          {text: 'Simple DOM', link: '/src/component/simple-dom/'},
+          {text: 'Simple Component', link: '/src/component/simple-component/'},
         ]
       },
       {
