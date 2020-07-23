@@ -28,8 +28,8 @@ const events = {
 };
 
 const fragmentDOM = parse(template);
-const autualDOM = document.querySelector('#app');
+const actualDOM = document.querySelector('#app');
 
 bindEvents(fragmentDOM, events);
-patch(fragmentDOM, autualDOM);
+patch(fragmentDOM, actualDOM);
 ```
