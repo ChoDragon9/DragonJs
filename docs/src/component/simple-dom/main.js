@@ -2,9 +2,9 @@ import {parse} from './core/parse.js';
 import {generate} from './core/generate.js';
 import {patch} from './core/fragment-dom-20200725/patch.js';
 
-const template = `{{text}}
+const template = (state) => `${state.text}
   <input type="text" @input="onInput">
-  <input type="text" :value="text">`;
+  <input type="text" value="${state.text}">`;
 
 const fns = {
   onInput: (event) => {
@@ -12,11 +12,10 @@ const fns = {
   }
 };
 
-const fragmentAST = parse(template);
-const render = generate(fragmentAST, fns);
 const actualDOM = document.querySelector('#app');
 const update = (state) => {
-  const fragmentDOM = render(state);
+  const fragmentAST = parse(template(state));
+  const fragmentDOM = generate(fragmentAST, fns);
   patch(fragmentDOM, actualDOM);
 };
 
