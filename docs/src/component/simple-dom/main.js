@@ -1,23 +1,33 @@
 import {parse} from './core/parse.js';
-import {patch} from '../fragment-dom/core/patch.js';
 import {generate} from './core/generate.js';
+import {patch} from './core/fragment-dom-20200722/patch.js';
 
 const template = `<div>
+  {{text}}
   <input type="text" @input="onInput">
-  <input type="text" @input="onInput">
+  <input type="text" :value="text">
 </div>`;
 
 const fns = {
   onInput: (event) => {
-    console.log(event.target.value)
+    state.setText(event.target.value);
   }
 };
 
-const state = {};
-
 const fragmentAST = parse(template);
 const render = generate(fragmentAST, fns);
-const fragmentDOM = render(state);
 const actualDOM = document.querySelector('#app');
+const update = (state) => {
+  const fragmentDOM = render(state);
+  patch(fragmentDOM, actualDOM);
+};
 
-patch(fragmentDOM, actualDOM);
+const state = {
+  text: '',
+  setText: (text) => {
+    state.text = text;
+    update(state);
+  }
+};
+
+update(state);

@@ -43,8 +43,7 @@ const isNodeChanged = (fragmentDOM, actualDOM) => {
 };
 const isNodeRemoved = (fragmentDOM) => fragmentDOM === undefined;
 const isTextChanged = (fragmentDOM, actualDOM) => {
-  const TEXT_NODE_NAME = '#text';
-  if (fragmentDOM.nodeName === TEXT_NODE_NAME && actualDOM.nodeName === TEXT_NODE_NAME) {
+  if (isTextNode(fragmentDOM, actualDOM)) {
     return fragmentDOM.textContent !== actualDOM.textContent
   } else {
     return false;
@@ -52,6 +51,10 @@ const isTextChanged = (fragmentDOM, actualDOM) => {
 };
 
 const isAttributeChanged = (fragmentDOM, actualDOM) => {
+  if (isTextNode(fragmentDOM, actualDOM)) {
+    return false;
+  }
+
   const {attributes: fragAttrs} = fragmentDOM;
   const {attributes: actualAttrs} = actualDOM;
 
@@ -81,6 +84,11 @@ const patchAttributes = (fragmentDOM, actualDOM) => {
 };
 
 const isBeforeMount = (actualDOM) => toChildren(actualDOM).length === 0;
+const isTextNode = (fragmentDOM, actualDOM) => {
+  const TEXT_NODE_NAME = '#text';
+  return fragmentDOM.nodeName === TEXT_NODE_NAME
+    && actualDOM.nodeName === TEXT_NODE_NAME
+};
 const toChildren = node => from(node.childNodes);
 const appendChild = (fragmentDOM, actualDOM) => actualDOM.appendChild(fragmentDOM);
 
