@@ -1,12 +1,10 @@
 import {parse} from './core/parse.js';
 import {generate} from './core/generate.js';
-import {patch} from './core/fragment-dom-20200722/patch.js';
+import {patch} from './core/fragment-dom-20200725/patch.js';
 
-const template = `<div>
-  {{text}}
+const template = `{{text}}
   <input type="text" @input="onInput">
-  <input type="text" :value="text">
-</div>`;
+  <input type="text" :value="text">`;
 
 const fns = {
   onInput: (event) => {

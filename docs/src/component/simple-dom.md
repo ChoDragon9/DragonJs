@@ -23,23 +23,21 @@ type generate = (FragmentAST[], events) => FragmentDOM
 type patch = (FragmentDOM, AutualDOM) => void
 ```
 
-### Core
+## Core
 [Fragment DOM](/src/component/fragment-dom/)에서 영감을 얻은 코어.
 
-```js
-const template = `<div>
-  <input type="text" @click="onClick">
-</div>`;
+### parse
+<<< @/docs/src/component/simple-dom/core/parse.js
 
-const events = {
-  onClick: (event) => {
-    console.log(event.target.value)
-  }
-};
+### generate
+<<< @/docs/src/component/simple-dom/core/generate.js
 
-const fragmentAST = parse(template);
-const fragmentDOM = generate(fragmentAST, events)
-const actualDOM = document.querySelector('#app');
+### fragment-dom
+#### patch
+<<< @/docs/src/component/simple-dom/core/fragment-dom-20200725/patch.js
 
-patch(fragmentDOM, actualDOM);
-```
+#### render
+<<< @/docs/src/component/simple-dom/core/fragment-dom-20200725/render.js
+
+## 사용예
+<<< @/docs/src/component/simple-dom/main.js
