@@ -7,7 +7,9 @@ export const fragment = (nodes) => {
 };
 
 export const html = (tagName, children, options) => {
-  const elem = document.createElement(tagName);
+  const elem = tagName === '#text'
+    ? document.createTextNode(tagName)
+    : document.createElement(tagName);
   appendChild(elem, children);
   appendOptions(elem, options);
   return elem;

@@ -6,6 +6,8 @@
 //     events: object
 //   }
 // }
+import {EVENT_PREFIX, TEXT_NODE} from './constants.js';
+
 export const parse = (template) => {
   const childNodes = parseHTML(template);
   return parseChildren(childNodes)
@@ -36,7 +38,6 @@ const toTagName = (node) => node.nodeName.toLowerCase();
 const toChildren = (node) => {
   const {textContent, childNodes} = node;
   const tagName = toTagName(node);
-  const TEXT_NODE = '#text';
 
   return tagName === TEXT_NODE
     ? textContent
@@ -44,7 +45,6 @@ const toChildren = (node) => {
 };
 
 const toOptions = (node) => {
-  const EVENT_PREFIX = '@';
   const extractedAttributes = extractAttributes(node);
   const events = extractedAttributes
     .filter(({nodeName}) => nodeName.startsWith(EVENT_PREFIX));
