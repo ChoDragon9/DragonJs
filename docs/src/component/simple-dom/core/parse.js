@@ -24,37 +24,44 @@ const parseChildren = (childNodes) => {
 };
 
 const toFragmentAST = (node) => {
-  const {
-    nodeName,
-    attributes = [],
-    textContent,
-    childNodes
-  } = node;
-  const tagName = nodeName.toLowerCase();
+  return {
+    tagName: toTagName(node),
+    children: toChildren(node),
+    options: toOptions(node)
+  }
+};
+
+const toTagName = (node) => node.nodeName.toLowerCase();
+
+const toChildren = (node) => {
+  const {textContent, childNodes} = node;
+  const tagName = toTagName(node);
   const TEXT_NODE = '#text';
+
+  return tagName === TEXT_NODE
+    ? textContent
+    : parseChildren(childNodes);
+};
+
+const toOptions = (node) => {
   const EVENT_PREFIX = '@';
-
-  const extractAttributes = Array
-    .from({length: attributes.length})
-    .map((_, index) => attributes[index])
-    .map(({nodeName, nodeValue}) => ({nodeName, nodeValue}));
-
-  const events = extractAttributes
+  const extractedAttributes = extractAttributes(node);
+  const events = extractedAttributes
     .filter(({nodeName}) => nodeName.startsWith(EVENT_PREFIX));
-  const attrs = extractAttributes
+  const attrs = extractedAttributes
     .filter(({nodeName}) => !nodeName.startsWith(EVENT_PREFIX));
 
   return {
-    tagName,
-    children:
-      tagName === TEXT_NODE
-        ? textContent
-        : parseChildren(childNodes),
-    options: {
-      attrs: fromEntries(attrs),
-      events: fromEntries(events),
-    }
-  }
+    attrs: fromEntries(attrs),
+    events: fromEntries(events),
+  };
+};
+
+const extractAttributes = ({attributes = []}) => {
+  return Array
+    .from({length: attributes.length})
+    .map((_, index) => attributes[index])
+    .map(({nodeName, nodeValue}) => ({nodeName, nodeValue}));
 };
 
 const fromEntries = (entries) => {
