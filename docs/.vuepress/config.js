@@ -39,7 +39,7 @@ module.exports = {
         ]
       },
       {
-        text: 'Component Architecture',
+        text: 'Component',
         items: [
           {text: 'Vuex 버전', link: '/src/component/vuex-feature/'},
           {text: 'Recoil 버전', link: '/src/component/recoil-feature/'},
