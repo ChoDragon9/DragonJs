@@ -49,6 +49,10 @@ module.exports = {
         ]
       },
       {
+        text: 'MVC',
+        link: '/src/mvc/2020-08-mvc/',
+      },
+      {
         text: 'Presentation',
         items: [
           {text: '설계', link: '/src/presentation/design/'},
