@@ -1,4 +1,5 @@
 import TodoList from './todo-list.js';
+import TodoSummary from './todo-summary.js';
 import model from './model.js';
 
 const controller = {
@@ -13,12 +14,16 @@ const controller = {
 export const init = () => {
   const parentNode = document.querySelector('#app');
 
+  TodoSummary.mount({
+    parentNode
+  });
   TodoList.mount({
     controller,
     parentNode
   });
 
-  model.observe((todo) => {
-    TodoList.render(todo)
+  model.observe((data) => {
+    TodoList.render(data)
+    TodoSummary.render(data);
   });
 };
