@@ -1,23 +1,21 @@
-import {html, query} from './util/dom.js';
+import {html, query} from './utils/dom.js';
 
 const state = {
-  text: null,
+  summary: null,
 };
 
-const template = () => {
-  return html('div', {
-    innerHTML: `<h2></h2>`
-  });
-};
+const template = _ => html('div', {
+  innerHTML: `<h2></h2>`
+});
 
 export default {
   mount: ({parentNode}) => {
     const dom = template();
+    state.summary = query(dom, 'h2');
     parentNode.append(dom);
-    state.text = query(dom, 'h2');
   },
-  render: (model) => {
+  render: model => {
     const {todo} = model;
-    state.text.innerHTML = `TODO: ${todo.length}`
+    state.summary.innerHTML = `TODO: ${todo.length}`
   },
 }

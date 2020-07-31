@@ -1,4 +1,4 @@
-import {clone, html, query} from './util/dom.js';
+import {clone, html, query} from './utils/dom.js';
 
 const state = {
   input: null,
@@ -6,20 +6,16 @@ const state = {
   controller: null,
 };
 
-const template = () => {
-  return html('div', {
-    innerHTML: `
-      <input type="text">
-      <ul></ul>
-    `
-  });
-};
+const template = _ => html('div', {
+  innerHTML: `
+    <input type="text">
+    <ul></ul>
+  `
+});
 
 export default {
   mount: ({controller, parentNode}) => {
     const dom = template();
-
-    parentNode.append(dom);
 
     state.controller = controller;
     state.input = query(dom, 'input[type=text]');
@@ -30,7 +26,9 @@ export default {
         controller.addTodoItem(event.target.value);
         event.target.value = '';
       }
-    })
+    });
+
+    parentNode.append(dom);
   },
   render: (model) => {
     const {todo} = model;

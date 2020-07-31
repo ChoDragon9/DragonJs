@@ -1,20 +1,20 @@
-import {createSubject} from './util/observer.js';
+import {createSubject} from './utils/observer.js';
 
 const data = {
   todo: []
 };
 const subject = createSubject();
 const notify = () => {
-  subject.notify(cloneModel())
+  subject.notify(cloneData())
 };
-const cloneModel = () => ({
+const cloneData = () => ({
   todo: [...data.todo]
 });
 
 export default {
   observe: (observer) => {
     subject.observe(observer);
-    observer(cloneModel())
+    observer(cloneData())
   },
 
   addTodoItem: (item) => {
@@ -26,13 +26,3 @@ export default {
     notify();
   },
 }
-
-// model.observe((todo) => {
-//   console.log(todo)
-// });
-//
-// model.addTodoItem('1. 책읽기');
-// model.addTodoItem('2. 영화보기');
-// model.addTodoItem('3. 요리하기');
-// model.removeTodoItem('1. 책읽기');
-

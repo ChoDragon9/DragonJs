@@ -23,7 +23,7 @@ export const init = () => {
   });
 
   model.observe((data) => {
-    TodoList.render(data)
+    TodoList.render(data);
     TodoSummary.render(data);
   });
 };
