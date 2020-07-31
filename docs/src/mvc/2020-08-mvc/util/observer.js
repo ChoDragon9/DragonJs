@@ -3,10 +3,10 @@ export const createSubject = () => {
 
   return {
     notify: (value) => {
-      set.forEach(fn => fn(value))
+      set.forEach(observer => observer(value))
     },
-    observe: (fn) => {
-      set.add(fn)
+    observe: (observer) => {
+      set.add(observer)
     }
   };
 };

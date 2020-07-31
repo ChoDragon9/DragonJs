@@ -5,13 +5,17 @@ const data = {
 };
 const subject = createSubject();
 const notify = () => {
-  subject.notify({
-    todo: [...data.todo]
-  })
+  subject.notify(cloneModel())
 };
+const cloneModel = () => ({
+  todo: [...data.todo]
+});
 
 export default {
-  observe: subject.observe,
+  observe: (observer) => {
+    subject.observe(observer);
+    observer(cloneModel())
+  },
 
   addTodoItem: (item) => {
     data.todo = [...data.todo, item];

@@ -1,8 +1,7 @@
-import {clone, html, query} from './util/dom.js';
+import {html, query} from './util/dom.js';
 
 const state = {
   text: null,
-  controller: null,
 };
 
 const template = () => {
