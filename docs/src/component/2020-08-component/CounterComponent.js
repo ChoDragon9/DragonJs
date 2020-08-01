@@ -1,3 +1,4 @@
+import {events, query} from './core/helper/dom.js';
 import {component} from './core/component.js';
 
 export const CounterComponent = component(({store, html}) => {
@@ -20,12 +21,12 @@ export const CounterComponent = component(({store, html}) => {
       <div>${state.count.get()}</div>
     </div>`);
 
-    dom
-      .querySelector('.up')
-      .addEventListener('click', actions.upCount);
-    dom
-      .querySelector('.down')
-      .addEventListener('click', actions.downCount);
+    events(query(dom, '.up'), {
+      click: actions.upCount
+    });
+    events(query(dom, '.down'), {
+      click: actions.downCount
+    });
 
     return dom;
   };

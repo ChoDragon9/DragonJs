@@ -1,3 +1,4 @@
+import {events, query} from './core/helper/dom.js';
 import {component} from './core/component.js';
 
 export const ConditionComponent = component(({store, html}) => {
@@ -17,9 +18,9 @@ export const ConditionComponent = component(({store, html}) => {
       ${state.toggle.get() ? '<div>Hello World</div>' : ''}
     </div>`);
 
-    dom
-      .querySelector('button')
-      .addEventListener('click', actions.toggle);
+    events(query(dom, 'button'), {
+      click: actions.toggle
+    });
 
     return dom;
   };

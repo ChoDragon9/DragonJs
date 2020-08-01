@@ -1,3 +1,4 @@
+import {events, query, replaceWith} from './core/helper/dom.js';
 import {component} from './core/component.js';
 
 export const ParentButton = component(({html, store}) => {
@@ -10,21 +11,23 @@ export const ParentButton = component(({html, store}) => {
     }
   };
   const render = () => {
+    const dom = html(`<div>
+      <h2>Parent-Child</h2>
+      <div>${state.count.get()}</div>
+      <child-button></child-button>
+     </div>`);
+    
     const props = {
       buttonName: 'Up Count'
     };
     const emit = {
       upCount: actions.upCount
     };
-    const dom = html(`<div>
-      <h2>Parent-Child</h2>
-      <div>${state.count.get()}</div>
-      <child-button></child-button>
-     </div>`);
 
-    dom
-      .querySelector('child-button')
-      .replaceWith(ChildButton({props, emit}));
+    replaceWith(
+      query(dom, 'child-button'),
+      ChildButton({props, emit})
+    );
 
     return dom;
   };
@@ -37,9 +40,11 @@ export const ChildButton = component(({html}, {props, emit}) => {
     const dom = html(`<div>
        <button type="button">${props.buttonName}</button>
      </div>`);
-    dom
-      .querySelector('button')
-      .addEventListener('click', emit.upCount);
+
+    events(query(dom, 'button'), {
+      click: emit.upCount
+    });
+
     return dom;
   };
 

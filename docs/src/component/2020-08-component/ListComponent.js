@@ -1,3 +1,4 @@
+import {events, query} from './core/helper/dom.js';
 import {component} from './core/component.js';
 
 export const ListComponent = component(({store, html}) => {
@@ -33,14 +34,19 @@ export const ListComponent = component(({store, html}) => {
       </ol>
     </div>`)
 
-    const input = dom.querySelector('input');
-    const button = dom.querySelector('button');
-    button.addEventListener('click', () => {
-      actions.addItem();
-      input.value = '';
+    const input = query(dom, 'input');
+    const button = query(dom, 'button');
+
+    events(button, {
+      click: () => {
+        actions.addItem();
+        input.value = '';
+      }
     });
-    input.addEventListener('input', (event) => {
-      actions.changeInput(event.target.value)
+    events(input, {
+      input: (event) => {
+        actions.changeInput(event.target.value)
+      }
     });
 
     return dom;

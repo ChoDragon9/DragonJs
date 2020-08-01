@@ -1,3 +1,4 @@
+import {events, query, replaceWith} from './core/helper/dom.js';
 import {createStore} from './core/store.js';
 import {component} from './core/component.js';
 
@@ -19,9 +20,9 @@ export const CounterButton = component(({html, store}) => {
        <button type="button">Up Count</button>
      </div>`);
 
-    dom
-      .querySelector('button')
-      .addEventListener('click', actions.upCount);
+    events(query(dom, 'button'), {
+      click: actions.upCount
+    });
 
     return dom;
   };
@@ -40,12 +41,14 @@ export const MainComponent = component(({html, store}) => {
       <counter-button2></counter-button2>
     </div>`);
 
-    dom
-      .querySelector('counter-button1')
-      .replaceWith(CounterButton());
-    dom
-      .querySelector('counter-button2')
-      .replaceWith(CounterButton());
+    replaceWith(
+      query(dom, 'counter-button1'),
+      CounterButton()
+    );
+    replaceWith(
+      query(dom, 'counter-button2'),
+      CounterButton()
+    );
 
     return dom;
   }
