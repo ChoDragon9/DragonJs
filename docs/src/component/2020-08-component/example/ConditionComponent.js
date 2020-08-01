@@ -12,6 +12,7 @@ export const ConditionComponent = component(({store, fragment}) => {
 
   const render = () => {
     const dom = fragment(`<div>
+      <h2>Condition Rendering</h2>
       <button type="button">Toggle</button>
       ${state.toggle.get() ? '<div>Hello World</div>' : ''}
     </div>`);

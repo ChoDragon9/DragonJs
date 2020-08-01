@@ -21,6 +21,7 @@ export const ListComponent = component(({store, fragment}) => {
   };
   const render = () => {
     const dom = fragment(`<div>
+      <h2>List Rendering</h2>
       <input type="text">
       <button type="button">Add</button>
       <ol>

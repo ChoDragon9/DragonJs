@@ -14,6 +14,7 @@ export const CounterComponent = component(({store, fragment}) => {
   };
   const render = () => {
     const dom = fragment(`<div>
+      <h2>Counter Component</h2>
       <button type="text" class="up">Up</button>
       <button type="text" class="down">Down</button>
       <div>${state.count.get()}</div>

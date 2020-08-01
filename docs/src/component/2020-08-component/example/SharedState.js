@@ -1,27 +1,27 @@
-const sharedState = store.create({
+import {createStore} from '../core/store.js';
+import {component} from '../core/component.js';
+
+const sharedStore = createStore();
+const sharedState = sharedStore.create({
   count: 0
 });
+
 export const CounterButton = component(({fragment, store}) => {
-  const state = store.share(sharedState);
+  store.share(sharedStore);
+
   const actions = {
     upCount: () => {
-      state.count.set(state.count.get() + 1)
+      sharedState.count.set(sharedState.count.get() + 1)
     }
   };
   const render = () => {
-    const props = {
-      buttonName: 'Up Count'
-    };
-    const emit = {
-      upCount: actions.upCount
-    };
     const dom = fragment(`<div>
        <button type="button">Up Count</button>
      </div>`);
 
     dom
       .querySelector('button')
-      .addEventListener('click', actions.upCount)
+      .addEventListener('click', actions.upCount);
 
     return dom;
   };
@@ -29,19 +29,23 @@ export const CounterButton = component(({fragment, store}) => {
   return render;
 });
 
-export const MainComponent = component(({fragment}) => {
+export const MainComponent = component(({fragment, store}) => {
+  store.share(sharedStore);
+
   return () => {
     const dom = fragment(`<div>
-      <CounterButton1 />
-      <CounterButton2 />
+      <h2>Shared State</h2>
+      ${sharedState.count.get()}
+      <counter-button1></counter-button1>
+      <counter-button2></counter-button2>
     </div>`);
 
     dom
-      .querySelector('CounterButton1')
-      .replaceWith(CounterButton())
+      .querySelector('counter-button1')
+      .replaceWith(CounterButton());
     dom
-      .querySelector('CounterButton2')
-      .replaceWith(CounterButton())
+      .querySelector('counter-button2')
+      .replaceWith(CounterButton());
 
     return dom;
   }

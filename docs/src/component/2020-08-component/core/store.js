@@ -15,6 +15,11 @@ export const createStore = () => {
         }
       });
     },
+    share: (store) => {
+      store._subscribe(() => {
+        subject.notify();
+      })
+    },
     _subscribe: subject.subscribe,
     _unsubscribe: subject.unsubscribe,
   }

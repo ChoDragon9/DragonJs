@@ -3,15 +3,15 @@ title: 2020.08 Component
 sidebar: auto
 ---
 
-컴포넌트 생성 기능을 간단하게 만들 수 있으면서, 쉽게 사용가능한 형태로 제작하기 위함.
+이 팻 프로젝트의 목표는 다음과 같다.
+- 컴포넌트 정의 기능을 간단하게 만들 수 있어야 한다.
+- 컴포넌트 사용을 쉽게 사용 가능한 형태로 제작해야 한다.
+- 지원 기능
+  - 상태 변경 시, 다시 렌더링되는 기능
+  - 부모-자식 관계를 가질 수 있는 기능
+  - 공유상태를 사용할 수 있는 기능
 
 ## 설계
-```ts
-type RenderFunction = () => HTMLElement
-type CreateComponent = (context, args) => RenderFunction
-type component = (createComponent: CreateComponent) => (args: any) => createComponent(context, args) 
-```
-
 ### Basic
 ```js
 export const BasicComponent = component(({fragment}) => {

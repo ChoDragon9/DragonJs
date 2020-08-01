@@ -31,12 +31,13 @@ export const ParentButton = component(({fragment, store}) => {
       upCount: actions.upCount
     };
     const dom = fragment(`<div>
-       <div>${state.count.get()}</div>
-       <ChildButton />
+      <h2>Parent-Child</h2>
+      <div>${state.count.get()}</div>
+      <child-button></child-button>
      </div>`);
 
     dom
-      .querySelector('ChildButton')
+      .querySelector('child-button')
       .replaceWith(ChildButton({props, emit}));
 
     return dom;
