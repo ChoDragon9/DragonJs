@@ -56,12 +56,6 @@ module.exports = {
           {text: '2020.08 MVC - Todo List (Function 버전)', link: '/src/mvc/2020-08-mvc-function/'},
         ],
       },
-      {
-        text: 'Presentation',
-        items: [
-          {text: '설계', link: '/src/presentation/design/'},
-        ]
-      },
     ]
   },
   head: [
