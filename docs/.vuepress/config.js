@@ -50,7 +50,11 @@ module.exports = {
       },
       {
         text: 'MVC',
-        link: '/src/mvc/2020-08-mvc/',
+        items: [
+          {text: '2020.08 MVC', link: '/src/mvc/2020-08-mvc/'},
+          {text: '2020.08 MVC - Todo List (Class 버전)', link: '/src/mvc/2020-08-mvc-class/'},
+          {text: '2020.08 MVC - Todo List (Function 버전)', link: '/src/mvc/2020-08-mvc-function/'},
+        ],
       },
       {
         text: 'Presentation',
