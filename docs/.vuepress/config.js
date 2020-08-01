@@ -41,11 +41,27 @@ module.exports = {
       {
         text: 'Component',
         items: [
-          {text: 'Vuex 버전', link: '/src/component/vuex-feature/'},
-          {text: 'Recoil 버전', link: '/src/component/recoil-feature/'},
-          {text: 'Fragment DOM', link: '/src/component/fragment-dom/'},
-          {text: 'Simple DOM', link: '/src/component/simple-dom/'},
-          {text: 'Simple Component', link: '/src/component/simple-component/'},
+          {
+            text: 'Architecture',
+            items: [
+              {text: '2020.08 Component', link: '/src/component/2020-08-component/'},
+            ]
+          },
+          {
+            text: 'Store',
+            items: [
+              {text: 'Vuex 버전', link: '/src/component/vuex-feature/'},
+              {text: 'Recoil 버전', link: '/src/component/recoil-feature/'},
+            ]
+          },
+          {
+            text: 'DOM',
+            items: [
+              {text: 'Fragment DOM', link: '/src/component/fragment-dom/'},
+              {text: 'Simple DOM', link: '/src/component/simple-dom/'},
+              {text: 'Simple Component', link: '/src/component/simple-component/'},
+            ]
+          }
         ]
       },
       {
