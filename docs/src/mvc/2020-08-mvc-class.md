@@ -3,6 +3,8 @@ title: Todo List (Class 버전)
 sidebar: auto
 ---
 
+MVC는 [2020.08 MVC](/src/mvc/2020-08-mvc/)에 설명한다.
+
 ## app
 <<< @/docs/src/mvc/2020-08-mvc/basic-todo-class/index.html
 <<< @/docs/src/mvc/2020-08-mvc/basic-todo-class/app.js
@@ -24,4 +26,6 @@ sidebar: auto
 <<< @/docs/src/mvc/2020-08-mvc/basic-todo-class/src/model.js
  
 ## 데모
+> [ESM](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Modules)를 지원하는 브라우저에서만 동작함
+
 - [데모](https://chodragon9.github.io/dragonjs/docs/src/mvc/2020-08-mvc/basic-todo-class/index.html)
