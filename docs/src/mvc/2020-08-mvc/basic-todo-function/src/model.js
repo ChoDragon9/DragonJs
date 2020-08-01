@@ -1,4 +1,5 @@
 import {createSubject} from '../utils/observer.js';
+import {assign} from '../utils/helper.js';
 
 export const createModel = () => {
   const state = {

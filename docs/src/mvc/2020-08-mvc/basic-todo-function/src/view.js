@@ -1,3 +1,4 @@
+import {assign} from '../utils/helper.js'
 import {append, clone, events, html, query} from '../utils/dom.js';
 
 const template = () => html('div', {
@@ -32,20 +33,25 @@ export const createView = ({controller, parentNode}) => {
     const li = html('li');
 
     todoList
-      .map((todo) => clone(li, {
-        innerHTML: liTemplate(todo)
-      }))
-      .forEach((clonedLi) => {
+      .map((todo) => {
+        const clonedLi = clone(li, {
+          innerHTML: liTemplate(todo)
+        });
+
         events(query(clonedLi, 'button'), {
           click: () => {
             controller.removeTodoItem(todo)
           }
         });
+
+        return clonedLi;
+      })
+      .forEach((clonedLi) => {
         append(fragment, clonedLi);
       });
 
     assign(state.list, {innerHTML: ''});
-    append(fragment, state.list);
+    append(state.list, fragment);
   };
   const renderTodoSummary = (model) => {
     const {todoList} = model;

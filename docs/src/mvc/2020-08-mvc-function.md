@@ -13,6 +13,9 @@ sidebar: auto
 ## view
 <<< @/docs/src/mvc/2020-08-mvc/basic-todo-function/src/view.js
 
+### helper
+<<< @/docs/src/mvc/2020-08-mvc/basic-todo-function/utils/helper.js
+
 ### dom
 <<< @/docs/src/mvc/2020-08-mvc/basic-todo-function/utils/dom.js
 
