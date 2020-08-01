@@ -1,3 +1,5 @@
+import {component} from '../core/component.js';
+
 export const ConditionComponent = component(({store, fragment}) => {
   const state = store.create({
     toggle: false,
@@ -11,7 +13,7 @@ export const ConditionComponent = component(({store, fragment}) => {
   const render = () => {
     const dom = fragment(`<div>
       <button type="button">Toggle</button>
-      ${store.toggle.get() ? '<div>Hello World</div>' : ''}
+      ${state.toggle.get() ? '<div>Hello World</div>' : ''}
     </div>`);
 
     dom
