@@ -6,7 +6,7 @@ const sharedState = sharedStore.create({
   count: 0
 });
 
-export const CounterButton = component(({fragment, store}) => {
+export const CounterButton = component(({html, store}) => {
   store.share(sharedStore);
 
   const actions = {
@@ -15,7 +15,7 @@ export const CounterButton = component(({fragment, store}) => {
     }
   };
   const render = () => {
-    const dom = fragment(`<div>
+    const dom = html(`<div>
        <button type="button">Up Count</button>
      </div>`);
 
@@ -29,11 +29,11 @@ export const CounterButton = component(({fragment, store}) => {
   return render;
 });
 
-export const MainComponent = component(({fragment, store}) => {
+export const MainComponent = component(({html, store}) => {
   store.share(sharedStore);
 
   return () => {
-    const dom = fragment(`<div>
+    const dom = html(`<div>
       <h2>Shared State</h2>
       ${sharedState.count.get()}
       <counter-button1></counter-button1>

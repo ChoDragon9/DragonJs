@@ -1,8 +1,8 @@
 import {component} from '../core/component.js';
 
-export const ChildButton = component(({fragment}, {props, emit}) => {
+export const ChildButton = component(({html}, {props, emit}) => {
   const render = () => {
-    const dom = fragment(`<div>
+    const dom = html(`<div>
        <button type="button">${props.buttonName}</button>
      </div>`);
     dom
@@ -14,7 +14,7 @@ export const ChildButton = component(({fragment}, {props, emit}) => {
   return render;
 });
 
-export const ParentButton = component(({fragment, store}) => {
+export const ParentButton = component(({html, store}) => {
   const state = store.create({
     count: 0
   });
@@ -30,7 +30,7 @@ export const ParentButton = component(({fragment, store}) => {
     const emit = {
       upCount: actions.upCount
     };
-    const dom = fragment(`<div>
+    const dom = html(`<div>
       <h2>Parent-Child</h2>
       <div>${state.count.get()}</div>
       <child-button></child-button>

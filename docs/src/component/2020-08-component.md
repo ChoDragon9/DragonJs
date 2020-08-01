@@ -3,236 +3,47 @@ title: 2020.08 Component
 sidebar: auto
 ---
 
-이 팻 프로젝트의 목표는 다음과 같다.
+이 펫 프로젝트의 목표는 다음과 같다.
+
+- 최종적으로 라이트한 프로젝트에 사용할 수준으로 제작한다.
 - 컴포넌트 정의 기능을 간단하게 만들 수 있어야 한다.
+  - 아키텍처 레벨의 코드는 난이도가 높을 가능성이 크기 때문이다. 
 - 컴포넌트 사용을 쉽게 사용 가능한 형태로 제작해야 한다.
 - 지원 기능
   - 상태 변경 시, 다시 렌더링되는 기능
   - 부모-자식 관계를 가질 수 있는 기능
   - 공유상태를 사용할 수 있는 기능
 
-## 설계
-### Basic
-```js
-export const BasicComponent = component(({fragment}) => {
-  const render = () => {
-    return fragment(`<div>Hello World!</div>`);
-  }
+## 컴포넌트 사용법
+### 기본 컴포넌트
+<<< @/docs/src/component/2020-08-component/example/BasicComponent.js
 
-  return render
-})
-```
+### 컴포넌트 내부 스토어 사용
+<<< @/docs/src/component/2020-08-component/example/CounterComponent.js
 
-### State
-```js
-export const CounterComponent = component(({store, fragment}) => {
-  const state = store.create({
-    count: 0,
-  });
-  const actions = {
-    upCount: () => {
-      state.count.set(state.count.get() + 1);
-    },
-     downCount: () => {
-      state.count.set(state.count.get() - 1);
-    }
-  };
-  const render = () => {
-    const dom = fragment(`<div>
-      <button type="text" class="up">Up</button>
-      <button type="text" class="down">Down</button>
-      <div>${state.count.get()}</div>
-    </div>`);
+### 리스트 렌더링
+<<< @/docs/src/component/2020-08-component/example/ListComponent.js
 
-    dom
-      .querySelector('.up')
-      .addEventListener('click', actions.upCount)
-    dom
-      .querySelector('.down')
-      .addEventListener('click', actions.downCount)
-  
-    return dom;
-  }
+### 컨디션 렌더링
+<<< @/docs/src/component/2020-08-component/example/ConditionComponent.js
 
-  return render
-})
-```
+### 부모-자식 관계
+<<< @/docs/src/component/2020-08-component/example/ParentChild.js
 
-### List Rendering
-```js
-export const ListComponent = component(({store, fragment}) => {
-  const state = store.create({
-    inputText: '',
-    todoList: []
-  });
-  const actions = {
-    addItem: () => {
-      state.todoList.set([
-        ...store.todoList.get(),
-        state.inputText.get()
-      ])
-    },
-    changeInput: (inputText) => {
-      // 렌더링을 하고 싶지 않을 때, set 두번째 인자에 false처리
-      state.inputText.set(inputText, false);
-    }
-  };
-  const render = () => {
-    const dom = fragment(`<div>
-         <input type="text">
-         <button type="button">Add</button>
-         <ol>
-           ${state.todoList.get().map((item) => {
-             return `<li>${item}</li>` 
-           }).join('')}
-         </ol>
-     </div>`)
+### 공유 상태 사용
+<<< @/docs/src/component/2020-08-component/example/SharedState.js
 
-    const input = dom.querySelector('input');
-    const button = dom.querySelector('button');
-    button.addEventListener('click', () => {
-      actions.addItem();
-      input.value = '';
-    });
-    input.addEventListener('click', (event) => {
-      actions.changeInput(event.target.value)
-    });
-    
-    return dom;
-  };
-});
-```
+### 데모
+- [데모](https://chodragon9.github.io/dragonjs/docs/src/component/2020-08-component/index.html)
 
-### Condition Rendering
-```js
-export const ConditionComponent = component(({store, fragment}) => {
-  const state = store.create({
-    toggle: false,
-  });
-  const actions = {
-    toggle: () => {
-      state.toggle.set(!state.toggle.get())
-    }
-  };
-  
-  const render = () => {
-    const dom = fragment(`<div>
-      <button type="button">Toggle</button>
-      ${store.toggle.get() ? '<div>Hello World</div>' : ''}
-    </div>`);
-   
-    dom
-      .querySelector('button')
-      .addEventListener('click', actions.toggle);
-    
-    return dom;
-  };
-  
-  return render
-});
-```
+## 코어 코드
+### 헬퍼
+<<< @/docs/src/component/2020-08-component/core/helper/html.js
+<<< @/docs/src/component/2020-08-component/core/helper/map-values.js
+<<< @/docs/src/component/2020-08-component/core/helper/observer.js
 
-### Parent-Child
-```js
-export const ChildButton = component(({fragment}, {props, emit}) => {
-  const actions = {
-    onClick: () => {
-      emit('click')
-    }
-  };
-  const render = () => {
-    const dom = fragment(`<div>
-       <button type="button">${props.buttonName}</button>
-     </div>`)
-    dom
-      .querySelector('button')
-      .addEventListener('click', actions.onClick);
-    return dom;
-  };
+### 스토어
+<<< @/docs/src/component/2020-08-component/core/store.js
 
-  return render;
-})
-
-export const ParentButton = component(({fragment, store}) => {
-  const state = store.create({
-    count: 0
-  });
-  const actions = {
-    upCount: () => {
-      state.count.set(state.count.get() + 1)
-    }
-  };
-  const render = () => {
-    const props = {
-      buttonName: 'Up Count'
-    };
-    const emit = {
-      upCount: actions.upCount
-    };
-    const dom = fragment(`<div>
-       <div>${state.count.get()}</div>
-       <ChildButton />
-     </div>`);
-    
-    dom
-      .querySelector('ChildButton')
-      .replaceWith(ChildButton({props, emit}))
-    
-    return dom;
-  };
-  
-  return render;
-});
-```
-
-### Shared State
-```js
-const sharedState = store.create({
-  count: 0
-});
-export const CounterButton = component(({fragment, store}) => {
-  const state = store.share(sharedState);
-  const actions = {
-    upCount: () => {
-      state.count.set(state.count.get() + 1)
-    }
-  };
-  const render = () => {
-    const props = {
-      buttonName: 'Up Count'
-    };
-    const emit = {
-      upCount: actions.upCount
-    };
-    const dom = fragment(`<div>
-       <button type="button">Up Count</button>
-     </div>`);
-    
-    dom
-      .querySelector('button')
-      .addEventListener('click', actions.upCount)
-    
-    return dom;
-  };
-  
-  return render;
-});
-
-export const MainComponent = component(({fragment}) => {
-  return () => {
-    const dom = fragment(`<div>
-      <CounterButton1 />
-      <CounterButton2 />
-    </div>`);
-    
-    dom
-      .querySelector('CounterButton1')
-      .replaceWith(CounterButton())
-    dom
-      .querySelector('CounterButton2')
-      .replaceWith(CounterButton())
-
-    return dom;
-  }
-});
-```
+### 컴포넌트
+<<< @/docs/src/component/2020-08-component/core/component.js

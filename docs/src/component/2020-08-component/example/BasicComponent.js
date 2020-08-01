@@ -1,8 +1,8 @@
 import {component} from '../core/component.js';
 
-export const BasicComponent = component(({fragment}) => {
+export const BasicComponent = component(({html}) => {
   const render = () => {
-    return fragment(`<div>
+    return html(`<div>
       <h2>Basic Component</h2>
       Hello World!
     </div>`);

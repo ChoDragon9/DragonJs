@@ -1,6 +1,6 @@
 import {component} from '../core/component.js';
 
-export const ListComponent = component(({store, fragment}) => {
+export const ListComponent = component(({store, html}) => {
   const state = store.create({
     inputText: '',
     todoList: []
@@ -20,7 +20,7 @@ export const ListComponent = component(({store, fragment}) => {
     }
   };
   const render = () => {
-    const dom = fragment(`<div>
+    const dom = html(`<div>
       <h2>List Rendering</h2>
       <input type="text">
       <button type="button">Add</button>

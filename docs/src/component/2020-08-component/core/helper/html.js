@@ -1,4 +1,4 @@
-export const fragment = (template) => {
+export const html = (template) => {
   const body = document.createElement('body');
   body.innerHTML = template;
 

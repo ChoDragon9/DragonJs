@@ -1,6 +1,6 @@
 import {component} from '../core/component.js';
 
-export const CounterComponent = component(({store, fragment}) => {
+export const CounterComponent = component(({store, html}) => {
   const state = store.create({
     count: 0,
   });
@@ -13,7 +13,7 @@ export const CounterComponent = component(({store, fragment}) => {
     }
   };
   const render = () => {
-    const dom = fragment(`<div>
+    const dom = html(`<div>
       <h2>Counter Component</h2>
       <button type="text" class="up">Up</button>
       <button type="text" class="down">Down</button>
