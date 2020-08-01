@@ -3,7 +3,7 @@ title: 2020.08 Component
 sidebar: auto
 ---
 
-## 목표
+## 🤔 목표
 이 펫 프로젝트의 목표는 다음과 같다.
 
 - 최종적으로 라이트한 프로젝트에 사용할 수준으로 제작한다.
@@ -15,7 +15,7 @@ sidebar: auto
   - 부모-자식 관계를 가질 수 있는 기능
   - 공유상태를 사용할 수 있는 기능
 
-## 컴포넌트 사용법
+## 📄 컴포넌트 사용법
 ### 기본 컴포넌트
 <<< @/docs/src/component/2020-08-component/BasicComponent.js
 
@@ -68,10 +68,12 @@ sidebar: auto
 
 - 컴포넌트 함수의 반환값은 DOM임으로 `appendChild`로 마운트한다.
 
-### 데모
+### 💻 데모
+> [ESM](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Modules)를 지원하는 브라우저에서만 동작함
+
 - [데모](https://chodragon9.github.io/dragonjs/docs/src/component/2020-08-component/index.html)
 
-## 코어 코드
+## 📄 코어 코드
 ### 헬퍼
 #### mapValues
 <<< @/docs/src/component/2020-08-component/core/helper/map-values.js
