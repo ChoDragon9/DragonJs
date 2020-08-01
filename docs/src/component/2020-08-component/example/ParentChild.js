@@ -1,21 +1,18 @@
+import {component} from '../core/component.js';
+
 export const ChildButton = component(({fragment}, {props, emit}) => {
-  const actions = {
-    onClick: () => {
-      emit('click')
-    }
-  };
   const render = () => {
     const dom = fragment(`<div>
        <button type="button">${props.buttonName}</button>
-     </div>`)
+     </div>`);
     dom
       .querySelector('button')
-      .addEventListener('click', actions.onClick);
+      .addEventListener('click', emit.upCount);
     return dom;
   };
 
   return render;
-})
+});
 
 export const ParentButton = component(({fragment, store}) => {
   const state = store.create({
@@ -40,7 +37,7 @@ export const ParentButton = component(({fragment, store}) => {
 
     dom
       .querySelector('ChildButton')
-      .replaceWith(ChildButton({props, emit}))
+      .replaceWith(ChildButton({props, emit}));
 
     return dom;
   };

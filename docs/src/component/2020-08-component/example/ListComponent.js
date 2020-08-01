@@ -12,6 +12,7 @@ export const ListComponent = component(({store, fragment}) => {
         ...state.todoList.get(),
         state.inputText.get()
       ])
+      state.inputText.set('', false);
     },
     changeInput: (inputText) => {
       // 렌더링을 하고 싶지 않을 때, set 두번째 인자에 false처리
