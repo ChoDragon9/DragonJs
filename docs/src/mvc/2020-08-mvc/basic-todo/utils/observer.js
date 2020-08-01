@@ -5,8 +5,11 @@ export const createSubject = () => {
     notify: (value) => {
       set.forEach(observer => observer(value))
     },
-    observe: (observer) => {
+    subscribe: (observer) => {
       set.add(observer)
+    },
+    unsubscribe: (observer) => {
+      set.remove(observer)
     }
   };
 };
