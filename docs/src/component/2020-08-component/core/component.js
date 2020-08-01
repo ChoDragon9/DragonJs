@@ -5,14 +5,18 @@ export const component = (createComponent) => {
   return ({props, emit} = {props: null, emit: null}) => {
     const store = createStore();
     const render = createComponent({html, store}, {props, emit});
-    let dom = render();
-
-    store._subscribe(() => {
+    const state = {
+      dom: null
+    };
+    const observer = () => {
       const newDom = render();
-      dom.replaceWith(newDom);
-      dom = newDom;
-    });
+      state.dom && state.dom.replaceWith(newDom);
+      state.dom = newDom;
+    };
 
-    return dom;
+    store._subscribe(observer);
+    observer();
+
+    return state.dom;
   };
 };

@@ -1,21 +1,7 @@
-import {component} from '../core/component.js';
-
-export const ChildButton = component(({html}, {props, emit}) => {
-  const render = () => {
-    const dom = html(`<div>
-       <button type="button">${props.buttonName}</button>
-     </div>`);
-    dom
-      .querySelector('button')
-      .addEventListener('click', emit.upCount);
-    return dom;
-  };
-
-  return render;
-});
+import {component} from './core/component.js';
 
 export const ParentButton = component(({html, store}) => {
-  const state = store.create({
+  const state = store.useState({
     count: 0
   });
   const actions = {
@@ -40,6 +26,20 @@ export const ParentButton = component(({html, store}) => {
       .querySelector('child-button')
       .replaceWith(ChildButton({props, emit}));
 
+    return dom;
+  };
+
+  return render;
+});
+
+export const ChildButton = component(({html}, {props, emit}) => {
+  const render = () => {
+    const dom = html(`<div>
+       <button type="button">${props.buttonName}</button>
+     </div>`);
+    dom
+      .querySelector('button')
+      .addEventListener('click', emit.upCount);
     return dom;
   };
 

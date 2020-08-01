@@ -1,4 +1,4 @@
-import {component} from '../core/component.js';
+import {component} from './core/component.js';
 
 export const BasicComponent = component(({html}) => {
   const render = () => {

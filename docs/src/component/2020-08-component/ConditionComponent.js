@@ -1,7 +1,7 @@
-import {component} from '../core/component.js';
+import {component} from './core/component.js';
 
 export const ConditionComponent = component(({store, html}) => {
-  const state = store.create({
+  const state = store.useState({
     toggle: false,
   });
   const actions = {

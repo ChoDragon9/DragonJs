@@ -1,13 +1,15 @@
-import {component} from '../core/component.js';
+import {component} from './core/component.js';
 
 export const ListComponent = component(({store, html}) => {
-  const state = store.create({
+  const state = store.useState({
     inputText: '',
     todoList: []
   });
-
   const actions = {
     addItem: () => {
+      if (!state.inputText.get()) {
+        return;
+      }
       state.todoList.set([
         ...state.todoList.get(),
         state.inputText.get()

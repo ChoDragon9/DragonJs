@@ -1,8 +1,8 @@
-import {createStore} from '../core/store.js';
-import {component} from '../core/component.js';
+import {createStore} from './core/store.js';
+import {component} from './core/component.js';
 
 const sharedStore = createStore();
-const sharedState = sharedStore.create({
+const sharedState = sharedStore.useState({
   count: 0
 });
 

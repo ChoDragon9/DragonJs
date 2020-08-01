@@ -1,9 +1,9 @@
-import {BasicComponent} from './example/BasicComponent.js';
-import {CounterComponent} from './example/CounterComponent.js';
-import {ListComponent} from './example/ListComponent.js';
-import {ConditionComponent} from './example/ConditionComponent.js';
-import {ParentButton} from './example/ParentChild.js';
-import {MainComponent} from './example/SharedState.js';
+import {BasicComponent} from './BasicComponent.js';
+import {CounterComponent} from './CounterComponent.js';
+import {ListComponent} from './ListComponent.js';
+import {ConditionComponent} from './ConditionComponent.js';
+import {ParentButton} from './ParentChild.js';
+import {MainComponent} from './SharedState.js';
 
 const app = document.querySelector('#app');
 

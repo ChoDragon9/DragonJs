@@ -1,7 +1,7 @@
-import {component} from '../core/component.js';
+import {component} from './core/component.js';
 
 export const CounterComponent = component(({store, html}) => {
-  const state = store.create({
+  const state = store.useState({
     count: 0,
   });
   const actions = {
