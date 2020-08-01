@@ -3,7 +3,6 @@ import {clone, html, query} from '../utils/dom.js';
 class View {
   constructor({controller, parentNode}) {
     const dom = View.template();
-
     Object.assign(this, {
       controller,
       input: query(dom, 'input[type=text]'),
@@ -11,6 +10,7 @@ class View {
       list: query(dom, 'ol'),
       summary: query(dom, 'h2'),
     });
+
     parentNode.appendChild(dom);
     this.bindEvent();
   }
@@ -29,21 +29,21 @@ class View {
     const fragment = document.createDocumentFragment();
     const li = html('li');
 
-    todoList.forEach((todo) => {
-      const clonedLi = clone(li, {
-        innerHTML: `
-          <span id="${todo.id}">${todo.item}</span>
-          <button type="text">X</button>
-        `
-      });
-
-      query(clonedLi, 'button')
-        .addEventListener('click', () => {
-          this.controller.removeTodoItem(todo)
+    todoList
+      .map((todo) => {
+        const clonedLi = clone(li, {
+          innerHTML: View.liTemplate(todo)
         });
+        query(clonedLi, 'button')
+          .addEventListener('click', () => {
+            this.controller.removeTodoItem(todo)
+          });
 
-      fragment.appendChild(clonedLi)
-    });
+        return clonedLi;
+      })
+      .forEach((clonedLi) => {
+        fragment.appendChild(clonedLi)
+      });
 
     this.list.innerHTML = '';
     this.list.appendChild(fragment);
@@ -61,6 +61,12 @@ class View {
         <ol></ol>
       `
     })
+  }
+  static liTemplate (todo) {
+    return `
+      <span id="${todo.id}">${todo.item}</span>
+      <button type="text">X</button>
+    `
   }
   static mount({controller, parentNode}) {
     return new View({controller, parentNode})

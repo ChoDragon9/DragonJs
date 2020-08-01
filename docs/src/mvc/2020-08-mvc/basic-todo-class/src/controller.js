@@ -14,6 +14,7 @@ class Controller {
       this.view.render(data);
     })
   }
+
   addTodoItem (item) {
     this.model.addTodoItem(item)
   }

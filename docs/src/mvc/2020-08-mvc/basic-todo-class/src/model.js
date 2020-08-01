@@ -10,12 +10,13 @@ class Model {
       subject: createSubject()
     })
   }
-  notify() {
-    this.subject.notify(this.cloneData)
-  }
   get cloneData () {
     return {todoList: [...this.data.todoList]}
   };
+
+  notify() {
+    this.subject.notify(this.cloneData)
+  }
   subscribe (observer) {
     this.subject.subscribe(observer);
     observer(this.cloneData)
@@ -23,6 +24,7 @@ class Model {
   unsubscribe (observer) {
     this.subject.unsubscribe(observer)
   }
+
   addTodoItem (item) {
     const newTodo = {id: this.data.id++, item};
     this.data.todoList = [...this.data.todoList, newTodo];
