@@ -105,7 +105,7 @@ export const ListComponent = component(({store, fragment}) => {
 
 ### Condition Rendering
 ```js
-export const ListComponent = component(({store, fragment}) => {
+export const ConditionComponent = component(({store, fragment}) => {
   const state = store.create({
     toggle: false,
   });
@@ -134,7 +134,7 @@ export const ListComponent = component(({store, fragment}) => {
 
 ### Parent-Child
 ```js
-export const BaseButton = component(({fragment}, {props, emit}) => {
+export const ChildButton = component(({fragment}, {props, emit}) => {
   const actions = {
     onClick: () => {
       emit('click')
@@ -152,11 +152,8 @@ export const BaseButton = component(({fragment}, {props, emit}) => {
 
   return render;
 })
-```
 
-
-```js
-export const CounterButton = component(({fragment, store}) => {
+export const ParentButton = component(({fragment, store}) => {
   const state = store.create({
     count: 0
   });
@@ -174,12 +171,12 @@ export const CounterButton = component(({fragment, store}) => {
     };
     const dom = fragment(`<div>
        <div>${state.count.get()}</div>
-       <BaseButton />
+       <ChildButton />
      </div>`);
     
     dom
-      .querySelector('BaseButton')
-      .replaceWith(ButtonComponent({props, emit}))
+      .querySelector('ChildButton')
+      .replaceWith(ChildButton({props, emit}))
     
     return dom;
   };
