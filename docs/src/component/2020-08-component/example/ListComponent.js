@@ -1,12 +1,15 @@
+import {component} from '../core/component.js';
+
 export const ListComponent = component(({store, fragment}) => {
   const state = store.create({
     inputText: '',
     todoList: []
   });
+
   const actions = {
     addItem: () => {
       state.todoList.set([
-        ...store.todoList.get(),
+        ...state.todoList.get(),
         state.inputText.get()
       ])
     },
@@ -17,14 +20,14 @@ export const ListComponent = component(({store, fragment}) => {
   };
   const render = () => {
     const dom = fragment(`<div>
-         <input type="text">
-         <button type="button">Add</button>
-         <ol>
-           ${state.todoList.get().map((item) => {
-      return `<li>${item}</li>`
-    }).join('')}
-         </ol>
-     </div>`)
+      <input type="text">
+      <button type="button">Add</button>
+      <ol>
+       ${state.todoList.get().map((item) => {
+          return `<li>${item}</li>`
+        }).join('')}
+      </ol>
+    </div>`)
 
     const input = dom.querySelector('input');
     const button = dom.querySelector('button');
@@ -32,10 +35,12 @@ export const ListComponent = component(({store, fragment}) => {
       actions.addItem();
       input.value = '';
     });
-    input.addEventListener('click', (event) => {
+    input.addEventListener('input', (event) => {
       actions.changeInput(event.target.value)
     });
 
     return dom;
   };
+
+  return render;
 });

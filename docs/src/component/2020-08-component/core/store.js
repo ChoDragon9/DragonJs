@@ -8,9 +8,9 @@ export const createStore = () => {
       return mapValues(state, (value) => {
         return {
           get: () => value,
-          set: (newValue) => {
+          set: (newValue, shouldNotify = true) => {
             value = newValue;
-            subject.notify()
+            shouldNotify && subject.notify()
           }
         }
       });
