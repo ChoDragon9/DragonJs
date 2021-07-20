@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>checkit</title>
+  <link href="Todo.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<script src="../lib/maria.js"></script>
+<script src="../lib/aristocrat.js"></script>
+
+<script src="namespace.js"></script>
+<script src="TodoModel.js"></script>
+<script src="TodoView.js"></script>
+<script src="TodoController.js"></script>
+<script>
+  const todoModel = new checkit.TodoModel();
+  todoModel.setContent('climb a mountain');
+
+  const view = new checkit.TodoView(todoModel);
+  document.body.appendChild(view.build());
+</script>
+
+</body>
+</html>

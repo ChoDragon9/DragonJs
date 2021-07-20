@@ -1,12 +1,10 @@
 import {clone, html, query} from '../utils/dom.js';
 
 class View {
-  constructor({model, controller}) {
-    Object.assign(this, { model, controller });
+  constructor(model) {
+    Object.assign(this, {model});
 
-    this.model.subscribe(() => {
-      this.render()
-    });
+    this.model.subscribe(this);
   }
 
   build() {
@@ -19,17 +17,9 @@ class View {
       summary: query(dom, 'h2'),
     });
 
-    this.bindEvent();
     this.render();
-
+    this.bindEvent();
     return dom;
-  }
-
-  bindEvent () {
-    this.button.addEventListener('click', () => {
-      this.controller.addTodoItem(this.input.value);
-      this.input.value = '';
-    });
   }
 
   render () {
@@ -38,11 +28,9 @@ class View {
   }
 
   renderTodoList () {
-    const {todoList} = this.model.getData();
-    const fragment = document.createDocumentFragment();
+    const {todoList} = this.model.getState();
     const li = html('li');
-
-    todoList
+    const fragment = todoList
       .map((todo) => {
         const clonedLi = clone(li, {
           innerHTML: View.liTemplate(todo)
@@ -54,17 +42,33 @@ class View {
 
         return clonedLi;
       })
-      .forEach((clonedLi) => {
-        fragment.appendChild(clonedLi)
-      });
+      .reduce((fragment, clonedLi) => {
+        fragment.appendChild(clonedLi);
+        return fragment;
+      }, document.createDocumentFragment());
 
     this.list.innerHTML = '';
     this.list.appendChild(fragment);
   }
 
   renderTodoSummary () {
-    const {todoList} = this.model.getData();
+    const {todoList} = this.model.getState();
     this.summary.innerHTML = `TODO: ${todoList.length}`
+  }
+
+  bindEvent () {
+    this.button.addEventListener('click', () => {
+      this.controller.addTodoItem(this.input.value);
+      this.input.value = '';
+    });
+  }
+
+  update() {
+    this.render();
+  }
+
+  setController (controller) {
+    Object.assign(this, {controller});
   }
 
   static template () {
@@ -83,10 +87,6 @@ class View {
       <span id="${todo.id}">${todo.item}</span>
       <button type="text">X</button>
     `
-  }
-
-  static create({model, controller}) {
-    return new View({model, controller})
   }
 }
 
